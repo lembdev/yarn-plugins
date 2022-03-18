@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "ES2019",
+    "lib": ["ES2019"]
+  },
+  "include": ["sources/**/*.ts"]
+}

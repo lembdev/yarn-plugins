@@ -1,0 +1,43 @@
+{
+  "name": "@lembdev/yarn-plugin-bundle",
+  "main": "./sources/index.ts",
+  "scripts": {
+    "build": "run clean && run compile && run patch:vendor && run patch:folder",
+    "local:install": "run build && yarn plugin import ./bundles/@lembdev/plugin-bundle.js",
+    "local:uninstall": "yarn plugin remove @lembdev/plugin-bundle",
+    "clean": "rm -fr bundles",
+    "compile": "builder build plugin --no-minify",
+    "patch:vendor": "replace '@yarnpkg/plugin-bundle' '@lembdev/plugin-bundle' ./bundles/@yarnpkg/plugin-bundle.js",
+    "patch:folder": "mv ./bundles/@yarnpkg ./bundles/@lembdev"
+  },
+  "dependencies": {
+    "@yarnpkg/cli": "^3.2.0",
+    "@yarnpkg/core": "^3.2.0",
+    "adm-zip": "^0.5.9",
+    "alpha-stringify": "^1.0.0",
+    "anything-to-string": "^1.0.0",
+    "ci-info": "^3.3.0",
+    "cli-color": "^2.0.1",
+    "clipanion": "^3.2.0-rc.10",
+    "fs-extra": "^10.0.1",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.4.34",
+    "@types/cli-color": "^2.0.2",
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.21",
+    "@types/rimraf": "^3.0.2",
+    "@yarnpkg/builder": "^3.2.0",
+    "jest": "^27.5.1",
+    "jest-pnp-resolver": "^1.2.2",
+    "replace": "^1.2.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "4.6.2"
+  },
+  "author": {
+    "email": "lembdev@gmail.com",
+    "name": "Alexander Vyzhanov"
+  }
+}
