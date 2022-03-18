@@ -8,7 +8,8 @@
     "clean": "rm -fr bundles",
     "compile": "builder build plugin --no-minify",
     "patch:vendor": "replace '@yarnpkg/plugin-bundle' '@lembdev/plugin-bundle' ./bundles/@yarnpkg/plugin-bundle.js",
-    "patch:folder": "mv ./bundles/@yarnpkg ./bundles/@lembdev"
+    "patch:folder": "mv ./bundles/@yarnpkg ./bundles/@lembdev",
+    "publish": "yarn "
   },
   "dependencies": {
     "@yarnpkg/cli": "^3.2.0",
