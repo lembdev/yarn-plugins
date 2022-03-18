@@ -15,7 +15,6 @@
     "@yarnpkg/cli": "^3.2.0",
     "@yarnpkg/core": "^3.2.0",
     "adm-zip": "^0.5.9",
-    "alpha-stringify": "^1.0.0",
     "anything-to-string": "^1.0.0",
     "ci-info": "^3.3.0",
     "cli-color": "^2.0.1",

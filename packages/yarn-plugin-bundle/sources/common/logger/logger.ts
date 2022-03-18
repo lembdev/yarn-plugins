@@ -21,24 +21,30 @@ type LOG_LVL = keyof LoggerService;
 
 class Logger {
   private isDebug = false;
+
   private groupNesting = 0;
+
   private groupTimers = new Map<string, number>();
+
   private transport: LoggerService = console;
 
   private configuration: Configuration;
 
   public setDebug(enabled: boolean): Logger {
     this.isDebug = enabled;
+
     return this;
   }
 
   public setTransport(transport: LoggerService): Logger {
     this.transport = transport;
+
     return this;
   }
 
   public setConfiguration(configuration: Configuration): Logger {
     this.configuration = configuration;
+
     return this;
   }
 
@@ -87,14 +93,17 @@ class Logger {
     switch (true) {
       case GITHUB_ACTIONS:
         return this.transport.log(`::group::${group}\n`);
+
       case TRAVIS:
         return this.transport.log(`travis_fold:start:${group}\n`);
+
       case GITLAB:
         return this.transport.log(
           `section_start:${Math.floor(Date.now() / 1000)}:${group
             .toLowerCase()
             .replace(/\W+/g, `_`)}[collapsed=true]\r\x1b[0K${group}\n`,
         );
+
       default:
         return;
     }
@@ -104,14 +113,17 @@ class Logger {
     switch (true) {
       case GITHUB_ACTIONS:
         return this.transport.log(`::endgroup::\n`);
+
       case TRAVIS:
         return this.transport.log(`travis_fold:end:${group}\n`);
+
       case GITLAB:
         return this.transport.log(
           `section_end:${Math.floor(Date.now() / 1000)}:${group
             .toLowerCase()
             .replace(/\W+/g, `_`)}\r\x1b[0K`,
         );
+
       default:
         return;
     }
@@ -138,6 +150,7 @@ class Logger {
         .split('\n')
         .forEach((row: string) => {
           const msg = row.trim().replace(/["]?(.*)["]/gm, '$1');
+
           this.transport[level](`${prefix}${separator}${cb(msg)}`);
         }),
     );
@@ -145,6 +158,7 @@ class Logger {
 
   private nestedGroup(): string {
     const nestingLevel = this.groupNesting - 1;
+
     return nestingLevel > 0 ? LOG_GROUP.PROGRESS.repeat(nestingLevel) : '';
   }
 }

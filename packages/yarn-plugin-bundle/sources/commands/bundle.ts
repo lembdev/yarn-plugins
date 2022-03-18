@@ -1,7 +1,6 @@
 import process from 'process';
 import path from 'path';
-import fs from 'fs';
-import { copy } from 'fs-extra';
+import fs from 'fs-extra';
 import { Option } from 'clipanion';
 import { BaseCommand } from '@yarnpkg/cli';
 import { Configuration, Project, Workspace } from '@yarnpkg/core';
@@ -10,7 +9,6 @@ import { execPromise } from '../common/exec-promise';
 import { LoggerDecorator } from '../common/logger/logger.decorator';
 import clc from 'cli-color';
 import AdmZip from 'adm-zip';
-import rimraf from 'rimraf';
 
 type IPackageJson = {
   name: string;
@@ -29,14 +27,19 @@ export default class BundleCommand extends BaseCommand {
   private isDebug = Option.Boolean(`--debug`, false, {
     description: `Do not clear tmp folder`,
   });
+
   private restOptions = Option.Rest();
 
   private workspace: Workspace;
+
   private workspacesList: Map<string, string>;
+
   private targetPackageName: string;
+
   private targetPackageDeps: Set<string>;
 
   private tmpDir = path.resolve(TMP_FOLDER, process.pid.toString());
+
   private rootDir = process.env.OLDPWD;
 
   private configuration: Configuration;
@@ -65,7 +68,7 @@ export default class BundleCommand extends BaseCommand {
   }
 
   @LoggerDecorator('Plugin initialization')
-  private async init() {
+  private async init(): Promise<void> {
     await this.resolveWorkspace();
     await this.resolveWorkspacesList();
     await this.resolveTargetPackageName();
@@ -76,7 +79,7 @@ export default class BundleCommand extends BaseCommand {
   }
 
   @LoggerDecorator('Process packages')
-  private async processDependencies() {
+  private async processDependencies(): Promise<void> {
     const packagesList = [this.targetPackageName, ...this.targetPackageDeps];
 
     for (const packageName of packagesList) {
@@ -177,8 +180,6 @@ export default class BundleCommand extends BaseCommand {
     }
 
     if (targetPackageDeps.size) {
-      console.log(targetPackageDeps);
-
       logger.verbose('target package local dependencies:', targetPackageDeps);
     } else {
       logger.log('target package has no local dependencies');
@@ -188,7 +189,7 @@ export default class BundleCommand extends BaseCommand {
   }
 
   @LoggerDecorator('Install package dependencies')
-  private async installPackageDeps(packageName: string) {
+  private async installPackageDeps(packageName: string): Promise<void> {
     logger.verbose(`Package: ${packageName}`);
 
     const result = await execPromise(
@@ -199,13 +200,13 @@ export default class BundleCommand extends BaseCommand {
   }
 
   @LoggerDecorator('Copy package dependencies')
-  private async copyPackageDeps() {
+  private async copyPackageDeps(): Promise<void> {
     const targetDir = path.resolve(this.rootDir, 'node_modules');
     const destDir = path.resolve(this.tmpDir, 'node_modules');
 
     logger.verbose(`Copy '${targetDir}' to '${destDir}'`);
 
-    await copy(targetDir, destDir, {
+    await fs.copy(targetDir, destDir, {
       overwrite: false,
       dereference: true,
       recursive: true,
@@ -217,7 +218,7 @@ export default class BundleCommand extends BaseCommand {
   }
 
   @LoggerDecorator('Copy source')
-  private async copySource(packageName: string) {
+  private async copySource(packageName: string): Promise<void> {
     const isTargetPackage = packageName === this.targetPackageName;
     const targetDir = path.resolve(
       this.rootDir,
@@ -229,7 +230,7 @@ export default class BundleCommand extends BaseCommand {
 
     logger.verbose(`Copy '${targetDir}' to '${destDir}'`);
 
-    await copy(targetDir, destDir, {
+    await fs.copy(targetDir, destDir, {
       overwrite: false,
       dereference: true,
       recursive: true,
@@ -241,14 +242,14 @@ export default class BundleCommand extends BaseCommand {
   }
 
   @LoggerDecorator('Revert all dependencies')
-  private async restoreDeps() {
+  private async restoreDeps(): Promise<void> {
     await execPromise(`yarn install`);
   }
 
   @LoggerDecorator('Clear tmp folder')
   private async clearTmp() {
     return new Promise((resolve, reject) => {
-      rimraf(this.tmpDir, (error?: Error | null) =>
+      fs.remove(this.tmpDir, (error?: Error | null) =>
         error ? reject(error) : resolve(undefined),
       );
     });
