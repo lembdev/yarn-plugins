@@ -1,5 +1,6 @@
 {
   "name": "@lembdev/yarn-plugin-bundle",
+  "version": "1.0.0",
   "main": "./sources/index.ts",
   "scripts": {
     "build": "run clean && run compile && run patch:vendor && run patch:folder",
