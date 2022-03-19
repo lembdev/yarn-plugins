@@ -1,0 +1,51 @@
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+name: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: yarn install --immutable-cache
+
+      - name: Test
+        run: yarn run test
+
+      - name: Build
+        run: yarn build -c local:install
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            .yarn/plugins/@lembdev/plugin-bundle.js
+
+      # Commit new version
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update release version to ${{ github.ref_name }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: update-release-version
+          delete-branch: true
+          title: 'release: Update release version to  ${{ github.ref_name }}'
+          base: main
+          labels: |
+            report
+            automated pr
+          assignees: lembdev
+          reviewers: lembdev
+          team-reviewers: |
+            owners
+            maintainers
+          draft: false
