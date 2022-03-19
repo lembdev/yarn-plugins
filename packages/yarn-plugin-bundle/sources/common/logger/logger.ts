@@ -1,23 +1,15 @@
-import type { LoggerService } from './logger.interface';
+import type { LoggerService, LOG_LEVEL } from './logger.interface';
 import { Configuration } from '@yarnpkg/core';
-import { GITHUB_ACTIONS, TRAVIS, GITLAB } from 'ci-info';
-import { stringify } from 'anything-to-string';
-import clc from 'cli-color';
+import { color } from './../color';
+import { stringify } from '../stringify';
 import { prettyDuration } from '../pretty-duration';
 
-enum LOG_GROUP {
-  START = ' ┌',
-  PROGRESS = ' │',
-  END = ' └',
-}
-
-const COLOR = Object.freeze({
-  LOG: clc.cyanBright,
-  ERROR: clc.red.bold,
-  VERBOSE: clc.blackBright,
+const CI = !!process.env.GITHUB_ACTIONS;
+const LOG_GROUP = Object.freeze({
+  START: ' ┌',
+  PROGRESS: ' │',
+  END: ' └',
 });
-
-type LOG_LVL = keyof LoggerService;
 
 class Logger {
   private isDebug = false;
@@ -42,12 +34,6 @@ class Logger {
     return this;
   }
 
-  public setConfiguration(configuration: Configuration): Logger {
-    this.configuration = configuration;
-
-    return this;
-  }
-
   public groupStart(group: string): void {
     this.groupNesting += 1;
 
@@ -55,7 +41,8 @@ class Logger {
 
     this.groupTimers.set(group, new Date().getTime());
     this.transport.log(`${preMsg} ${group}`);
-    this.ciGroupStart(group);
+
+    CI && this.transport.log(`::group::${group}\n`);
   }
 
   public groupEnd(group: string): void {
@@ -64,94 +51,44 @@ class Logger {
     );
     const preMsg = `${this.nestedGroup()}${LOG_GROUP.END}`;
 
-    this.ciGroupEnd(group);
+    CI && this.transport.log(`::endgroup::\n`);
     this.transport.log(`${preMsg} Completed in ${duration}`);
     this.groupNesting -= 1;
   }
 
   public log(message: unknown, ...args: unknown[]): void {
-    this._log('error', message, COLOR.LOG);
-    this._log('error', args, COLOR.LOG);
+    this._log('error', message, color.log);
+    this._log('error', args, color.log);
   }
 
   public error({ message, stack }: Error): void {
-    if (stack) {
-      this._log('error', [stack], COLOR.ERROR);
-    } else {
-      this._log('error', message, COLOR.ERROR);
-    }
+    return stack
+      ? this._log('error', [stack], color.error)
+      : this._log('error', message, color.error);
   }
 
   public verbose(message: unknown, ...args: unknown[]): void {
     if (!this.isDebug) return;
 
-    this._log('log', message, COLOR.VERBOSE);
-    this._log('log', args, COLOR.VERBOSE);
-  }
-
-  private ciGroupStart(group: string): void {
-    switch (true) {
-      case GITHUB_ACTIONS:
-        return this.transport.log(`::group::${group}\n`);
-
-      case TRAVIS:
-        return this.transport.log(`travis_fold:start:${group}\n`);
-
-      case GITLAB:
-        return this.transport.log(
-          `section_start:${Math.floor(Date.now() / 1000)}:${group
-            .toLowerCase()
-            .replace(/\W+/g, `_`)}[collapsed=true]\r\x1b[0K${group}\n`,
-        );
-
-      default:
-        return;
-    }
-  }
-
-  private ciGroupEnd(group: string): void {
-    switch (true) {
-      case GITHUB_ACTIONS:
-        return this.transport.log(`::endgroup::\n`);
-
-      case TRAVIS:
-        return this.transport.log(`travis_fold:end:${group}\n`);
-
-      case GITLAB:
-        return this.transport.log(
-          `section_end:${Math.floor(Date.now() / 1000)}:${group
-            .toLowerCase()
-            .replace(/\W+/g, `_`)}\r\x1b[0K`,
-        );
-
-      default:
-        return;
-    }
-  }
-
-  updatePreviousLine() {
-    process.stdout.write(clc.move.up(1));
-    process.stdout.write(clc.erase.line);
+    this._log('log', message, color.verbose);
+    this._log('log', args, color.verbose);
   }
 
   private _log(
-    level: LOG_LVL,
+    level: LOG_LEVEL,
     message: unknown | unknown[],
     cb = (msg: string) => msg,
   ): void {
     const isNested = Array.isArray(message);
     const prefix = `${this.nestedGroup()}${LOG_GROUP.PROGRESS}`;
     const separator = isNested ? '    ∙ ' : '  ➤ ';
-
     const messages = isNested ? message : [message];
 
     messages.forEach((message) =>
       stringify(message)
         .split('\n')
         .forEach((row: string) => {
-          const msg = row.trim().replace(/["]?(.*)["]/gm, '$1');
-
-          this.transport[level](`${prefix}${separator}${cb(msg)}`);
+          this.transport[level](`${prefix}${separator}${cb(row)}`);
         }),
     );
   }

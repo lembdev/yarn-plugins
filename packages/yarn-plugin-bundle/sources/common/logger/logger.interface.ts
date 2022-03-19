@@ -24,3 +24,5 @@ export interface LoggerService {
    */
   verbose?(message: any, ...optionalParams: any[]): any;
 }
+
+export type LOG_LEVEL = keyof LoggerService;

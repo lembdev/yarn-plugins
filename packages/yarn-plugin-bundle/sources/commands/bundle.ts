@@ -7,8 +7,8 @@ import { Configuration, Project, Workspace } from '@yarnpkg/core';
 import { logger } from '../common/logger';
 import { execPromise } from '../common/exec-promise';
 import { LoggerDecorator } from '../common/logger/logger.decorator';
-import clc from 'cli-color';
-import AdmZip from 'adm-zip';
+import { color } from '../common/color';
+import Zip from 'adm-zip';
 
 type IPackageJson = {
   name: string;
@@ -50,7 +50,7 @@ export default class BundleCommand extends BaseCommand {
       this.context.plugins,
     );
 
-    logger.setDebug(this.isDebug).setConfiguration(this.configuration);
+    logger.setDebug(this.isDebug);
 
     try {
       await this.init();
@@ -92,7 +92,7 @@ export default class BundleCommand extends BaseCommand {
   @LoggerDecorator('Make archive')
   private async makeArchive() {
     return new Promise((resolve, reject) => {
-      const zip = new AdmZip();
+      const zip = new Zip();
       const targetFileName = `${this.targetPackageName.split('/').pop()}.zip`;
 
       zip.addLocalFolder(this.tmpDir);
@@ -165,7 +165,7 @@ export default class BundleCommand extends BaseCommand {
       'package.json',
     );
 
-    logger.verbose(`Load "${clc.magentaBright(packageInfoPath)}" file`);
+    logger.verbose(`Load "${color.accent(packageInfoPath)}" file`);
 
     const { dependencies } = JSON.parse(
       fs.readFileSync(packageInfoPath, 'utf-8'),
@@ -213,7 +213,7 @@ export default class BundleCommand extends BaseCommand {
     });
 
     logger.verbose(
-      `Copy '${targetDir}' to '${destDir}' ${clc.green('completed')}`,
+      `Copy '${targetDir}' to '${destDir}' ${color.success('completed')}`,
     );
   }
 
@@ -237,7 +237,7 @@ export default class BundleCommand extends BaseCommand {
     });
 
     logger.verbose(
-      `Copy '${targetDir}' to '${destDir}' ${clc.green('completed')}`,
+      `Copy '${targetDir}' to '${destDir}' ${color.success('completed')}`,
     );
   }
 
