@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*.*.*'
@@ -24,8 +25,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            .yarn/plugins/@lembdev/plugin-bundle.js
+          files: .yarn/plugins/@lembdev/plugin-bundle.js
 
       # Commit new version
       - name: Create Pull Request
