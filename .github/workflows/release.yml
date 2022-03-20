@@ -1,9 +1,9 @@
+name: Release
+
 on:
   push:
     tags:
       - 'v*.*.*'
-
-name: Release
 
 jobs:
   build:
@@ -40,12 +40,13 @@ jobs:
           delete-branch: true
           title: 'release: Update release version to  ${{ github.ref_name }}'
           base: main
-          labels: |
-            report
-            automated pr
+          labels: auto-pr
           assignees: lembdev
           reviewers: lembdev
           team-reviewers: |
             owners
             maintainers
           draft: false
+
+permissions:
+  contents: write
