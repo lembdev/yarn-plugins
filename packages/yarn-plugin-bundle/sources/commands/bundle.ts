@@ -1,5 +1,6 @@
 import process from 'process';
 import path from 'path';
+import os from 'os';
 import fs from 'fs-extra';
 import { Option } from 'clipanion';
 import { BaseCommand } from '@yarnpkg/cli';
@@ -15,7 +16,6 @@ type IPackageJson = {
   dependencies: { [k: string]: string };
 } & { [k: string]: string };
 
-const TMP_FOLDER = '/tmp';
 const EXIT_CODE = {
   SUCCESS: 0,
   ERROR: 1,
@@ -23,6 +23,18 @@ const EXIT_CODE = {
 
 export default class BundleCommand extends BaseCommand {
   static paths = [[`bundle`]];
+
+  private outDir = Option.String(`-o,--output`, process.cwd(), {
+    description: `Directory where bundles will be saved (default: current directory)`,
+  });
+
+  private tmpDir = Option.String(
+    `-t,--tmp`,
+    path.resolve(os.tmpdir(), process.pid.toString()),
+    {
+      description: `Temp directory (default: system temp dir)`,
+    },
+  );
 
   private isDebug = Option.Boolean(`--debug`, false, {
     description: `Do not clear tmp folder`,
@@ -37,8 +49,6 @@ export default class BundleCommand extends BaseCommand {
   private targetPackageName: string;
 
   private targetPackageDeps: Set<string>;
-
-  private tmpDir = path.resolve(TMP_FOLDER, process.pid.toString());
 
   private rootDir = process.env.OLDPWD;
 
@@ -97,7 +107,7 @@ export default class BundleCommand extends BaseCommand {
 
       zip.addLocalFolder(this.tmpDir);
       zip.writeZip(
-        path.resolve(this.rootDir, targetFileName),
+        path.resolve(this.outDir, targetFileName),
         (error: Error | null) => (error ? reject(error) : resolve(undefined)),
       );
     });
