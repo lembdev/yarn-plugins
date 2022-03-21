@@ -1189,6 +1189,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/builder", "npm:3.2.0"],\
             ["@yarnpkg/cli", "virtual:eba9d4adf8581509681da63d65826b21b3b9a89a5de6d11c1cd9bad75758091420de0a284b3923b6d935b514f90f2491dca4f77a7cd326d80be2360e25fa1bb0#npm:3.2.0"],\
             ["@yarnpkg/core", "npm:3.2.0"],\
+            ["@yarnpkg/plugin-workspace-tools", "virtual:fffd0f5f8c0b6d809ba826f133e9ff1e520c935e6a84e95e9f39abdb12e3c0aaf3c1a68e597735409513fc4adee767832a42dc4be5665405a465da143b61b8a7#npm:3.1.1"],\
             ["adm-zip", "npm:0.5.9"],\
             ["ansi-styles", "npm:6.1.0"],\
             ["clipanion", "virtual:aa6dbc485c96a4f23035a31f44481412ab7479eee841cf5f30d392dce33e0547ef7dbed86b365514f32c7fc4d2d00670c7483fbe76a30ee4eead454cfc70e090#npm:3.2.0-rc.10"],\
@@ -2514,6 +2515,42 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@yarnpkg/plugin-workspace-tools", [\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/@yarnpkg-plugin-workspace-tools-npm-3.1.1-8aab628758-a2c80847d4.zip/node_modules/@yarnpkg/plugin-workspace-tools/",\
+          "packageDependencies": [\
+            ["@yarnpkg/plugin-workspace-tools", "npm:3.1.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:fffd0f5f8c0b6d809ba826f133e9ff1e520c935e6a84e95e9f39abdb12e3c0aaf3c1a68e597735409513fc4adee767832a42dc4be5665405a465da143b61b8a7#npm:3.1.1", {\
+          "packageLocation": "./.yarn/__virtual__/@yarnpkg-plugin-workspace-tools-virtual-2beb21e360/0/cache/@yarnpkg-plugin-workspace-tools-npm-3.1.1-8aab628758-a2c80847d4.zip/node_modules/@yarnpkg/plugin-workspace-tools/",\
+          "packageDependencies": [\
+            ["@yarnpkg/plugin-workspace-tools", "virtual:fffd0f5f8c0b6d809ba826f133e9ff1e520c935e6a84e95e9f39abdb12e3c0aaf3c1a68e597735409513fc4adee767832a42dc4be5665405a465da143b61b8a7#npm:3.1.1"],\
+            ["@types/yarnpkg__cli", null],\
+            ["@types/yarnpkg__core", null],\
+            ["@types/yarnpkg__plugin-git", null],\
+            ["@yarnpkg/cli", "virtual:eba9d4adf8581509681da63d65826b21b3b9a89a5de6d11c1cd9bad75758091420de0a284b3923b6d935b514f90f2491dca4f77a7cd326d80be2360e25fa1bb0#npm:3.2.0"],\
+            ["@yarnpkg/core", "npm:3.2.0"],\
+            ["@yarnpkg/fslib", "npm:2.6.1"],\
+            ["@yarnpkg/plugin-git", null],\
+            ["clipanion", "virtual:aa6dbc485c96a4f23035a31f44481412ab7479eee841cf5f30d392dce33e0547ef7dbed86b365514f32c7fc4d2d00670c7483fbe76a30ee4eead454cfc70e090#npm:3.2.0-rc.10"],\
+            ["micromatch", "npm:4.0.4"],\
+            ["p-limit", "npm:2.3.0"],\
+            ["tslib", "npm:1.14.1"],\
+            ["typanion", "npm:3.7.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/yarnpkg__cli",\
+            "@types/yarnpkg__core",\
+            "@types/yarnpkg__plugin-git",\
+            "@yarnpkg/cli",\
+            "@yarnpkg/core",\
+            "@yarnpkg/plugin-git"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@yarnpkg/pnp", [\
         ["npm:3.2.0", {\
           "packageLocation": "./.yarn/cache/@yarnpkg-pnp-npm-3.2.0-aa2b642c19-5b99f89e77.zip/node_modules/@yarnpkg/pnp/",\
@@ -2634,7 +2671,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:0.5.9", {\
           "packageLocation": "./.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/",\
           "packageDependencies": [\
-            ["adm-zip", "npm:0.5.9"]\
+            ["adm-zip", "npm:0.5.9"],\
+            ["original-fs", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6249,6 +6287,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prelude-ls", "npm:1.2.1"],\
             ["type-check", "npm:0.4.0"],\
             ["word-wrap", "npm:1.2.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["original-fs", [\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/",\
+          "packageDependencies": [\
+            ["original-fs", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -8,9 +8,6 @@ export const LoggerDecorator = (group: string): MethodDecorator => {
       logger.groupStart(group);
       try {
         return await originalMethod.call(this, ...args);
-      } catch (error) {
-        logger.error(error);
-        throw error;
       } finally {
         logger.groupEnd(group);
       }

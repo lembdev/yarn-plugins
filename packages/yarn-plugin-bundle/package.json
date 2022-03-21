@@ -15,6 +15,7 @@
   "dependencies": {
     "@yarnpkg/cli": "^3.2.0",
     "@yarnpkg/core": "^3.2.0",
+    "@yarnpkg/plugin-workspace-tools": "^3.1.1",
     "adm-zip": "^0.5.9",
     "ansi-styles": "^6.1.0",
     "clipanion": "^3.2.0-rc.10",

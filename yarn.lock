@@ -731,6 +731,7 @@ __metadata:
     "@yarnpkg/builder": ^3.2.0
     "@yarnpkg/cli": ^3.2.0
     "@yarnpkg/core": ^3.2.0
+    "@yarnpkg/plugin-workspace-tools": ^3.1.1
     adm-zip: ^0.5.9
     ansi-styles: ^6.1.0
     clipanion: ^3.2.0-rc.10
@@ -1623,6 +1624,24 @@ __metadata:
     "@yarnpkg/cli": ^3.1.0
     "@yarnpkg/core": ^3.1.0
   checksum: a902980339d1d38ddda7bd31eaf0f84ba9919f1214d51266540b7d01c4185588cb249bfafa4688b96add3cbacd7f3f31531dd26a75b82db08f564773e52118b3
+  languageName: node
+  linkType: hard
+
+"@yarnpkg/plugin-workspace-tools@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "@yarnpkg/plugin-workspace-tools@npm:3.1.1"
+  dependencies:
+    "@yarnpkg/fslib": ^2.6.1
+    clipanion: ^3.2.0-rc.4
+    micromatch: ^4.0.2
+    p-limit: ^2.2.0
+    tslib: ^1.13.0
+    typanion: ^3.3.0
+  peerDependencies:
+    "@yarnpkg/cli": ^3.2.0
+    "@yarnpkg/core": ^3.2.0
+    "@yarnpkg/plugin-git": ^2.6.0
+  checksum: a2c80847d45d3d2d501de9650454622572ebaaefdafa9b4b721554432e25b1cfdebc317870e40da85adafa5f273e6720544fee14017093edeaba6873cf8370bf
   languageName: node
   linkType: hard
 
@@ -4844,6 +4863,13 @@ __metadata:
     type-check: ^0.4.0
     word-wrap: ^1.2.3
   checksum: dbc6fa065604b24ea57d734261914e697bd73b69eff7f18e967e8912aa2a40a19a9f599a507fa805be6c13c24c4eae8c71306c239d517d42d4c041c942f508a0
+  languageName: node
+  linkType: hard
+
+"original-fs@npm:*":
+  version: 1.1.0
+  resolution: "original-fs@npm:1.1.0"
+  checksum: 596eab68be7e1018fdd7a5c28a335f499daa072794df14b5315c379a987ffefa94dff0e44cf0173d34fb2e7a598e8e6ec41d7dc9d7c832422f3bb9a10c193722
   languageName: node
   linkType: hard
 
