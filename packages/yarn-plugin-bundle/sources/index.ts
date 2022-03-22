@@ -1,3 +1,7 @@
-import { plugin } from './plugin';
+import { Plugin } from '@yarnpkg/core';
 
-export default plugin;
+import bundle from './commands/bundle';
+
+export default <Plugin>{
+  commands: [bundle],
+};

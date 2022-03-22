@@ -48,15 +48,6 @@ var plugin = (() => {
   var __toModule = (module) => {
     return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
   };
-  var __decorateClass = (decorators, target, key, kind) => {
-    var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
-    for (var i = decorators.length - 1, decorator; i >= 0; i--)
-      if (decorator = decorators[i])
-        result = (kind ? decorator(target, key, result) : decorator(result)) || result;
-    if (kind && result)
-      __defProp(target, key, result);
-    return result;
-  };
 
   // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/universalify-npm-2.0.0-03b8b418a8-2406a4edf4.zip/node_modules/universalify/index.js
   var require_universalify = __commonJS({
@@ -2265,7 +2256,7 @@ var plugin = (() => {
   // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/utils.js
   var require_utils2 = __commonJS({
     "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/utils.js"(exports, module) {
-      function stringify2(obj, {EOL = "\n", finalEOL = true, replacer = null, spaces} = {}) {
+      function stringify(obj, {EOL = "\n", finalEOL = true, replacer = null, spaces} = {}) {
         const EOF = finalEOL ? EOL : "";
         const str = JSON.stringify(obj, replacer, spaces);
         return str.replace(/\n/g, EOL) + EOF;
@@ -2275,7 +2266,7 @@ var plugin = (() => {
           content = content.toString("utf8");
         return content.replace(/^\uFEFF/, "");
       }
-      module.exports = {stringify: stringify2, stripBom};
+      module.exports = {stringify, stripBom};
     }
   });
 
@@ -2289,7 +2280,7 @@ var plugin = (() => {
         _fs = __require("fs");
       }
       var universalify = require_universalify();
-      var {stringify: stringify2, stripBom} = require_utils2();
+      var {stringify, stripBom} = require_utils2();
       async function _readFile(file, options = {}) {
         if (typeof options === "string") {
           options = {encoding: options};
@@ -2333,13 +2324,13 @@ var plugin = (() => {
       }
       async function _writeFile(file, obj, options = {}) {
         const fs2 = options.fs || _fs;
-        const str = stringify2(obj, options);
+        const str = stringify(obj, options);
         await universalify.fromCallback(fs2.writeFile)(file, str, options);
       }
       var writeFile = universalify.fromPromise(_writeFile);
       function writeFileSync(file, obj, options = {}) {
         const fs2 = options.fs || _fs;
-        const str = stringify2(obj, options);
+        const str = stringify(obj, options);
         return fs2.writeFileSync(file, str, options);
       }
       var jsonfile = {
@@ -2412,10 +2403,10 @@ var plugin = (() => {
   var require_output_json = __commonJS({
     "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json.js"(exports, module) {
       "use strict";
-      var {stringify: stringify2} = require_utils2();
+      var {stringify} = require_utils2();
       var {outputFile} = require_output_file();
       async function outputJson(file, data, options = {}) {
-        const str = stringify2(data, options);
+        const str = stringify(data, options);
         await outputFile(file, str, options);
       }
       module.exports = outputJson;
@@ -2426,10 +2417,10 @@ var plugin = (() => {
   var require_output_json_sync = __commonJS({
     "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json-sync.js"(exports, module) {
       "use strict";
-      var {stringify: stringify2} = require_utils2();
+      var {stringify} = require_utils2();
       var {outputFileSync} = require_output_file();
       function outputJsonSync(file, data, options) {
-        const str = stringify2(data, options);
+        const str = stringify(data, options);
         outputFileSync(file, str, options);
       }
       module.exports = outputJsonSync;
@@ -2611,13 +2602,22 @@ var plugin = (() => {
     }
   });
 
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js
+  var require_original_fs = __commonJS({
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js"(exports, module) {
+      "use strict";
+      var _default = __require("fs");
+      module.exports = _default;
+    }
+  });
+
   // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fileSystem.js
   var require_fileSystem = __commonJS({
     "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fileSystem.js"(exports) {
       exports.require = function() {
         if (typeof process === "object" && process.versions && process.versions["electron"]) {
           try {
-            const originalFs = __require("original-fs");
+            const originalFs = require_original_fs();
             if (Object.keys(originalFs).length > 0) {
               return originalFs;
             }
@@ -4662,527 +4662,223 @@ var plugin = (() => {
   // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/commands/bundle.ts
   var import_process = __toModule(__require("process"));
   var import_path = __toModule(__require("path"));
+  var import_os = __toModule(__require("os"));
   var import_fs_extra = __toModule(require_lib());
   var import_clipanion = __toModule(__require("clipanion"));
+  var import_adm_zip = __toModule(require_adm_zip());
   var import_cli = __toModule(__require("@yarnpkg/cli"));
   var import_core = __toModule(__require("@yarnpkg/core"));
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/ansi-styles-npm-6.1.0-4f6a594d04-7a7f8528c0.zip/node_modules/ansi-styles/index.js
-  var ANSI_BACKGROUND_OFFSET = 10;
-  var wrapAnsi16 = (offset = 0) => (code) => `[${code + offset}m`;
-  var wrapAnsi256 = (offset = 0) => (code) => `[${38 + offset};5;${code}m`;
-  var wrapAnsi16m = (offset = 0) => (red, green, blue) => `[${38 + offset};2;${red};${green};${blue}m`;
-  function assembleStyles() {
-    const codes = new Map();
-    const styles = {
-      modifier: {
-        reset: [0, 0],
-        bold: [1, 22],
-        dim: [2, 22],
-        italic: [3, 23],
-        underline: [4, 24],
-        overline: [53, 55],
-        inverse: [7, 27],
-        hidden: [8, 28],
-        strikethrough: [9, 29]
-      },
-      color: {
-        black: [30, 39],
-        red: [31, 39],
-        green: [32, 39],
-        yellow: [33, 39],
-        blue: [34, 39],
-        magenta: [35, 39],
-        cyan: [36, 39],
-        white: [37, 39],
-        blackBright: [90, 39],
-        redBright: [91, 39],
-        greenBright: [92, 39],
-        yellowBright: [93, 39],
-        blueBright: [94, 39],
-        magentaBright: [95, 39],
-        cyanBright: [96, 39],
-        whiteBright: [97, 39]
-      },
-      bgColor: {
-        bgBlack: [40, 49],
-        bgRed: [41, 49],
-        bgGreen: [42, 49],
-        bgYellow: [43, 49],
-        bgBlue: [44, 49],
-        bgMagenta: [45, 49],
-        bgCyan: [46, 49],
-        bgWhite: [47, 49],
-        bgBlackBright: [100, 49],
-        bgRedBright: [101, 49],
-        bgGreenBright: [102, 49],
-        bgYellowBright: [103, 49],
-        bgBlueBright: [104, 49],
-        bgMagentaBright: [105, 49],
-        bgCyanBright: [106, 49],
-        bgWhiteBright: [107, 49]
-      }
-    };
-    styles.color.gray = styles.color.blackBright;
-    styles.bgColor.bgGray = styles.bgColor.bgBlackBright;
-    styles.color.grey = styles.color.blackBright;
-    styles.bgColor.bgGrey = styles.bgColor.bgBlackBright;
-    for (const [groupName, group] of Object.entries(styles)) {
-      for (const [styleName, style] of Object.entries(group)) {
-        styles[styleName] = {
-          open: `[${style[0]}m`,
-          close: `[${style[1]}m`
-        };
-        group[styleName] = styles[styleName];
-        codes.set(style[0], style[1]);
-      }
-      Object.defineProperty(styles, groupName, {
-        value: group,
-        enumerable: false
-      });
-    }
-    Object.defineProperty(styles, "codes", {
-      value: codes,
-      enumerable: false
-    });
-    styles.color.close = "[39m";
-    styles.bgColor.close = "[49m";
-    styles.color.ansi = wrapAnsi16();
-    styles.color.ansi256 = wrapAnsi256();
-    styles.color.ansi16m = wrapAnsi16m();
-    styles.bgColor.ansi = wrapAnsi16(ANSI_BACKGROUND_OFFSET);
-    styles.bgColor.ansi256 = wrapAnsi256(ANSI_BACKGROUND_OFFSET);
-    styles.bgColor.ansi16m = wrapAnsi16m(ANSI_BACKGROUND_OFFSET);
-    Object.defineProperties(styles, {
-      rgbToAnsi256: {
-        value: (red, green, blue) => {
-          if (red === green && green === blue) {
-            if (red < 8) {
-              return 16;
-            }
-            if (red > 248) {
-              return 231;
-            }
-            return Math.round((red - 8) / 247 * 24) + 232;
-          }
-          return 16 + 36 * Math.round(red / 255 * 5) + 6 * Math.round(green / 255 * 5) + Math.round(blue / 255 * 5);
-        },
-        enumerable: false
-      },
-      hexToRgb: {
-        value: (hex) => {
-          const matches = /(?<colorString>[a-f\d]{6}|[a-f\d]{3})/i.exec(hex.toString(16));
-          if (!matches) {
-            return [0, 0, 0];
-          }
-          let {colorString} = matches.groups;
-          if (colorString.length === 3) {
-            colorString = colorString.split("").map((character) => character + character).join("");
-          }
-          const integer = Number.parseInt(colorString, 16);
-          return [
-            integer >> 16 & 255,
-            integer >> 8 & 255,
-            integer & 255
-          ];
-        },
-        enumerable: false
-      },
-      hexToAnsi256: {
-        value: (hex) => styles.rgbToAnsi256(...styles.hexToRgb(hex)),
-        enumerable: false
-      },
-      ansi256ToAnsi: {
-        value: (code) => {
-          if (code < 8) {
-            return 30 + code;
-          }
-          if (code < 16) {
-            return 90 + (code - 8);
-          }
-          let red;
-          let green;
-          let blue;
-          if (code >= 232) {
-            red = ((code - 232) * 10 + 8) / 255;
-            green = red;
-            blue = red;
-          } else {
-            code -= 16;
-            const remainder = code % 36;
-            red = Math.floor(code / 36) / 5;
-            green = Math.floor(remainder / 6) / 5;
-            blue = remainder % 6 / 5;
-          }
-          const value = Math.max(red, green, blue) * 2;
-          if (value === 0) {
-            return 30;
-          }
-          let result = 30 + (Math.round(blue) << 2 | Math.round(green) << 1 | Math.round(red));
-          if (value === 2) {
-            result += 60;
-          }
-          return result;
-        },
-        enumerable: false
-      },
-      rgbToAnsi: {
-        value: (red, green, blue) => styles.ansi256ToAnsi(styles.rgbToAnsi256(red, green, blue)),
-        enumerable: false
-      },
-      hexToAnsi: {
-        value: (hex) => styles.ansi256ToAnsi(styles.hexToAnsi256(hex)),
-        enumerable: false
-      }
-    });
-    return styles;
-  }
-  var ansiStyles = assembleStyles();
-  var ansi_styles_default = ansiStyles;
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/common/color.ts
-  var formatter = (msg, color2) => `${color2.open}${msg}${color2.close}`;
-  var color = {
-    log: (msg) => msg,
-    error: (msg) => formatter(msg, ansi_styles_default.red),
-    warn: (msg) => formatter(msg, ansi_styles_default.yellow),
-    debug: (msg) => formatter(msg, ansi_styles_default.blue),
-    verbose: (msg) => formatter(msg, ansi_styles_default.cyan),
-    success: (msg) => formatter(msg, ansi_styles_default.green),
-    accent: (msg) => formatter(msg, ansi_styles_default.magenta)
-  };
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/common/stringify.ts
-  var stringify = (val) => {
-    if (!val) {
-      return `${val}`;
-    }
-    if (typeof val === "function") {
-      return `[ function ]`;
-    }
-    if (typeof val === "object") {
-      if (Array.isArray(val)) {
-        const arr = [];
-        val.forEach(function(v) {
-          arr.push(stringify(v));
-        });
-        return `[${arr.join(",")}]`;
-      }
-      const obj = [];
-      for (const x in val) {
-        if (val.hasOwnProperty(x)) {
-          const actual = val[x];
-          if (typeof actual !== "undefined") {
-            obj.push(`${x}:${stringify(actual)}`);
-          }
-        }
-      }
-      return `{${obj.join(",")}}`;
-    }
-    return `${val}`;
-  };
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/common/pretty-duration.ts
-  var prettyDuration = (duration) => {
-    if (duration > 1e3 * 60) {
-      const minutes = Math.floor(duration / 1e3 / 60);
-      const seconds = Math.ceil((duration - minutes * 60 * 1e3) / 1e3);
-      return seconds === 0 ? `${minutes}m` : `${minutes}m ${seconds}s`;
-    } else {
-      const seconds = Math.floor(duration / 1e3);
-      const milliseconds = duration - seconds * 1e3;
-      return milliseconds === 0 ? `${seconds}s` : `${seconds}s ${milliseconds}ms`;
-    }
-  };
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/common/logger/logger.ts
-  var CI = !!process.env.GITHUB_ACTIONS;
-  var LOG_GROUP = Object.freeze({
-    START: " \u250C",
-    PROGRESS: " \u2502",
-    END: " \u2514"
-  });
-  var Logger = class {
-    constructor() {
-      this.isDebug = false;
-      this.groupNesting = 0;
-      this.groupTimers = new Map();
-      this.transport = console;
-    }
-    setDebug(enabled) {
-      this.isDebug = enabled;
-      return this;
-    }
-    setTransport(transport) {
-      this.transport = transport;
-      return this;
-    }
-    groupStart(group) {
-      this.groupNesting += 1;
-      const preMsg = `${this.nestedGroup()}${LOG_GROUP.START}`;
-      this.groupTimers.set(group, new Date().getTime());
-      this.transport.log(`${preMsg} ${group}`);
-      CI && this.transport.log(`::group::${group}
-`);
-    }
-    groupEnd(group) {
-      const duration = prettyDuration(new Date().getTime() - this.groupTimers.get(group));
-      const preMsg = `${this.nestedGroup()}${LOG_GROUP.END}`;
-      CI && this.transport.log(`::endgroup::
-`);
-      this.transport.log(`${preMsg} Completed in ${duration}`);
-      this.groupNesting -= 1;
-    }
-    log(message, ...args) {
-      this._log("error", message, color.log);
-      this._log("error", args, color.log);
-    }
-    error({message, stack}) {
-      return stack ? this._log("error", [stack], color.error) : this._log("error", message, color.error);
-    }
-    verbose(message, ...args) {
-      if (!this.isDebug)
-        return;
-      this._log("log", message, color.verbose);
-      this._log("log", args, color.verbose);
-    }
-    _log(level, message, cb = (msg) => msg) {
-      const isNested = Array.isArray(message);
-      const prefix = `${this.nestedGroup()}${LOG_GROUP.PROGRESS}`;
-      const separator = isNested ? "    \u2219 " : "  \u27A4 ";
-      const messages = isNested ? message : [message];
-      messages.forEach((message2) => stringify(message2).split("\n").forEach((row) => {
-        this.transport[level](`${prefix}${separator}${cb(row)}`);
-      }));
-    }
-    nestedGroup() {
-      const nestingLevel = this.groupNesting - 1;
-      return nestingLevel > 0 ? LOG_GROUP.PROGRESS.repeat(nestingLevel) : "";
-    }
-  };
-  var logger = new Logger();
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/common/logger/logger.decorator.ts
-  var LoggerDecorator = (group) => {
-    return (target, propertyKey, descriptor) => {
-      const originalMethod = descriptor.value;
-      descriptor.value = async function(...args) {
-        logger.groupStart(group);
-        try {
-          return await originalMethod.call(this, ...args);
-        } catch (error) {
-          logger.error(error);
-          throw error;
-        } finally {
-          logger.groupEnd(group);
-        }
-      };
-      return descriptor;
-    };
-  };
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/common/exec-promise.ts
-  var import_child_process = __toModule(__require("child_process"));
-  var bufferToString = (buffers) => Buffer.concat(buffers).toString().trim();
-  var execPromise = async (command) => new Promise((resolve, reject) => {
-    const [spawnCommand, ...args] = command.split(/\s+/);
-    const chunks = [];
-    const errorChunks = [];
-    const spawnProcess = (0, import_child_process.spawn)(spawnCommand, args);
-    spawnProcess.stdout.on("data", (data) => chunks.push(data));
-    spawnProcess.stderr.on("data", (data) => errorChunks.push(data));
-    spawnProcess.on("error", (error) => reject(error));
-    spawnProcess.on("close", (code) => {
-      return code === 1 ? reject(bufferToString(errorChunks)) : resolve(bufferToString(chunks));
-    });
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/commands/bundle.ts
-  var import_adm_zip = __toModule(require_adm_zip());
-  var TMP_FOLDER = "/tmp";
-  var EXIT_CODE = {
-    SUCCESS: 0,
-    ERROR: 1
-  };
+  var DEFAULT_OUT_DIR = import_process.default.cwd();
+  var DEFAULT_TMP_DIR = import_path.default.resolve(import_os.default.tmpdir(), import_process.default.pid.toString());
   var BundleCommand = class extends import_cli.BaseCommand {
     constructor() {
       super(...arguments);
-      this.isDebug = import_clipanion.Option.Boolean(`--debug`, false, {
-        description: `Do not clear tmp folder`
+      this.outDir = import_clipanion.Option.String(`-o,--output`, DEFAULT_OUT_DIR, {
+        description: `Directory where bundles will be saved (default: current directory)`
       });
-      this.restOptions = import_clipanion.Option.Rest();
-      this.tmpDir = import_path.default.resolve(TMP_FOLDER, import_process.default.pid.toString());
-      this.rootDir = import_process.default.env.OLDPWD;
+      this.tmpDir = import_clipanion.Option.String(`-t,--tmp`, DEFAULT_TMP_DIR, {
+        description: `Temp directory (default: system temp dir)`
+      });
+      this.verbose = import_clipanion.Option.Boolean(`-v,--verbose`, false, {
+        description: `Prefix each output line with the name of the originating workspace`
+      });
+      this.targetWorkspacesList = import_clipanion.Option.Rest();
     }
     async execute() {
-      this.configuration = await import_core.Configuration.find(this.context.cwd, this.context.plugins);
-      logger.setDebug(this.isDebug);
+      this.configuration = await this.getConfiguration();
+      this.project = await this.getProject();
+      this.cache = await this.getCache();
+      this.modulesDir = import_path.default.resolve(this.project.cwd, "node_modules");
+      const report = await this.makeStreamReport(async (report2) => {
+        let commandCount = 0;
+        const workspacesQueue = await this.getRequiredWorkspaces();
+        for (const workspace of workspacesQueue) {
+          await this.bundle(report2, workspace, ++commandCount);
+        }
+      });
+      return report.exitCode();
+    }
+    async bundle(report, workspace, commandIndex) {
       try {
-        await this.init();
-        await this.processDependencies();
-        await this.makeArchive();
-        return EXIT_CODE.SUCCESS;
-      } catch (error) {
-        return EXIT_CODE.ERROR;
-      } finally {
-        await this.restoreDeps();
-        await this.clearTmp();
-      }
-    }
-    async init() {
-      await this.resolveWorkspace();
-      await this.resolveWorkspacesList();
-      await this.resolveTargetPackageName();
-      await this.resolveTargetPackageDeps();
-      logger.verbose(`Tmp directory: '${this.tmpDir}'`);
-      logger.verbose(`Root directory: '${this.rootDir}'`);
-    }
-    async processDependencies() {
-      const packagesList = [this.targetPackageName, ...this.targetPackageDeps];
-      for (const packageName of packagesList) {
-        await this.installPackageDeps(packageName);
-        await this.copyPackageDeps();
-        await this.copySource(packageName);
-      }
-    }
-    async makeArchive() {
-      return new Promise((resolve, reject) => {
-        const zip = new import_adm_zip.default();
-        const targetFileName = `${this.targetPackageName.split("/").pop()}.zip`;
-        zip.addLocalFolder(this.tmpDir);
-        zip.writeZip(import_path.default.resolve(this.rootDir, targetFileName), (error) => error ? reject(error) : resolve(void 0));
-      });
-    }
-    async resolveWorkspace() {
-      const {workspace} = await import_core.Project.find(this.configuration, this.context.cwd);
-      this.workspace = workspace;
-    }
-    async resolveWorkspacesList() {
-      const packages = new Map();
-      const result = await execPromise("yarn workspaces list --json");
-      result.split("\n").forEach((row) => {
-        const {name, location} = JSON.parse(row);
-        if (location === ".")
-          return;
-        packages.set(name, location);
-      });
-      logger.verbose("Workspaces:", [...packages.keys()]);
-      this.workspacesList = packages;
-    }
-    async resolveTargetPackageName() {
-      const targetPackageName = this.restOptions.length ? this.restOptions[0] : this.workspace.manifest.raw.name;
-      if (!this.workspacesList.has(targetPackageName)) {
-        throw new Error("Package not listed in yarn workspace packages");
-      }
-      logger.log(`Target package: "${targetPackageName}"`);
-      this.targetPackageName = targetPackageName;
-    }
-    async resolveTargetPackageDeps() {
-      const targetPackageDeps = new Set();
-      const packageLocation = this.workspacesList.get(this.targetPackageName);
-      if (!packageLocation) {
-        throw new Error("package not in yarn workspace");
-      }
-      const packageInfoPath = import_path.default.resolve(this.rootDir, packageLocation, "package.json");
-      logger.verbose(`Load "${color.accent(packageInfoPath)}" file`);
-      const {dependencies} = JSON.parse(import_fs_extra.default.readFileSync(packageInfoPath, "utf-8"));
-      if (dependencies) {
-        Object.entries(dependencies).forEach(([depName]) => {
-          if (this.workspacesList.has(depName)) {
-            targetPackageDeps.add(depName);
-          }
+        const prefix = this.getWorkspaceLogPrefix(workspace, commandIndex);
+        await report.startTimerPromise(`${prefix} Bundling started`, async () => {
+          await this.installWorkspaceDeps(report, workspace);
+          await this.copyPackageDeps(report);
+          await this.copySources(report, workspace);
+          await this.makeArchive(report, workspace);
         });
+      } catch (error) {
+        report.reportError(import_core.MessageName.EXCEPTION, error);
+      } finally {
+        await this.clear(report);
       }
-      if (targetPackageDeps.size) {
-        logger.verbose("target package local dependencies:", targetPackageDeps);
-      } else {
-        logger.log("target package has no local dependencies");
+    }
+    async installWorkspaceDeps(report, workspace) {
+      const callback = async () => {
+        const requiredWorkspaces = new Set([workspace]);
+        const depsDescriptors = workspace.manifest.getForScope(`dependencies`).values();
+        for (const descriptor of depsDescriptors) {
+          const matchingWorkspace = this.project.tryWorkspaceByDescriptor(descriptor);
+          if (matchingWorkspace === null)
+            continue;
+          requiredWorkspaces.add(matchingWorkspace);
+        }
+        const origWorkspacesManifests = new Map();
+        for (const workspace2 of this.project.workspaces) {
+          origWorkspacesManifests.set(workspace2.computeCandidateName(), {
+            installConfig: JSON.stringify(workspace2.manifest.installConfig),
+            scripts: new Map(workspace2.manifest.scripts),
+            dependencies: new Map(workspace2.manifest.dependencies),
+            devDependencies: new Map(workspace2.manifest.devDependencies),
+            peerDependencies: new Map(workspace2.manifest.peerDependencies)
+          });
+          workspace2.manifest.devDependencies.clear();
+          workspace2.manifest.peerDependencies.clear();
+          if (!requiredWorkspaces.has(workspace2)) {
+            workspace2.manifest.installConfig = workspace2.manifest.installConfig || {};
+            workspace2.manifest.installConfig.selfReferences = false;
+            workspace2.manifest.dependencies.clear();
+            workspace2.manifest.scripts.clear();
+          }
+        }
+        await this.project.install({
+          cache: this.cache,
+          report,
+          persistProject: false
+        });
+        for (const workspace2 of this.project.workspaces) {
+          const orig = origWorkspacesManifests.get(workspace2.computeCandidateName());
+          workspace2.manifest.installConfig = JSON.parse(orig.installConfig);
+          workspace2.manifest.scripts = new Map(orig.scripts);
+          workspace2.manifest.dependencies = new Map(orig.dependencies);
+          workspace2.manifest.devDependencies = new Map(orig.devDependencies);
+          workspace2.manifest.peerDependencies = new Map(orig.peerDependencies);
+        }
+      };
+      await report.startTimerPromise("Install workspace dependencies", callback);
+    }
+    async copyPackageDeps(report) {
+      const callback = async () => {
+        try {
+          const destDir = import_path.default.resolve(this.tmpDir, "node_modules");
+          await this._copyFolder(this.modulesDir, destDir);
+        } catch (error) {
+          report.reportExceptionOnce(error);
+        }
+      };
+      await report.startTimerPromise("Copy package dependencies", callback);
+    }
+    async copySources(report, workspace) {
+      const callback = async () => {
+        try {
+          await this._copyFolder(workspace.cwd, this.tmpDir);
+          if (this.verbose) {
+            report.reportInfo(null, `Copy from: ${workspace.cwd}`);
+            report.reportInfo(null, `Copy to: ${this.tmpDir}`);
+          }
+          const dependedWorkspaces = workspace.getRecursiveWorkspaceDependencies();
+          for (const dependedWorkspace of dependedWorkspaces) {
+            const destDir = import_path.default.resolve(this.tmpDir, "node_modules", dependedWorkspace.manifest.raw.name);
+            if (this.verbose) {
+              report.reportInfo(null, `Copy deps from: ${dependedWorkspace.cwd}`);
+              report.reportInfo(null, `Copy deps to: ${destDir}`);
+            }
+            await this._copyFolder(dependedWorkspace.cwd, destDir);
+          }
+        } catch (error) {
+          report.reportExceptionOnce(error);
+        }
+      };
+      await report.startTimerPromise("Copy workspace source", callback);
+    }
+    async makeArchive(report, workspace) {
+      const callback = async () => {
+        await new Promise((resolve, reject) => {
+          const zip = new import_adm_zip.default();
+          const targetFileName = `${workspace.computeCandidateName()}.zip`;
+          const targetFilePath = import_path.default.resolve(this.outDir, targetFileName);
+          zip.addLocalFolder(this.tmpDir);
+          zip.writeZip(targetFilePath, (error) => {
+            if (error)
+              return reject(error);
+            if (this.verbose) {
+              report.reportInfo(null, `Archive path: ${targetFilePath}`);
+            }
+            return resolve(void 0);
+          });
+        });
+      };
+      await report.startTimerPromise("Make archive", callback);
+    }
+    async clear(report) {
+      const callback = async () => {
+        const clearTasks = [
+          new Promise((resolve, reject) => {
+            import_fs_extra.default.remove(this.tmpDir, (error) => error ? reject(error) : resolve(void 0));
+          }),
+          new Promise((resolve, reject) => {
+            import_fs_extra.default.remove(this.modulesDir, (error) => error ? reject(error) : resolve(void 0));
+          })
+        ];
+        await Promise.all(clearTasks);
+      };
+      await report.startTimerPromise("Clear temporary folder and node_modules", callback);
+    }
+    async getConfiguration() {
+      return import_core.Configuration.find(this.context.cwd, this.context.plugins);
+    }
+    async getCache() {
+      return import_core.Cache.find(this.configuration);
+    }
+    async getProject() {
+      const {project} = await import_core.Project.find(this.configuration, this.context.cwd);
+      return project;
+    }
+    async getWorkspace() {
+      const {workspace} = await import_core.Project.find(this.configuration, this.context.cwd);
+      return workspace;
+    }
+    async getRequiredWorkspaces() {
+      if (this.targetWorkspacesList.length) {
+        return new Set(this.targetWorkspacesList.map((name) => this.project.getWorkspaceByIdent(import_core.structUtils.parseIdent(name))));
       }
-      this.targetPackageDeps = targetPackageDeps;
+      const cwdWorkspace = await this.getWorkspace();
+      if (!cwdWorkspace)
+        throw new import_cli.WorkspaceRequiredError(this.project.cwd, this.context.cwd);
+      return new Set([cwdWorkspace]);
     }
-    async installPackageDeps(packageName) {
-      logger.verbose(`Package: ${packageName}`);
-      const result = await execPromise(`yarn workspaces focus ${this.targetPackageName} --production`);
-      logger.verbose(result);
+    getWorkspaceLogPrefix(workspace, commandIndex) {
+      if (!this.verbose)
+        return null;
+      const ident = import_core.structUtils.convertToIdent(workspace.locator);
+      const name = import_core.structUtils.stringifyIdent(ident);
+      const prefix = `[${name}]:`;
+      const colors = [`#2E86AB`, `#A23B72`, `#F18F01`, `#C73E1D`, `#CCE2A3`];
+      const colorName = colors[commandIndex % colors.length];
+      return import_core.formatUtils.pretty(this.configuration, prefix, colorName);
     }
-    async copyPackageDeps() {
-      const targetDir = import_path.default.resolve(this.rootDir, "node_modules");
-      const destDir = import_path.default.resolve(this.tmpDir, "node_modules");
-      logger.verbose(`Copy '${targetDir}' to '${destDir}'`);
-      await import_fs_extra.default.copy(targetDir, destDir, {
+    makeStreamReport(callback) {
+      const streamReportOptions = {
+        configuration: this.configuration,
+        stdout: this.context.stdout
+      };
+      return import_core.StreamReport.start(streamReportOptions, callback);
+    }
+    async _copyFolder(from, to) {
+      return import_fs_extra.default.copy(from, to, {
         overwrite: false,
         dereference: true,
         recursive: true
-      });
-      logger.verbose(`Copy '${targetDir}' to '${destDir}' ${color.success("completed")}`);
-    }
-    async copySource(packageName) {
-      const isTargetPackage = packageName === this.targetPackageName;
-      const targetDir = import_path.default.resolve(this.rootDir, this.workspacesList.get(packageName));
-      const destDir = isTargetPackage ? this.tmpDir : import_path.default.resolve(this.tmpDir, "node_modules", packageName);
-      logger.verbose(`Copy '${targetDir}' to '${destDir}'`);
-      await import_fs_extra.default.copy(targetDir, destDir, {
-        overwrite: false,
-        dereference: true,
-        recursive: true
-      });
-      logger.verbose(`Copy '${targetDir}' to '${destDir}' ${color.success("completed")}`);
-    }
-    async restoreDeps() {
-      await execPromise(`yarn install`);
-    }
-    async clearTmp() {
-      return new Promise((resolve, reject) => {
-        import_fs_extra.default.remove(this.tmpDir, (error) => error ? reject(error) : resolve(void 0));
       });
     }
   };
   BundleCommand.paths = [[`bundle`]];
-  __decorateClass([
-    LoggerDecorator("Plugin initialization")
-  ], BundleCommand.prototype, "init", 1);
-  __decorateClass([
-    LoggerDecorator("Process packages")
-  ], BundleCommand.prototype, "processDependencies", 1);
-  __decorateClass([
-    LoggerDecorator("Make archive")
-  ], BundleCommand.prototype, "makeArchive", 1);
-  __decorateClass([
-    LoggerDecorator("Resolve workspace")
-  ], BundleCommand.prototype, "resolveWorkspace", 1);
-  __decorateClass([
-    LoggerDecorator("Resolve workspaces list")
-  ], BundleCommand.prototype, "resolveWorkspacesList", 1);
-  __decorateClass([
-    LoggerDecorator("Resolve target package name")
-  ], BundleCommand.prototype, "resolveTargetPackageName", 1);
-  __decorateClass([
-    LoggerDecorator("Resolve target package dependencies")
-  ], BundleCommand.prototype, "resolveTargetPackageDeps", 1);
-  __decorateClass([
-    LoggerDecorator("Install package dependencies")
-  ], BundleCommand.prototype, "installPackageDeps", 1);
-  __decorateClass([
-    LoggerDecorator("Copy package dependencies")
-  ], BundleCommand.prototype, "copyPackageDeps", 1);
-  __decorateClass([
-    LoggerDecorator("Copy source")
-  ], BundleCommand.prototype, "copySource", 1);
-  __decorateClass([
-    LoggerDecorator("Revert all dependencies")
-  ], BundleCommand.prototype, "restoreDeps", 1);
-  __decorateClass([
-    LoggerDecorator("Clear tmp folder")
-  ], BundleCommand.prototype, "clearTmp", 1);
   var bundle_default = BundleCommand;
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/plugin.ts
-  var plugin = {
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/index.ts
+  var sources_default = {
     commands: [bundle_default]
   };
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/index.ts
-  var sources_default = plugin;
   return sources_exports;
 })();
 return plugin;
