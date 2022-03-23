@@ -62,6 +62,11 @@ export default class BundleCommand extends BaseCommand {
     this.cache = await this.getCache();
     this.modulesDir = path.resolve(this.project.cwd, 'node_modules');
 
+    const nodeLinker = this.project.configuration.values.get('nodeLinker')
+    if (nodeLinker !== 'node-modules') {
+      throw new Error("This plugin will work only if Yarn configuration option `nodeLinker` is set to `node-modules`");
+    }
+
     const report = await this.makeStreamReport(async (report: StreamReport) => {
       let commandCount = 0;
       const workspacesQueue = await this.getRequiredWorkspaces();
@@ -306,9 +311,10 @@ export default class BundleCommand extends BaseCommand {
     return new Set([cwdWorkspace]);
   }
 
-  private getWorkspaceLogPrefix(workspace: Workspace, commandIndex: number) {
-    if (!this.verbose) return null;
-
+  private getWorkspaceLogPrefix(
+    workspace: Workspace,
+    commandIndex: number,
+  ): string {
     const ident = structUtils.convertToIdent(workspace.locator);
     const name = structUtils.stringifyIdent(ident);
 
