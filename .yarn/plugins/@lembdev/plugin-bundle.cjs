@@ -49,9 +49,9 @@ var plugin = (() => {
     return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
   };
 
-  // ../../node_modules/universalify/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/universalify-npm-2.0.0-03b8b418a8-2406a4edf4.zip/node_modules/universalify/index.js
   var require_universalify = __commonJS({
-    "../../node_modules/universalify/index.js"(exports) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/universalify-npm-2.0.0-03b8b418a8-2406a4edf4.zip/node_modules/universalify/index.js"(exports) {
       "use strict";
       exports.fromCallback = function(fn) {
         return Object.defineProperty(function(...args) {
@@ -76,9 +76,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/graceful-fs/polyfills.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/polyfills.js
   var require_polyfills = __commonJS({
-    "../../node_modules/graceful-fs/polyfills.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/polyfills.js"(exports, module) {
       var constants = __require("constants");
       var origCwd = process.cwd;
       var cwd = null;
@@ -384,9 +384,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/graceful-fs/legacy-streams.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/legacy-streams.js
   var require_legacy_streams = __commonJS({
-    "../../node_modules/graceful-fs/legacy-streams.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/legacy-streams.js"(exports, module) {
       var Stream = __require("stream").Stream;
       module.exports = legacy;
       function legacy(fs2) {
@@ -483,9 +483,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/graceful-fs/clone.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/clone.js
   var require_clone = __commonJS({
-    "../../node_modules/graceful-fs/clone.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/clone.js"(exports, module) {
       "use strict";
       module.exports = clone;
       var getPrototypeOf = Object.getPrototypeOf || function(obj) {
@@ -506,9 +506,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/graceful-fs/graceful-fs.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/graceful-fs.js
   var require_graceful_fs = __commonJS({
-    "../../node_modules/graceful-fs/graceful-fs.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/graceful-fs.js"(exports, module) {
       var fs2 = __require("fs");
       var polyfills = require_polyfills();
       var legacy = require_legacy_streams();
@@ -854,9 +854,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/fs/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/fs/index.js
   var require_fs = __commonJS({
-    "../../node_modules/fs-extra/lib/fs/index.js"(exports) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/fs/index.js"(exports) {
       "use strict";
       var u = require_universalify().fromCallback;
       var fs2 = require_graceful_fs();
@@ -952,9 +952,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/mkdirs/utils.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/utils.js
   var require_utils = __commonJS({
-    "../../node_modules/fs-extra/lib/mkdirs/utils.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/utils.js"(exports, module) {
       "use strict";
       var path2 = __require("path");
       module.exports.checkPath = function checkPath(pth) {
@@ -970,9 +970,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/mkdirs/make-dir.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/make-dir.js
   var require_make_dir = __commonJS({
-    "../../node_modules/fs-extra/lib/mkdirs/make-dir.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/make-dir.js"(exports, module) {
       "use strict";
       var fs2 = require_fs();
       var {checkPath} = require_utils();
@@ -999,9 +999,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/mkdirs/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/index.js
   var require_mkdirs = __commonJS({
-    "../../node_modules/fs-extra/lib/mkdirs/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromPromise;
       var {makeDir: _makeDir, makeDirSync} = require_make_dir();
@@ -1017,9 +1017,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/path-exists/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/path-exists/index.js
   var require_path_exists = __commonJS({
-    "../../node_modules/fs-extra/lib/path-exists/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/path-exists/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromPromise;
       var fs2 = require_fs();
@@ -1033,9 +1033,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/util/utimes.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/utimes.js
   var require_utimes = __commonJS({
-    "../../node_modules/fs-extra/lib/util/utimes.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/utimes.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       function utimesMillis(path2, atime, mtime, callback) {
@@ -1062,9 +1062,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/util/stat.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/stat.js
   var require_stat = __commonJS({
-    "../../node_modules/fs-extra/lib/util/stat.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/stat.js"(exports, module) {
       "use strict";
       var fs2 = require_fs();
       var path2 = __require("path");
@@ -1200,9 +1200,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/copy/copy.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy.js
   var require_copy = __commonJS({
-    "../../node_modules/fs-extra/lib/copy/copy.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       var path2 = __require("path");
@@ -1427,9 +1427,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/copy/copy-sync.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy-sync.js
   var require_copy_sync = __commonJS({
-    "../../node_modules/fs-extra/lib/copy/copy-sync.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy-sync.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       var path2 = __require("path");
@@ -1572,9 +1572,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/copy/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/index.js
   var require_copy2 = __commonJS({
-    "../../node_modules/fs-extra/lib/copy/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromCallback;
       module.exports = {
@@ -1584,9 +1584,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/remove/rimraf.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/rimraf.js
   var require_rimraf = __commonJS({
-    "../../node_modules/fs-extra/lib/remove/rimraf.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/rimraf.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       var path2 = __require("path");
@@ -1823,9 +1823,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/remove/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/index.js
   var require_remove = __commonJS({
-    "../../node_modules/fs-extra/lib/remove/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/index.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       var u = require_universalify().fromCallback;
@@ -1847,9 +1847,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/empty/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/empty/index.js
   var require_empty = __commonJS({
-    "../../node_modules/fs-extra/lib/empty/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/empty/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromPromise;
       var fs2 = require_fs();
@@ -1886,9 +1886,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/ensure/file.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/file.js
   var require_file = __commonJS({
-    "../../node_modules/fs-extra/lib/ensure/file.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/file.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromCallback;
       var path2 = __require("path");
@@ -1956,9 +1956,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/ensure/link.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/link.js
   var require_link = __commonJS({
-    "../../node_modules/fs-extra/lib/ensure/link.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/link.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromCallback;
       var path2 = __require("path");
@@ -2025,9 +2025,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/ensure/symlink-paths.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-paths.js
   var require_symlink_paths = __commonJS({
-    "../../node_modules/fs-extra/lib/ensure/symlink-paths.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-paths.js"(exports, module) {
       "use strict";
       var path2 = __require("path");
       var fs2 = require_graceful_fs();
@@ -2107,9 +2107,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/ensure/symlink-type.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-type.js
   var require_symlink_type = __commonJS({
-    "../../node_modules/fs-extra/lib/ensure/symlink-type.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-type.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       function symlinkType(srcpath, type, callback) {
@@ -2142,9 +2142,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/ensure/symlink.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink.js
   var require_symlink = __commonJS({
-    "../../node_modules/fs-extra/lib/ensure/symlink.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromCallback;
       var path2 = __require("path");
@@ -2229,9 +2229,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/ensure/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/index.js
   var require_ensure = __commonJS({
-    "../../node_modules/fs-extra/lib/ensure/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/index.js"(exports, module) {
       "use strict";
       var {createFile, createFileSync} = require_file();
       var {createLink, createLinkSync} = require_link();
@@ -2253,9 +2253,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/jsonfile/utils.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/utils.js
   var require_utils2 = __commonJS({
-    "../../node_modules/jsonfile/utils.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/utils.js"(exports, module) {
       function stringify(obj, {EOL = "\n", finalEOL = true, replacer = null, spaces} = {}) {
         const EOF = finalEOL ? EOL : "";
         const str = JSON.stringify(obj, replacer, spaces);
@@ -2270,9 +2270,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/jsonfile/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/index.js
   var require_jsonfile = __commonJS({
-    "../../node_modules/jsonfile/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/index.js"(exports, module) {
       var _fs;
       try {
         _fs = require_graceful_fs();
@@ -2343,9 +2343,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/json/jsonfile.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/jsonfile.js
   var require_jsonfile2 = __commonJS({
-    "../../node_modules/fs-extra/lib/json/jsonfile.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/jsonfile.js"(exports, module) {
       "use strict";
       var jsonFile = require_jsonfile();
       module.exports = {
@@ -2357,9 +2357,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/output-file/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/output-file/index.js
   var require_output_file = __commonJS({
-    "../../node_modules/fs-extra/lib/output-file/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/output-file/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromCallback;
       var fs2 = require_graceful_fs();
@@ -2399,9 +2399,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/json/output-json.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json.js
   var require_output_json = __commonJS({
-    "../../node_modules/fs-extra/lib/json/output-json.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json.js"(exports, module) {
       "use strict";
       var {stringify} = require_utils2();
       var {outputFile} = require_output_file();
@@ -2413,9 +2413,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/json/output-json-sync.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json-sync.js
   var require_output_json_sync = __commonJS({
-    "../../node_modules/fs-extra/lib/json/output-json-sync.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json-sync.js"(exports, module) {
       "use strict";
       var {stringify} = require_utils2();
       var {outputFileSync} = require_output_file();
@@ -2427,9 +2427,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/json/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/index.js
   var require_json = __commonJS({
-    "../../node_modules/fs-extra/lib/json/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromPromise;
       var jsonFile = require_jsonfile2();
@@ -2445,9 +2445,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/move/move.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move.js
   var require_move = __commonJS({
-    "../../node_modules/fs-extra/lib/move/move.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       var path2 = __require("path");
@@ -2526,9 +2526,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/move/move-sync.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move-sync.js
   var require_move_sync = __commonJS({
-    "../../node_modules/fs-extra/lib/move/move-sync.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move-sync.js"(exports, module) {
       "use strict";
       var fs2 = require_graceful_fs();
       var path2 = __require("path");
@@ -2582,9 +2582,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/move/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/index.js
   var require_move2 = __commonJS({
-    "../../node_modules/fs-extra/lib/move/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/index.js"(exports, module) {
       "use strict";
       var u = require_universalify().fromCallback;
       module.exports = {
@@ -2594,26 +2594,26 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/fs-extra/lib/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/index.js
   var require_lib = __commonJS({
-    "../../node_modules/fs-extra/lib/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/index.js"(exports, module) {
       "use strict";
       module.exports = __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, require_fs()), require_copy2()), require_empty()), require_ensure()), require_json()), require_mkdirs()), require_move2()), require_output_file()), require_path_exists()), require_remove());
     }
   });
 
-  // ../../node_modules/original-fs/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js
   var require_original_fs = __commonJS({
-    "../../node_modules/original-fs/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js"(exports, module) {
       "use strict";
       var _default = __require("fs");
       module.exports = _default;
     }
   });
 
-  // ../../node_modules/adm-zip/util/fileSystem.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fileSystem.js
   var require_fileSystem = __commonJS({
-    "../../node_modules/adm-zip/util/fileSystem.js"(exports) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fileSystem.js"(exports) {
       exports.require = function() {
         if (typeof process === "object" && process.versions && process.versions["electron"]) {
           try {
@@ -2629,9 +2629,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/util/constants.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/constants.js
   var require_constants = __commonJS({
-    "../../node_modules/adm-zip/util/constants.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/constants.js"(exports, module) {
       module.exports = {
         LOCHDR: 30,
         LOCSIG: 67324752,
@@ -2748,9 +2748,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/util/utils.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/utils.js
   var require_utils3 = __commonJS({
-    "../../node_modules/adm-zip/util/utils.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/utils.js"(exports, module) {
       var fsystem = require_fileSystem().require();
       var pth = __require("path");
       var Constants = require_constants();
@@ -2960,9 +2960,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/util/errors.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/errors.js
   var require_errors = __commonJS({
-    "../../node_modules/adm-zip/util/errors.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/errors.js"(exports, module) {
       module.exports = {
         INVALID_LOC: "Invalid LOC header (bad signature)",
         INVALID_CEN: "Invalid CEN header (bad signature)",
@@ -2994,9 +2994,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/util/fattr.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fattr.js
   var require_fattr = __commonJS({
-    "../../node_modules/adm-zip/util/fattr.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fattr.js"(exports, module) {
       var fs2 = require_fileSystem().require();
       var pth = __require("path");
       fs2.existsSync = fs2.existsSync || pth.existsSync;
@@ -3065,9 +3065,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/util/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/index.js
   var require_util = __commonJS({
-    "../../node_modules/adm-zip/util/index.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/index.js"(exports, module) {
       module.exports = require_utils3();
       module.exports.Constants = require_constants();
       module.exports.Errors = require_errors();
@@ -3075,9 +3075,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/headers/entryHeader.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/entryHeader.js
   var require_entryHeader = __commonJS({
-    "../../node_modules/adm-zip/headers/entryHeader.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/entryHeader.js"(exports, module) {
       var Utils = require_util();
       var Constants = Utils.Constants;
       module.exports = function() {
@@ -3306,9 +3306,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/headers/mainHeader.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/mainHeader.js
   var require_mainHeader = __commonJS({
-    "../../node_modules/adm-zip/headers/mainHeader.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/mainHeader.js"(exports, module) {
       var Utils = require_util();
       var Constants = Utils.Constants;
       module.exports = function() {
@@ -3400,17 +3400,17 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/headers/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/index.js
   var require_headers = __commonJS({
-    "../../node_modules/adm-zip/headers/index.js"(exports) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/index.js"(exports) {
       exports.EntryHeader = require_entryHeader();
       exports.MainHeader = require_mainHeader();
     }
   });
 
-  // ../../node_modules/adm-zip/methods/deflater.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/deflater.js
   var require_deflater = __commonJS({
-    "../../node_modules/adm-zip/methods/deflater.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/deflater.js"(exports, module) {
       module.exports = function(inbuf) {
         var zlib = __require("zlib");
         var opts = {chunkSize: (parseInt(inbuf.length / 1024) + 1) * 1024};
@@ -3441,9 +3441,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/methods/inflater.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/inflater.js
   var require_inflater = __commonJS({
-    "../../node_modules/adm-zip/methods/inflater.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/inflater.js"(exports, module) {
       module.exports = function(inbuf) {
         var zlib = __require("zlib");
         return {
@@ -3473,9 +3473,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/methods/zipcrypto.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/zipcrypto.js
   var require_zipcrypto = __commonJS({
-    "../../node_modules/adm-zip/methods/zipcrypto.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/zipcrypto.js"(exports, module) {
       "use strict";
       var {randomFillSync} = __require("crypto");
       var crctable = new Uint32Array(256).map((t, crc) => {
@@ -3592,18 +3592,18 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/methods/index.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/index.js
   var require_methods = __commonJS({
-    "../../node_modules/adm-zip/methods/index.js"(exports) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/index.js"(exports) {
       exports.Deflater = require_deflater();
       exports.Inflater = require_inflater();
       exports.ZipCrypto = require_zipcrypto();
     }
   });
 
-  // ../../node_modules/adm-zip/zipEntry.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipEntry.js
   var require_zipEntry = __commonJS({
-    "../../node_modules/adm-zip/zipEntry.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipEntry.js"(exports, module) {
       var Utils = require_util();
       var Headers = require_headers();
       var Constants = Utils.Constants;
@@ -3889,9 +3889,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/zipFile.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipFile.js
   var require_zipFile = __commonJS({
-    "../../node_modules/adm-zip/zipFile.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipFile.js"(exports, module) {
       var ZipEntry = require_zipEntry();
       var Headers = require_headers();
       var Utils = require_util();
@@ -4160,9 +4160,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../node_modules/adm-zip/adm-zip.js
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/adm-zip.js
   var require_adm_zip = __commonJS({
-    "../../node_modules/adm-zip/adm-zip.js"(exports, module) {
+    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/adm-zip.js"(exports, module) {
       var Utils = require_util();
       var pth = __require("path");
       var ZipEntry = require_zipEntry();
@@ -4653,13 +4653,13 @@ var plugin = (() => {
     }
   });
 
-  // sources/index.ts
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/index.ts
   var sources_exports = {};
   __export(sources_exports, {
     default: () => sources_default
   });
 
-  // sources/commands/bundle.ts
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/commands/bundle.ts
   var import_process = __toModule(__require("process"));
   var import_path = __toModule(__require("path"));
   var import_os = __toModule(__require("os"));
@@ -4689,7 +4689,18 @@ var plugin = (() => {
       this.project = await this.getProject();
       this.cache = await this.getCache();
       this.modulesDir = import_path.default.resolve(this.project.cwd, "node_modules");
-      console.log(this.project.configuration.values.get("nodeLinker"));
+      const nodeLinker = this.project.configuration.values.get("nodeLinker");
+      if (nodeLinker !== "node-modules") {
+        throw new Error("This plugin will work only if Yarn configuration option `nodeLinker` is set to `node-modules`");
+      }
+      const report = await this.makeStreamReport(async (report2) => {
+        let commandCount = 0;
+        const workspacesQueue = await this.getRequiredWorkspaces();
+        for (const workspace of workspacesQueue) {
+          await this.bundle(report2, workspace, ++commandCount);
+        }
+      });
+      return report.exitCode();
     }
     async bundle(report, workspace, commandIndex) {
       try {
@@ -4866,7 +4877,7 @@ var plugin = (() => {
   BundleCommand.paths = [[`bundle`]];
   var bundle_default = BundleCommand;
 
-  // sources/index.ts
+  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/index.ts
   var sources_default = {
     commands: [bundle_default]
   };
