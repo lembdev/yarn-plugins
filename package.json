@@ -14,7 +14,7 @@
     "update-sdk": "yarn dlx @yarnpkg/sdks vscode"
   },
   "devDependencies": {
-    "@jest/types": "^27.5.1",
+    "@types/jest": "^27.5.1",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
     "@yarnpkg/builder": "^3.2.2",

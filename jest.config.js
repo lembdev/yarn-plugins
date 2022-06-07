@@ -1,4 +1,4 @@
-/** @type {import('@jest/types').Config.InitialOptions} */
+/** @type {import('@types/jest').Config.InitialOptions} */
 const config = {
   projects: ['<rootDir>/packages/*'],
   passWithNoTests: true,
