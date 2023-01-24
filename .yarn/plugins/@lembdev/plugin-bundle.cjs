@@ -8,2612 +8,48 @@ var plugin = (() => {
   var __defProp = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __propIsEnum = Object.prototype.propertyIsEnumerable;
-  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, {enumerable: true, configurable: true, writable: true, value}) : obj[key] = value;
-  var __spreadValues = (a, b) => {
-    for (var prop in b || (b = {}))
-      if (__hasOwnProp.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
-    if (__getOwnPropSymbols)
-      for (var prop of __getOwnPropSymbols(b)) {
-        if (__propIsEnum.call(b, prop))
-          __defNormalProp(a, prop, b[prop]);
-      }
-    return a;
-  };
-  var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
-  var __require = (x) => {
+  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+  }) : x)(function(x) {
     if (typeof require !== "undefined")
-      return require(x);
+      return require.apply(this, arguments);
     throw new Error('Dynamic require of "' + x + '" is not supported');
-  };
+  });
   var __commonJS = (cb, mod) => function __require2() {
-    return mod || (0, cb[Object.keys(cb)[0]])((mod = {exports: {}}).exports, mod), mod.exports;
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, {get: all[name], enumerable: true});
+      __defProp(target, name, { get: all[name], enumerable: true });
   };
-  var __reExport = (target, module, desc) => {
-    if (module && typeof module === "object" || typeof module === "function") {
-      for (let key of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key) && key !== "default")
-          __defProp(target, key, {get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable});
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
-    return target;
+    return to;
   };
-  var __toModule = (module) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
-  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    mod
+  ));
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/universalify-npm-2.0.0-03b8b418a8-2406a4edf4.zip/node_modules/universalify/index.js
-  var require_universalify = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/universalify-npm-2.0.0-03b8b418a8-2406a4edf4.zip/node_modules/universalify/index.js"(exports) {
-      "use strict";
-      exports.fromCallback = function(fn) {
-        return Object.defineProperty(function(...args) {
-          if (typeof args[args.length - 1] === "function")
-            fn.apply(this, args);
-          else {
-            return new Promise((resolve, reject) => {
-              fn.call(this, ...args, (err, res) => err != null ? reject(err) : resolve(res));
-            });
-          }
-        }, "name", {value: fn.name});
-      };
-      exports.fromPromise = function(fn) {
-        return Object.defineProperty(function(...args) {
-          const cb = args[args.length - 1];
-          if (typeof cb !== "function")
-            return fn.apply(this, args);
-          else
-            fn.apply(this, args.slice(0, -1)).then((r) => cb(null, r), cb);
-        }, "name", {value: fn.name});
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/polyfills.js
-  var require_polyfills = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/polyfills.js"(exports, module) {
-      var constants = __require("constants");
-      var origCwd = process.cwd;
-      var cwd = null;
-      var platform = process.env.GRACEFUL_FS_PLATFORM || process.platform;
-      process.cwd = function() {
-        if (!cwd)
-          cwd = origCwd.call(process);
-        return cwd;
-      };
-      try {
-        process.cwd();
-      } catch (er) {
-      }
-      if (typeof process.chdir === "function") {
-        chdir = process.chdir;
-        process.chdir = function(d) {
-          cwd = null;
-          chdir.call(process, d);
-        };
-        if (Object.setPrototypeOf)
-          Object.setPrototypeOf(process.chdir, chdir);
-      }
-      var chdir;
-      module.exports = patch;
-      function patch(fs2) {
-        if (constants.hasOwnProperty("O_SYMLINK") && process.version.match(/^v0\.6\.[0-2]|^v0\.5\./)) {
-          patchLchmod(fs2);
-        }
-        if (!fs2.lutimes) {
-          patchLutimes(fs2);
-        }
-        fs2.chown = chownFix(fs2.chown);
-        fs2.fchown = chownFix(fs2.fchown);
-        fs2.lchown = chownFix(fs2.lchown);
-        fs2.chmod = chmodFix(fs2.chmod);
-        fs2.fchmod = chmodFix(fs2.fchmod);
-        fs2.lchmod = chmodFix(fs2.lchmod);
-        fs2.chownSync = chownFixSync(fs2.chownSync);
-        fs2.fchownSync = chownFixSync(fs2.fchownSync);
-        fs2.lchownSync = chownFixSync(fs2.lchownSync);
-        fs2.chmodSync = chmodFixSync(fs2.chmodSync);
-        fs2.fchmodSync = chmodFixSync(fs2.fchmodSync);
-        fs2.lchmodSync = chmodFixSync(fs2.lchmodSync);
-        fs2.stat = statFix(fs2.stat);
-        fs2.fstat = statFix(fs2.fstat);
-        fs2.lstat = statFix(fs2.lstat);
-        fs2.statSync = statFixSync(fs2.statSync);
-        fs2.fstatSync = statFixSync(fs2.fstatSync);
-        fs2.lstatSync = statFixSync(fs2.lstatSync);
-        if (!fs2.lchmod) {
-          fs2.lchmod = function(path2, mode, cb) {
-            if (cb)
-              process.nextTick(cb);
-          };
-          fs2.lchmodSync = function() {
-          };
-        }
-        if (!fs2.lchown) {
-          fs2.lchown = function(path2, uid, gid, cb) {
-            if (cb)
-              process.nextTick(cb);
-          };
-          fs2.lchownSync = function() {
-          };
-        }
-        if (platform === "win32") {
-          fs2.rename = function(fs$rename) {
-            return function(from, to, cb) {
-              var start = Date.now();
-              var backoff = 0;
-              fs$rename(from, to, function CB(er) {
-                if (er && (er.code === "EACCES" || er.code === "EPERM") && Date.now() - start < 6e4) {
-                  setTimeout(function() {
-                    fs2.stat(to, function(stater, st) {
-                      if (stater && stater.code === "ENOENT")
-                        fs$rename(from, to, CB);
-                      else
-                        cb(er);
-                    });
-                  }, backoff);
-                  if (backoff < 100)
-                    backoff += 10;
-                  return;
-                }
-                if (cb)
-                  cb(er);
-              });
-            };
-          }(fs2.rename);
-        }
-        fs2.read = function(fs$read) {
-          function read(fd, buffer, offset, length, position, callback_) {
-            var callback;
-            if (callback_ && typeof callback_ === "function") {
-              var eagCounter = 0;
-              callback = function(er, _, __) {
-                if (er && er.code === "EAGAIN" && eagCounter < 10) {
-                  eagCounter++;
-                  return fs$read.call(fs2, fd, buffer, offset, length, position, callback);
-                }
-                callback_.apply(this, arguments);
-              };
-            }
-            return fs$read.call(fs2, fd, buffer, offset, length, position, callback);
-          }
-          if (Object.setPrototypeOf)
-            Object.setPrototypeOf(read, fs$read);
-          return read;
-        }(fs2.read);
-        fs2.readSync = function(fs$readSync) {
-          return function(fd, buffer, offset, length, position) {
-            var eagCounter = 0;
-            while (true) {
-              try {
-                return fs$readSync.call(fs2, fd, buffer, offset, length, position);
-              } catch (er) {
-                if (er.code === "EAGAIN" && eagCounter < 10) {
-                  eagCounter++;
-                  continue;
-                }
-                throw er;
-              }
-            }
-          };
-        }(fs2.readSync);
-        function patchLchmod(fs3) {
-          fs3.lchmod = function(path2, mode, callback) {
-            fs3.open(path2, constants.O_WRONLY | constants.O_SYMLINK, mode, function(err, fd) {
-              if (err) {
-                if (callback)
-                  callback(err);
-                return;
-              }
-              fs3.fchmod(fd, mode, function(err2) {
-                fs3.close(fd, function(err22) {
-                  if (callback)
-                    callback(err2 || err22);
-                });
-              });
-            });
-          };
-          fs3.lchmodSync = function(path2, mode) {
-            var fd = fs3.openSync(path2, constants.O_WRONLY | constants.O_SYMLINK, mode);
-            var threw = true;
-            var ret;
-            try {
-              ret = fs3.fchmodSync(fd, mode);
-              threw = false;
-            } finally {
-              if (threw) {
-                try {
-                  fs3.closeSync(fd);
-                } catch (er) {
-                }
-              } else {
-                fs3.closeSync(fd);
-              }
-            }
-            return ret;
-          };
-        }
-        function patchLutimes(fs3) {
-          if (constants.hasOwnProperty("O_SYMLINK")) {
-            fs3.lutimes = function(path2, at, mt, cb) {
-              fs3.open(path2, constants.O_SYMLINK, function(er, fd) {
-                if (er) {
-                  if (cb)
-                    cb(er);
-                  return;
-                }
-                fs3.futimes(fd, at, mt, function(er2) {
-                  fs3.close(fd, function(er22) {
-                    if (cb)
-                      cb(er2 || er22);
-                  });
-                });
-              });
-            };
-            fs3.lutimesSync = function(path2, at, mt) {
-              var fd = fs3.openSync(path2, constants.O_SYMLINK);
-              var ret;
-              var threw = true;
-              try {
-                ret = fs3.futimesSync(fd, at, mt);
-                threw = false;
-              } finally {
-                if (threw) {
-                  try {
-                    fs3.closeSync(fd);
-                  } catch (er) {
-                  }
-                } else {
-                  fs3.closeSync(fd);
-                }
-              }
-              return ret;
-            };
-          } else {
-            fs3.lutimes = function(_a, _b, _c, cb) {
-              if (cb)
-                process.nextTick(cb);
-            };
-            fs3.lutimesSync = function() {
-            };
-          }
-        }
-        function chmodFix(orig) {
-          if (!orig)
-            return orig;
-          return function(target, mode, cb) {
-            return orig.call(fs2, target, mode, function(er) {
-              if (chownErOk(er))
-                er = null;
-              if (cb)
-                cb.apply(this, arguments);
-            });
-          };
-        }
-        function chmodFixSync(orig) {
-          if (!orig)
-            return orig;
-          return function(target, mode) {
-            try {
-              return orig.call(fs2, target, mode);
-            } catch (er) {
-              if (!chownErOk(er))
-                throw er;
-            }
-          };
-        }
-        function chownFix(orig) {
-          if (!orig)
-            return orig;
-          return function(target, uid, gid, cb) {
-            return orig.call(fs2, target, uid, gid, function(er) {
-              if (chownErOk(er))
-                er = null;
-              if (cb)
-                cb.apply(this, arguments);
-            });
-          };
-        }
-        function chownFixSync(orig) {
-          if (!orig)
-            return orig;
-          return function(target, uid, gid) {
-            try {
-              return orig.call(fs2, target, uid, gid);
-            } catch (er) {
-              if (!chownErOk(er))
-                throw er;
-            }
-          };
-        }
-        function statFix(orig) {
-          if (!orig)
-            return orig;
-          return function(target, options, cb) {
-            if (typeof options === "function") {
-              cb = options;
-              options = null;
-            }
-            function callback(er, stats) {
-              if (stats) {
-                if (stats.uid < 0)
-                  stats.uid += 4294967296;
-                if (stats.gid < 0)
-                  stats.gid += 4294967296;
-              }
-              if (cb)
-                cb.apply(this, arguments);
-            }
-            return options ? orig.call(fs2, target, options, callback) : orig.call(fs2, target, callback);
-          };
-        }
-        function statFixSync(orig) {
-          if (!orig)
-            return orig;
-          return function(target, options) {
-            var stats = options ? orig.call(fs2, target, options) : orig.call(fs2, target);
-            if (stats) {
-              if (stats.uid < 0)
-                stats.uid += 4294967296;
-              if (stats.gid < 0)
-                stats.gid += 4294967296;
-            }
-            return stats;
-          };
-        }
-        function chownErOk(er) {
-          if (!er)
-            return true;
-          if (er.code === "ENOSYS")
-            return true;
-          var nonroot = !process.getuid || process.getuid() !== 0;
-          if (nonroot) {
-            if (er.code === "EINVAL" || er.code === "EPERM")
-              return true;
-          }
-          return false;
-        }
-      }
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/legacy-streams.js
-  var require_legacy_streams = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/legacy-streams.js"(exports, module) {
-      var Stream = __require("stream").Stream;
-      module.exports = legacy;
-      function legacy(fs2) {
-        return {
-          ReadStream,
-          WriteStream
-        };
-        function ReadStream(path2, options) {
-          if (!(this instanceof ReadStream))
-            return new ReadStream(path2, options);
-          Stream.call(this);
-          var self = this;
-          this.path = path2;
-          this.fd = null;
-          this.readable = true;
-          this.paused = false;
-          this.flags = "r";
-          this.mode = 438;
-          this.bufferSize = 64 * 1024;
-          options = options || {};
-          var keys = Object.keys(options);
-          for (var index = 0, length = keys.length; index < length; index++) {
-            var key = keys[index];
-            this[key] = options[key];
-          }
-          if (this.encoding)
-            this.setEncoding(this.encoding);
-          if (this.start !== void 0) {
-            if (typeof this.start !== "number") {
-              throw TypeError("start must be a Number");
-            }
-            if (this.end === void 0) {
-              this.end = Infinity;
-            } else if (typeof this.end !== "number") {
-              throw TypeError("end must be a Number");
-            }
-            if (this.start > this.end) {
-              throw new Error("start must be <= end");
-            }
-            this.pos = this.start;
-          }
-          if (this.fd !== null) {
-            process.nextTick(function() {
-              self._read();
-            });
-            return;
-          }
-          fs2.open(this.path, this.flags, this.mode, function(err, fd) {
-            if (err) {
-              self.emit("error", err);
-              self.readable = false;
-              return;
-            }
-            self.fd = fd;
-            self.emit("open", fd);
-            self._read();
-          });
-        }
-        function WriteStream(path2, options) {
-          if (!(this instanceof WriteStream))
-            return new WriteStream(path2, options);
-          Stream.call(this);
-          this.path = path2;
-          this.fd = null;
-          this.writable = true;
-          this.flags = "w";
-          this.encoding = "binary";
-          this.mode = 438;
-          this.bytesWritten = 0;
-          options = options || {};
-          var keys = Object.keys(options);
-          for (var index = 0, length = keys.length; index < length; index++) {
-            var key = keys[index];
-            this[key] = options[key];
-          }
-          if (this.start !== void 0) {
-            if (typeof this.start !== "number") {
-              throw TypeError("start must be a Number");
-            }
-            if (this.start < 0) {
-              throw new Error("start must be >= zero");
-            }
-            this.pos = this.start;
-          }
-          this.busy = false;
-          this._queue = [];
-          if (this.fd === null) {
-            this._open = fs2.open;
-            this._queue.push([this._open, this.path, this.flags, this.mode, void 0]);
-            this.flush();
-          }
-        }
-      }
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/clone.js
-  var require_clone = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/clone.js"(exports, module) {
-      "use strict";
-      module.exports = clone;
-      var getPrototypeOf = Object.getPrototypeOf || function(obj) {
-        return obj.__proto__;
-      };
-      function clone(obj) {
-        if (obj === null || typeof obj !== "object")
-          return obj;
-        if (obj instanceof Object)
-          var copy = {__proto__: getPrototypeOf(obj)};
-        else
-          var copy = Object.create(null);
-        Object.getOwnPropertyNames(obj).forEach(function(key) {
-          Object.defineProperty(copy, key, Object.getOwnPropertyDescriptor(obj, key));
-        });
-        return copy;
-      }
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/graceful-fs.js
-  var require_graceful_fs = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/graceful-fs-npm-4.2.9-ee48e00aaa-68ea4e07ff.zip/node_modules/graceful-fs/graceful-fs.js"(exports, module) {
-      var fs2 = __require("fs");
-      var polyfills = require_polyfills();
-      var legacy = require_legacy_streams();
-      var clone = require_clone();
-      var util = __require("util");
-      var gracefulQueue;
-      var previousSymbol;
-      if (typeof Symbol === "function" && typeof Symbol.for === "function") {
-        gracefulQueue = Symbol.for("graceful-fs.queue");
-        previousSymbol = Symbol.for("graceful-fs.previous");
-      } else {
-        gracefulQueue = "___graceful-fs.queue";
-        previousSymbol = "___graceful-fs.previous";
-      }
-      function noop() {
-      }
-      function publishQueue(context, queue2) {
-        Object.defineProperty(context, gracefulQueue, {
-          get: function() {
-            return queue2;
-          }
-        });
-      }
-      var debug = noop;
-      if (util.debuglog)
-        debug = util.debuglog("gfs4");
-      else if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || ""))
-        debug = function() {
-          var m = util.format.apply(util, arguments);
-          m = "GFS4: " + m.split(/\n/).join("\nGFS4: ");
-          console.error(m);
-        };
-      if (!fs2[gracefulQueue]) {
-        queue = global[gracefulQueue] || [];
-        publishQueue(fs2, queue);
-        fs2.close = function(fs$close) {
-          function close(fd, cb) {
-            return fs$close.call(fs2, fd, function(err) {
-              if (!err) {
-                resetQueue();
-              }
-              if (typeof cb === "function")
-                cb.apply(this, arguments);
-            });
-          }
-          Object.defineProperty(close, previousSymbol, {
-            value: fs$close
-          });
-          return close;
-        }(fs2.close);
-        fs2.closeSync = function(fs$closeSync) {
-          function closeSync(fd) {
-            fs$closeSync.apply(fs2, arguments);
-            resetQueue();
-          }
-          Object.defineProperty(closeSync, previousSymbol, {
-            value: fs$closeSync
-          });
-          return closeSync;
-        }(fs2.closeSync);
-        if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || "")) {
-          process.on("exit", function() {
-            debug(fs2[gracefulQueue]);
-            __require("assert").equal(fs2[gracefulQueue].length, 0);
-          });
-        }
-      }
-      var queue;
-      if (!global[gracefulQueue]) {
-        publishQueue(global, fs2[gracefulQueue]);
-      }
-      module.exports = patch(clone(fs2));
-      if (process.env.TEST_GRACEFUL_FS_GLOBAL_PATCH && !fs2.__patched) {
-        module.exports = patch(fs2);
-        fs2.__patched = true;
-      }
-      function patch(fs3) {
-        polyfills(fs3);
-        fs3.gracefulify = patch;
-        fs3.createReadStream = createReadStream;
-        fs3.createWriteStream = createWriteStream;
-        var fs$readFile = fs3.readFile;
-        fs3.readFile = readFile;
-        function readFile(path2, options, cb) {
-          if (typeof options === "function")
-            cb = options, options = null;
-          return go$readFile(path2, options, cb);
-          function go$readFile(path3, options2, cb2, startTime) {
-            return fs$readFile(path3, options2, function(err) {
-              if (err && (err.code === "EMFILE" || err.code === "ENFILE"))
-                enqueue([go$readFile, [path3, options2, cb2], err, startTime || Date.now(), Date.now()]);
-              else {
-                if (typeof cb2 === "function")
-                  cb2.apply(this, arguments);
-              }
-            });
-          }
-        }
-        var fs$writeFile = fs3.writeFile;
-        fs3.writeFile = writeFile;
-        function writeFile(path2, data, options, cb) {
-          if (typeof options === "function")
-            cb = options, options = null;
-          return go$writeFile(path2, data, options, cb);
-          function go$writeFile(path3, data2, options2, cb2, startTime) {
-            return fs$writeFile(path3, data2, options2, function(err) {
-              if (err && (err.code === "EMFILE" || err.code === "ENFILE"))
-                enqueue([go$writeFile, [path3, data2, options2, cb2], err, startTime || Date.now(), Date.now()]);
-              else {
-                if (typeof cb2 === "function")
-                  cb2.apply(this, arguments);
-              }
-            });
-          }
-        }
-        var fs$appendFile = fs3.appendFile;
-        if (fs$appendFile)
-          fs3.appendFile = appendFile;
-        function appendFile(path2, data, options, cb) {
-          if (typeof options === "function")
-            cb = options, options = null;
-          return go$appendFile(path2, data, options, cb);
-          function go$appendFile(path3, data2, options2, cb2, startTime) {
-            return fs$appendFile(path3, data2, options2, function(err) {
-              if (err && (err.code === "EMFILE" || err.code === "ENFILE"))
-                enqueue([go$appendFile, [path3, data2, options2, cb2], err, startTime || Date.now(), Date.now()]);
-              else {
-                if (typeof cb2 === "function")
-                  cb2.apply(this, arguments);
-              }
-            });
-          }
-        }
-        var fs$copyFile = fs3.copyFile;
-        if (fs$copyFile)
-          fs3.copyFile = copyFile;
-        function copyFile(src, dest, flags, cb) {
-          if (typeof flags === "function") {
-            cb = flags;
-            flags = 0;
-          }
-          return go$copyFile(src, dest, flags, cb);
-          function go$copyFile(src2, dest2, flags2, cb2, startTime) {
-            return fs$copyFile(src2, dest2, flags2, function(err) {
-              if (err && (err.code === "EMFILE" || err.code === "ENFILE"))
-                enqueue([go$copyFile, [src2, dest2, flags2, cb2], err, startTime || Date.now(), Date.now()]);
-              else {
-                if (typeof cb2 === "function")
-                  cb2.apply(this, arguments);
-              }
-            });
-          }
-        }
-        var fs$readdir = fs3.readdir;
-        fs3.readdir = readdir;
-        function readdir(path2, options, cb) {
-          if (typeof options === "function")
-            cb = options, options = null;
-          return go$readdir(path2, options, cb);
-          function go$readdir(path3, options2, cb2, startTime) {
-            return fs$readdir(path3, options2, function(err, files) {
-              if (err && (err.code === "EMFILE" || err.code === "ENFILE"))
-                enqueue([go$readdir, [path3, options2, cb2], err, startTime || Date.now(), Date.now()]);
-              else {
-                if (files && files.sort)
-                  files.sort();
-                if (typeof cb2 === "function")
-                  cb2.call(this, err, files);
-              }
-            });
-          }
-        }
-        if (process.version.substr(0, 4) === "v0.8") {
-          var legStreams = legacy(fs3);
-          ReadStream = legStreams.ReadStream;
-          WriteStream = legStreams.WriteStream;
-        }
-        var fs$ReadStream = fs3.ReadStream;
-        if (fs$ReadStream) {
-          ReadStream.prototype = Object.create(fs$ReadStream.prototype);
-          ReadStream.prototype.open = ReadStream$open;
-        }
-        var fs$WriteStream = fs3.WriteStream;
-        if (fs$WriteStream) {
-          WriteStream.prototype = Object.create(fs$WriteStream.prototype);
-          WriteStream.prototype.open = WriteStream$open;
-        }
-        Object.defineProperty(fs3, "ReadStream", {
-          get: function() {
-            return ReadStream;
-          },
-          set: function(val) {
-            ReadStream = val;
-          },
-          enumerable: true,
-          configurable: true
-        });
-        Object.defineProperty(fs3, "WriteStream", {
-          get: function() {
-            return WriteStream;
-          },
-          set: function(val) {
-            WriteStream = val;
-          },
-          enumerable: true,
-          configurable: true
-        });
-        var FileReadStream = ReadStream;
-        Object.defineProperty(fs3, "FileReadStream", {
-          get: function() {
-            return FileReadStream;
-          },
-          set: function(val) {
-            FileReadStream = val;
-          },
-          enumerable: true,
-          configurable: true
-        });
-        var FileWriteStream = WriteStream;
-        Object.defineProperty(fs3, "FileWriteStream", {
-          get: function() {
-            return FileWriteStream;
-          },
-          set: function(val) {
-            FileWriteStream = val;
-          },
-          enumerable: true,
-          configurable: true
-        });
-        function ReadStream(path2, options) {
-          if (this instanceof ReadStream)
-            return fs$ReadStream.apply(this, arguments), this;
-          else
-            return ReadStream.apply(Object.create(ReadStream.prototype), arguments);
-        }
-        function ReadStream$open() {
-          var that = this;
-          open(that.path, that.flags, that.mode, function(err, fd) {
-            if (err) {
-              if (that.autoClose)
-                that.destroy();
-              that.emit("error", err);
-            } else {
-              that.fd = fd;
-              that.emit("open", fd);
-              that.read();
-            }
-          });
-        }
-        function WriteStream(path2, options) {
-          if (this instanceof WriteStream)
-            return fs$WriteStream.apply(this, arguments), this;
-          else
-            return WriteStream.apply(Object.create(WriteStream.prototype), arguments);
-        }
-        function WriteStream$open() {
-          var that = this;
-          open(that.path, that.flags, that.mode, function(err, fd) {
-            if (err) {
-              that.destroy();
-              that.emit("error", err);
-            } else {
-              that.fd = fd;
-              that.emit("open", fd);
-            }
-          });
-        }
-        function createReadStream(path2, options) {
-          return new fs3.ReadStream(path2, options);
-        }
-        function createWriteStream(path2, options) {
-          return new fs3.WriteStream(path2, options);
-        }
-        var fs$open = fs3.open;
-        fs3.open = open;
-        function open(path2, flags, mode, cb) {
-          if (typeof mode === "function")
-            cb = mode, mode = null;
-          return go$open(path2, flags, mode, cb);
-          function go$open(path3, flags2, mode2, cb2, startTime) {
-            return fs$open(path3, flags2, mode2, function(err, fd) {
-              if (err && (err.code === "EMFILE" || err.code === "ENFILE"))
-                enqueue([go$open, [path3, flags2, mode2, cb2], err, startTime || Date.now(), Date.now()]);
-              else {
-                if (typeof cb2 === "function")
-                  cb2.apply(this, arguments);
-              }
-            });
-          }
-        }
-        return fs3;
-      }
-      function enqueue(elem) {
-        debug("ENQUEUE", elem[0].name, elem[1]);
-        fs2[gracefulQueue].push(elem);
-        retry();
-      }
-      var retryTimer;
-      function resetQueue() {
-        var now = Date.now();
-        for (var i = 0; i < fs2[gracefulQueue].length; ++i) {
-          if (fs2[gracefulQueue][i].length > 2) {
-            fs2[gracefulQueue][i][3] = now;
-            fs2[gracefulQueue][i][4] = now;
-          }
-        }
-        retry();
-      }
-      function retry() {
-        clearTimeout(retryTimer);
-        retryTimer = void 0;
-        if (fs2[gracefulQueue].length === 0)
-          return;
-        var elem = fs2[gracefulQueue].shift();
-        var fn = elem[0];
-        var args = elem[1];
-        var err = elem[2];
-        var startTime = elem[3];
-        var lastTime = elem[4];
-        if (startTime === void 0) {
-          debug("RETRY", fn.name, args);
-          fn.apply(null, args);
-        } else if (Date.now() - startTime >= 6e4) {
-          debug("TIMEOUT", fn.name, args);
-          var cb = args.pop();
-          if (typeof cb === "function")
-            cb.call(null, err);
-        } else {
-          var sinceAttempt = Date.now() - lastTime;
-          var sinceStart = Math.max(lastTime - startTime, 1);
-          var desiredDelay = Math.min(sinceStart * 1.2, 100);
-          if (sinceAttempt >= desiredDelay) {
-            debug("RETRY", fn.name, args);
-            fn.apply(null, args.concat([startTime]));
-          } else {
-            fs2[gracefulQueue].push(elem);
-          }
-        }
-        if (retryTimer === void 0) {
-          retryTimer = setTimeout(retry, 0);
-        }
-      }
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/fs/index.js
-  var require_fs = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/fs/index.js"(exports) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      var fs2 = require_graceful_fs();
-      var api = [
-        "access",
-        "appendFile",
-        "chmod",
-        "chown",
-        "close",
-        "copyFile",
-        "fchmod",
-        "fchown",
-        "fdatasync",
-        "fstat",
-        "fsync",
-        "ftruncate",
-        "futimes",
-        "lchmod",
-        "lchown",
-        "link",
-        "lstat",
-        "mkdir",
-        "mkdtemp",
-        "open",
-        "opendir",
-        "readdir",
-        "readFile",
-        "readlink",
-        "realpath",
-        "rename",
-        "rm",
-        "rmdir",
-        "stat",
-        "symlink",
-        "truncate",
-        "unlink",
-        "utimes",
-        "writeFile"
-      ].filter((key) => {
-        return typeof fs2[key] === "function";
-      });
-      Object.assign(exports, fs2);
-      api.forEach((method) => {
-        exports[method] = u(fs2[method]);
-      });
-      exports.realpath.native = u(fs2.realpath.native);
-      exports.exists = function(filename, callback) {
-        if (typeof callback === "function") {
-          return fs2.exists(filename, callback);
-        }
-        return new Promise((resolve) => {
-          return fs2.exists(filename, resolve);
-        });
-      };
-      exports.read = function(fd, buffer, offset, length, position, callback) {
-        if (typeof callback === "function") {
-          return fs2.read(fd, buffer, offset, length, position, callback);
-        }
-        return new Promise((resolve, reject) => {
-          fs2.read(fd, buffer, offset, length, position, (err, bytesRead, buffer2) => {
-            if (err)
-              return reject(err);
-            resolve({bytesRead, buffer: buffer2});
-          });
-        });
-      };
-      exports.write = function(fd, buffer, ...args) {
-        if (typeof args[args.length - 1] === "function") {
-          return fs2.write(fd, buffer, ...args);
-        }
-        return new Promise((resolve, reject) => {
-          fs2.write(fd, buffer, ...args, (err, bytesWritten, buffer2) => {
-            if (err)
-              return reject(err);
-            resolve({bytesWritten, buffer: buffer2});
-          });
-        });
-      };
-      if (typeof fs2.writev === "function") {
-        exports.writev = function(fd, buffers, ...args) {
-          if (typeof args[args.length - 1] === "function") {
-            return fs2.writev(fd, buffers, ...args);
-          }
-          return new Promise((resolve, reject) => {
-            fs2.writev(fd, buffers, ...args, (err, bytesWritten, buffers2) => {
-              if (err)
-                return reject(err);
-              resolve({bytesWritten, buffers: buffers2});
-            });
-          });
-        };
-      }
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/utils.js
-  var require_utils = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/utils.js"(exports, module) {
-      "use strict";
-      var path2 = __require("path");
-      module.exports.checkPath = function checkPath(pth) {
-        if (process.platform === "win32") {
-          const pathHasInvalidWinCharacters = /[<>:"|?*]/.test(pth.replace(path2.parse(pth).root, ""));
-          if (pathHasInvalidWinCharacters) {
-            const error = new Error(`Path contains invalid characters: ${pth}`);
-            error.code = "EINVAL";
-            throw error;
-          }
-        }
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/make-dir.js
-  var require_make_dir = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/make-dir.js"(exports, module) {
-      "use strict";
-      var fs2 = require_fs();
-      var {checkPath} = require_utils();
-      var getMode = (options) => {
-        const defaults = {mode: 511};
-        if (typeof options === "number")
-          return options;
-        return __spreadValues(__spreadValues({}, defaults), options).mode;
-      };
-      module.exports.makeDir = async (dir, options) => {
-        checkPath(dir);
-        return fs2.mkdir(dir, {
-          mode: getMode(options),
-          recursive: true
-        });
-      };
-      module.exports.makeDirSync = (dir, options) => {
-        checkPath(dir);
-        return fs2.mkdirSync(dir, {
-          mode: getMode(options),
-          recursive: true
-        });
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/index.js
-  var require_mkdirs = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/mkdirs/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromPromise;
-      var {makeDir: _makeDir, makeDirSync} = require_make_dir();
-      var makeDir = u(_makeDir);
-      module.exports = {
-        mkdirs: makeDir,
-        mkdirsSync: makeDirSync,
-        mkdirp: makeDir,
-        mkdirpSync: makeDirSync,
-        ensureDir: makeDir,
-        ensureDirSync: makeDirSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/path-exists/index.js
-  var require_path_exists = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/path-exists/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromPromise;
-      var fs2 = require_fs();
-      function pathExists(path2) {
-        return fs2.access(path2).then(() => true).catch(() => false);
-      }
-      module.exports = {
-        pathExists: u(pathExists),
-        pathExistsSync: fs2.existsSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/utimes.js
-  var require_utimes = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/utimes.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      function utimesMillis(path2, atime, mtime, callback) {
-        fs2.open(path2, "r+", (err, fd) => {
-          if (err)
-            return callback(err);
-          fs2.futimes(fd, atime, mtime, (futimesErr) => {
-            fs2.close(fd, (closeErr) => {
-              if (callback)
-                callback(futimesErr || closeErr);
-            });
-          });
-        });
-      }
-      function utimesMillisSync(path2, atime, mtime) {
-        const fd = fs2.openSync(path2, "r+");
-        fs2.futimesSync(fd, atime, mtime);
-        return fs2.closeSync(fd);
-      }
-      module.exports = {
-        utimesMillis,
-        utimesMillisSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/stat.js
-  var require_stat = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/util/stat.js"(exports, module) {
-      "use strict";
-      var fs2 = require_fs();
-      var path2 = __require("path");
-      var util = __require("util");
-      function getStats(src, dest, opts) {
-        const statFunc = opts.dereference ? (file) => fs2.stat(file, {bigint: true}) : (file) => fs2.lstat(file, {bigint: true});
-        return Promise.all([
-          statFunc(src),
-          statFunc(dest).catch((err) => {
-            if (err.code === "ENOENT")
-              return null;
-            throw err;
-          })
-        ]).then(([srcStat, destStat]) => ({srcStat, destStat}));
-      }
-      function getStatsSync(src, dest, opts) {
-        let destStat;
-        const statFunc = opts.dereference ? (file) => fs2.statSync(file, {bigint: true}) : (file) => fs2.lstatSync(file, {bigint: true});
-        const srcStat = statFunc(src);
-        try {
-          destStat = statFunc(dest);
-        } catch (err) {
-          if (err.code === "ENOENT")
-            return {srcStat, destStat: null};
-          throw err;
-        }
-        return {srcStat, destStat};
-      }
-      function checkPaths(src, dest, funcName, opts, cb) {
-        util.callbackify(getStats)(src, dest, opts, (err, stats) => {
-          if (err)
-            return cb(err);
-          const {srcStat, destStat} = stats;
-          if (destStat) {
-            if (areIdentical(srcStat, destStat)) {
-              const srcBaseName = path2.basename(src);
-              const destBaseName = path2.basename(dest);
-              if (funcName === "move" && srcBaseName !== destBaseName && srcBaseName.toLowerCase() === destBaseName.toLowerCase()) {
-                return cb(null, {srcStat, destStat, isChangingCase: true});
-              }
-              return cb(new Error("Source and destination must not be the same."));
-            }
-            if (srcStat.isDirectory() && !destStat.isDirectory()) {
-              return cb(new Error(`Cannot overwrite non-directory '${dest}' with directory '${src}'.`));
-            }
-            if (!srcStat.isDirectory() && destStat.isDirectory()) {
-              return cb(new Error(`Cannot overwrite directory '${dest}' with non-directory '${src}'.`));
-            }
-          }
-          if (srcStat.isDirectory() && isSrcSubdir(src, dest)) {
-            return cb(new Error(errMsg(src, dest, funcName)));
-          }
-          return cb(null, {srcStat, destStat});
-        });
-      }
-      function checkPathsSync(src, dest, funcName, opts) {
-        const {srcStat, destStat} = getStatsSync(src, dest, opts);
-        if (destStat) {
-          if (areIdentical(srcStat, destStat)) {
-            const srcBaseName = path2.basename(src);
-            const destBaseName = path2.basename(dest);
-            if (funcName === "move" && srcBaseName !== destBaseName && srcBaseName.toLowerCase() === destBaseName.toLowerCase()) {
-              return {srcStat, destStat, isChangingCase: true};
-            }
-            throw new Error("Source and destination must not be the same.");
-          }
-          if (srcStat.isDirectory() && !destStat.isDirectory()) {
-            throw new Error(`Cannot overwrite non-directory '${dest}' with directory '${src}'.`);
-          }
-          if (!srcStat.isDirectory() && destStat.isDirectory()) {
-            throw new Error(`Cannot overwrite directory '${dest}' with non-directory '${src}'.`);
-          }
-        }
-        if (srcStat.isDirectory() && isSrcSubdir(src, dest)) {
-          throw new Error(errMsg(src, dest, funcName));
-        }
-        return {srcStat, destStat};
-      }
-      function checkParentPaths(src, srcStat, dest, funcName, cb) {
-        const srcParent = path2.resolve(path2.dirname(src));
-        const destParent = path2.resolve(path2.dirname(dest));
-        if (destParent === srcParent || destParent === path2.parse(destParent).root)
-          return cb();
-        fs2.stat(destParent, {bigint: true}, (err, destStat) => {
-          if (err) {
-            if (err.code === "ENOENT")
-              return cb();
-            return cb(err);
-          }
-          if (areIdentical(srcStat, destStat)) {
-            return cb(new Error(errMsg(src, dest, funcName)));
-          }
-          return checkParentPaths(src, srcStat, destParent, funcName, cb);
-        });
-      }
-      function checkParentPathsSync(src, srcStat, dest, funcName) {
-        const srcParent = path2.resolve(path2.dirname(src));
-        const destParent = path2.resolve(path2.dirname(dest));
-        if (destParent === srcParent || destParent === path2.parse(destParent).root)
-          return;
-        let destStat;
-        try {
-          destStat = fs2.statSync(destParent, {bigint: true});
-        } catch (err) {
-          if (err.code === "ENOENT")
-            return;
-          throw err;
-        }
-        if (areIdentical(srcStat, destStat)) {
-          throw new Error(errMsg(src, dest, funcName));
-        }
-        return checkParentPathsSync(src, srcStat, destParent, funcName);
-      }
-      function areIdentical(srcStat, destStat) {
-        return destStat.ino && destStat.dev && destStat.ino === srcStat.ino && destStat.dev === srcStat.dev;
-      }
-      function isSrcSubdir(src, dest) {
-        const srcArr = path2.resolve(src).split(path2.sep).filter((i) => i);
-        const destArr = path2.resolve(dest).split(path2.sep).filter((i) => i);
-        return srcArr.reduce((acc, cur, i) => acc && destArr[i] === cur, true);
-      }
-      function errMsg(src, dest, funcName) {
-        return `Cannot ${funcName} '${src}' to a subdirectory of itself, '${dest}'.`;
-      }
-      module.exports = {
-        checkPaths,
-        checkPathsSync,
-        checkParentPaths,
-        checkParentPathsSync,
-        isSrcSubdir,
-        areIdentical
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy.js
-  var require_copy = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      var path2 = __require("path");
-      var mkdirs = require_mkdirs().mkdirs;
-      var pathExists = require_path_exists().pathExists;
-      var utimesMillis = require_utimes().utimesMillis;
-      var stat = require_stat();
-      function copy(src, dest, opts, cb) {
-        if (typeof opts === "function" && !cb) {
-          cb = opts;
-          opts = {};
-        } else if (typeof opts === "function") {
-          opts = {filter: opts};
-        }
-        cb = cb || function() {
-        };
-        opts = opts || {};
-        opts.clobber = "clobber" in opts ? !!opts.clobber : true;
-        opts.overwrite = "overwrite" in opts ? !!opts.overwrite : opts.clobber;
-        if (opts.preserveTimestamps && process.arch === "ia32") {
-          console.warn(`fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;
-
-    see https://github.com/jprichardson/node-fs-extra/issues/269`);
-        }
-        stat.checkPaths(src, dest, "copy", opts, (err, stats) => {
-          if (err)
-            return cb(err);
-          const {srcStat, destStat} = stats;
-          stat.checkParentPaths(src, srcStat, dest, "copy", (err2) => {
-            if (err2)
-              return cb(err2);
-            if (opts.filter)
-              return handleFilter(checkParentDir, destStat, src, dest, opts, cb);
-            return checkParentDir(destStat, src, dest, opts, cb);
-          });
-        });
-      }
-      function checkParentDir(destStat, src, dest, opts, cb) {
-        const destParent = path2.dirname(dest);
-        pathExists(destParent, (err, dirExists) => {
-          if (err)
-            return cb(err);
-          if (dirExists)
-            return getStats(destStat, src, dest, opts, cb);
-          mkdirs(destParent, (err2) => {
-            if (err2)
-              return cb(err2);
-            return getStats(destStat, src, dest, opts, cb);
-          });
-        });
-      }
-      function handleFilter(onInclude, destStat, src, dest, opts, cb) {
-        Promise.resolve(opts.filter(src, dest)).then((include) => {
-          if (include)
-            return onInclude(destStat, src, dest, opts, cb);
-          return cb();
-        }, (error) => cb(error));
-      }
-      function startCopy(destStat, src, dest, opts, cb) {
-        if (opts.filter)
-          return handleFilter(getStats, destStat, src, dest, opts, cb);
-        return getStats(destStat, src, dest, opts, cb);
-      }
-      function getStats(destStat, src, dest, opts, cb) {
-        const stat2 = opts.dereference ? fs2.stat : fs2.lstat;
-        stat2(src, (err, srcStat) => {
-          if (err)
-            return cb(err);
-          if (srcStat.isDirectory())
-            return onDir(srcStat, destStat, src, dest, opts, cb);
-          else if (srcStat.isFile() || srcStat.isCharacterDevice() || srcStat.isBlockDevice())
-            return onFile(srcStat, destStat, src, dest, opts, cb);
-          else if (srcStat.isSymbolicLink())
-            return onLink(destStat, src, dest, opts, cb);
-          else if (srcStat.isSocket())
-            return cb(new Error(`Cannot copy a socket file: ${src}`));
-          else if (srcStat.isFIFO())
-            return cb(new Error(`Cannot copy a FIFO pipe: ${src}`));
-          return cb(new Error(`Unknown file: ${src}`));
-        });
-      }
-      function onFile(srcStat, destStat, src, dest, opts, cb) {
-        if (!destStat)
-          return copyFile(srcStat, src, dest, opts, cb);
-        return mayCopyFile(srcStat, src, dest, opts, cb);
-      }
-      function mayCopyFile(srcStat, src, dest, opts, cb) {
-        if (opts.overwrite) {
-          fs2.unlink(dest, (err) => {
-            if (err)
-              return cb(err);
-            return copyFile(srcStat, src, dest, opts, cb);
-          });
-        } else if (opts.errorOnExist) {
-          return cb(new Error(`'${dest}' already exists`));
-        } else
-          return cb();
-      }
-      function copyFile(srcStat, src, dest, opts, cb) {
-        fs2.copyFile(src, dest, (err) => {
-          if (err)
-            return cb(err);
-          if (opts.preserveTimestamps)
-            return handleTimestampsAndMode(srcStat.mode, src, dest, cb);
-          return setDestMode(dest, srcStat.mode, cb);
-        });
-      }
-      function handleTimestampsAndMode(srcMode, src, dest, cb) {
-        if (fileIsNotWritable(srcMode)) {
-          return makeFileWritable(dest, srcMode, (err) => {
-            if (err)
-              return cb(err);
-            return setDestTimestampsAndMode(srcMode, src, dest, cb);
-          });
-        }
-        return setDestTimestampsAndMode(srcMode, src, dest, cb);
-      }
-      function fileIsNotWritable(srcMode) {
-        return (srcMode & 128) === 0;
-      }
-      function makeFileWritable(dest, srcMode, cb) {
-        return setDestMode(dest, srcMode | 128, cb);
-      }
-      function setDestTimestampsAndMode(srcMode, src, dest, cb) {
-        setDestTimestamps(src, dest, (err) => {
-          if (err)
-            return cb(err);
-          return setDestMode(dest, srcMode, cb);
-        });
-      }
-      function setDestMode(dest, srcMode, cb) {
-        return fs2.chmod(dest, srcMode, cb);
-      }
-      function setDestTimestamps(src, dest, cb) {
-        fs2.stat(src, (err, updatedSrcStat) => {
-          if (err)
-            return cb(err);
-          return utimesMillis(dest, updatedSrcStat.atime, updatedSrcStat.mtime, cb);
-        });
-      }
-      function onDir(srcStat, destStat, src, dest, opts, cb) {
-        if (!destStat)
-          return mkDirAndCopy(srcStat.mode, src, dest, opts, cb);
-        return copyDir(src, dest, opts, cb);
-      }
-      function mkDirAndCopy(srcMode, src, dest, opts, cb) {
-        fs2.mkdir(dest, (err) => {
-          if (err)
-            return cb(err);
-          copyDir(src, dest, opts, (err2) => {
-            if (err2)
-              return cb(err2);
-            return setDestMode(dest, srcMode, cb);
-          });
-        });
-      }
-      function copyDir(src, dest, opts, cb) {
-        fs2.readdir(src, (err, items) => {
-          if (err)
-            return cb(err);
-          return copyDirItems(items, src, dest, opts, cb);
-        });
-      }
-      function copyDirItems(items, src, dest, opts, cb) {
-        const item = items.pop();
-        if (!item)
-          return cb();
-        return copyDirItem(items, item, src, dest, opts, cb);
-      }
-      function copyDirItem(items, item, src, dest, opts, cb) {
-        const srcItem = path2.join(src, item);
-        const destItem = path2.join(dest, item);
-        stat.checkPaths(srcItem, destItem, "copy", opts, (err, stats) => {
-          if (err)
-            return cb(err);
-          const {destStat} = stats;
-          startCopy(destStat, srcItem, destItem, opts, (err2) => {
-            if (err2)
-              return cb(err2);
-            return copyDirItems(items, src, dest, opts, cb);
-          });
-        });
-      }
-      function onLink(destStat, src, dest, opts, cb) {
-        fs2.readlink(src, (err, resolvedSrc) => {
-          if (err)
-            return cb(err);
-          if (opts.dereference) {
-            resolvedSrc = path2.resolve(process.cwd(), resolvedSrc);
-          }
-          if (!destStat) {
-            return fs2.symlink(resolvedSrc, dest, cb);
-          } else {
-            fs2.readlink(dest, (err2, resolvedDest) => {
-              if (err2) {
-                if (err2.code === "EINVAL" || err2.code === "UNKNOWN")
-                  return fs2.symlink(resolvedSrc, dest, cb);
-                return cb(err2);
-              }
-              if (opts.dereference) {
-                resolvedDest = path2.resolve(process.cwd(), resolvedDest);
-              }
-              if (stat.isSrcSubdir(resolvedSrc, resolvedDest)) {
-                return cb(new Error(`Cannot copy '${resolvedSrc}' to a subdirectory of itself, '${resolvedDest}'.`));
-              }
-              if (destStat.isDirectory() && stat.isSrcSubdir(resolvedDest, resolvedSrc)) {
-                return cb(new Error(`Cannot overwrite '${resolvedDest}' with '${resolvedSrc}'.`));
-              }
-              return copyLink(resolvedSrc, dest, cb);
-            });
-          }
-        });
-      }
-      function copyLink(resolvedSrc, dest, cb) {
-        fs2.unlink(dest, (err) => {
-          if (err)
-            return cb(err);
-          return fs2.symlink(resolvedSrc, dest, cb);
-        });
-      }
-      module.exports = copy;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy-sync.js
-  var require_copy_sync = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/copy-sync.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      var path2 = __require("path");
-      var mkdirsSync = require_mkdirs().mkdirsSync;
-      var utimesMillisSync = require_utimes().utimesMillisSync;
-      var stat = require_stat();
-      function copySync(src, dest, opts) {
-        if (typeof opts === "function") {
-          opts = {filter: opts};
-        }
-        opts = opts || {};
-        opts.clobber = "clobber" in opts ? !!opts.clobber : true;
-        opts.overwrite = "overwrite" in opts ? !!opts.overwrite : opts.clobber;
-        if (opts.preserveTimestamps && process.arch === "ia32") {
-          console.warn(`fs-extra: Using the preserveTimestamps option in 32-bit node is not recommended;
-
-    see https://github.com/jprichardson/node-fs-extra/issues/269`);
-        }
-        const {srcStat, destStat} = stat.checkPathsSync(src, dest, "copy", opts);
-        stat.checkParentPathsSync(src, srcStat, dest, "copy");
-        return handleFilterAndCopy(destStat, src, dest, opts);
-      }
-      function handleFilterAndCopy(destStat, src, dest, opts) {
-        if (opts.filter && !opts.filter(src, dest))
-          return;
-        const destParent = path2.dirname(dest);
-        if (!fs2.existsSync(destParent))
-          mkdirsSync(destParent);
-        return getStats(destStat, src, dest, opts);
-      }
-      function startCopy(destStat, src, dest, opts) {
-        if (opts.filter && !opts.filter(src, dest))
-          return;
-        return getStats(destStat, src, dest, opts);
-      }
-      function getStats(destStat, src, dest, opts) {
-        const statSync = opts.dereference ? fs2.statSync : fs2.lstatSync;
-        const srcStat = statSync(src);
-        if (srcStat.isDirectory())
-          return onDir(srcStat, destStat, src, dest, opts);
-        else if (srcStat.isFile() || srcStat.isCharacterDevice() || srcStat.isBlockDevice())
-          return onFile(srcStat, destStat, src, dest, opts);
-        else if (srcStat.isSymbolicLink())
-          return onLink(destStat, src, dest, opts);
-        else if (srcStat.isSocket())
-          throw new Error(`Cannot copy a socket file: ${src}`);
-        else if (srcStat.isFIFO())
-          throw new Error(`Cannot copy a FIFO pipe: ${src}`);
-        throw new Error(`Unknown file: ${src}`);
-      }
-      function onFile(srcStat, destStat, src, dest, opts) {
-        if (!destStat)
-          return copyFile(srcStat, src, dest, opts);
-        return mayCopyFile(srcStat, src, dest, opts);
-      }
-      function mayCopyFile(srcStat, src, dest, opts) {
-        if (opts.overwrite) {
-          fs2.unlinkSync(dest);
-          return copyFile(srcStat, src, dest, opts);
-        } else if (opts.errorOnExist) {
-          throw new Error(`'${dest}' already exists`);
-        }
-      }
-      function copyFile(srcStat, src, dest, opts) {
-        fs2.copyFileSync(src, dest);
-        if (opts.preserveTimestamps)
-          handleTimestamps(srcStat.mode, src, dest);
-        return setDestMode(dest, srcStat.mode);
-      }
-      function handleTimestamps(srcMode, src, dest) {
-        if (fileIsNotWritable(srcMode))
-          makeFileWritable(dest, srcMode);
-        return setDestTimestamps(src, dest);
-      }
-      function fileIsNotWritable(srcMode) {
-        return (srcMode & 128) === 0;
-      }
-      function makeFileWritable(dest, srcMode) {
-        return setDestMode(dest, srcMode | 128);
-      }
-      function setDestMode(dest, srcMode) {
-        return fs2.chmodSync(dest, srcMode);
-      }
-      function setDestTimestamps(src, dest) {
-        const updatedSrcStat = fs2.statSync(src);
-        return utimesMillisSync(dest, updatedSrcStat.atime, updatedSrcStat.mtime);
-      }
-      function onDir(srcStat, destStat, src, dest, opts) {
-        if (!destStat)
-          return mkDirAndCopy(srcStat.mode, src, dest, opts);
-        return copyDir(src, dest, opts);
-      }
-      function mkDirAndCopy(srcMode, src, dest, opts) {
-        fs2.mkdirSync(dest);
-        copyDir(src, dest, opts);
-        return setDestMode(dest, srcMode);
-      }
-      function copyDir(src, dest, opts) {
-        fs2.readdirSync(src).forEach((item) => copyDirItem(item, src, dest, opts));
-      }
-      function copyDirItem(item, src, dest, opts) {
-        const srcItem = path2.join(src, item);
-        const destItem = path2.join(dest, item);
-        const {destStat} = stat.checkPathsSync(srcItem, destItem, "copy", opts);
-        return startCopy(destStat, srcItem, destItem, opts);
-      }
-      function onLink(destStat, src, dest, opts) {
-        let resolvedSrc = fs2.readlinkSync(src);
-        if (opts.dereference) {
-          resolvedSrc = path2.resolve(process.cwd(), resolvedSrc);
-        }
-        if (!destStat) {
-          return fs2.symlinkSync(resolvedSrc, dest);
-        } else {
-          let resolvedDest;
-          try {
-            resolvedDest = fs2.readlinkSync(dest);
-          } catch (err) {
-            if (err.code === "EINVAL" || err.code === "UNKNOWN")
-              return fs2.symlinkSync(resolvedSrc, dest);
-            throw err;
-          }
-          if (opts.dereference) {
-            resolvedDest = path2.resolve(process.cwd(), resolvedDest);
-          }
-          if (stat.isSrcSubdir(resolvedSrc, resolvedDest)) {
-            throw new Error(`Cannot copy '${resolvedSrc}' to a subdirectory of itself, '${resolvedDest}'.`);
-          }
-          if (fs2.statSync(dest).isDirectory() && stat.isSrcSubdir(resolvedDest, resolvedSrc)) {
-            throw new Error(`Cannot overwrite '${resolvedDest}' with '${resolvedSrc}'.`);
-          }
-          return copyLink(resolvedSrc, dest);
-        }
-      }
-      function copyLink(resolvedSrc, dest) {
-        fs2.unlinkSync(dest);
-        return fs2.symlinkSync(resolvedSrc, dest);
-      }
-      module.exports = copySync;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/index.js
-  var require_copy2 = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/copy/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      module.exports = {
-        copy: u(require_copy()),
-        copySync: require_copy_sync()
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/rimraf.js
-  var require_rimraf = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/rimraf.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      var path2 = __require("path");
-      var assert = __require("assert");
-      var isWindows = process.platform === "win32";
-      function defaults(options) {
-        const methods = [
-          "unlink",
-          "chmod",
-          "stat",
-          "lstat",
-          "rmdir",
-          "readdir"
-        ];
-        methods.forEach((m) => {
-          options[m] = options[m] || fs2[m];
-          m = m + "Sync";
-          options[m] = options[m] || fs2[m];
-        });
-        options.maxBusyTries = options.maxBusyTries || 3;
-      }
-      function rimraf(p, options, cb) {
-        let busyTries = 0;
-        if (typeof options === "function") {
-          cb = options;
-          options = {};
-        }
-        assert(p, "rimraf: missing path");
-        assert.strictEqual(typeof p, "string", "rimraf: path should be a string");
-        assert.strictEqual(typeof cb, "function", "rimraf: callback function required");
-        assert(options, "rimraf: invalid options argument provided");
-        assert.strictEqual(typeof options, "object", "rimraf: options should be object");
-        defaults(options);
-        rimraf_(p, options, function CB(er) {
-          if (er) {
-            if ((er.code === "EBUSY" || er.code === "ENOTEMPTY" || er.code === "EPERM") && busyTries < options.maxBusyTries) {
-              busyTries++;
-              const time = busyTries * 100;
-              return setTimeout(() => rimraf_(p, options, CB), time);
-            }
-            if (er.code === "ENOENT")
-              er = null;
-          }
-          cb(er);
-        });
-      }
-      function rimraf_(p, options, cb) {
-        assert(p);
-        assert(options);
-        assert(typeof cb === "function");
-        options.lstat(p, (er, st) => {
-          if (er && er.code === "ENOENT") {
-            return cb(null);
-          }
-          if (er && er.code === "EPERM" && isWindows) {
-            return fixWinEPERM(p, options, er, cb);
-          }
-          if (st && st.isDirectory()) {
-            return rmdir(p, options, er, cb);
-          }
-          options.unlink(p, (er2) => {
-            if (er2) {
-              if (er2.code === "ENOENT") {
-                return cb(null);
-              }
-              if (er2.code === "EPERM") {
-                return isWindows ? fixWinEPERM(p, options, er2, cb) : rmdir(p, options, er2, cb);
-              }
-              if (er2.code === "EISDIR") {
-                return rmdir(p, options, er2, cb);
-              }
-            }
-            return cb(er2);
-          });
-        });
-      }
-      function fixWinEPERM(p, options, er, cb) {
-        assert(p);
-        assert(options);
-        assert(typeof cb === "function");
-        options.chmod(p, 438, (er2) => {
-          if (er2) {
-            cb(er2.code === "ENOENT" ? null : er);
-          } else {
-            options.stat(p, (er3, stats) => {
-              if (er3) {
-                cb(er3.code === "ENOENT" ? null : er);
-              } else if (stats.isDirectory()) {
-                rmdir(p, options, er, cb);
-              } else {
-                options.unlink(p, cb);
-              }
-            });
-          }
-        });
-      }
-      function fixWinEPERMSync(p, options, er) {
-        let stats;
-        assert(p);
-        assert(options);
-        try {
-          options.chmodSync(p, 438);
-        } catch (er2) {
-          if (er2.code === "ENOENT") {
-            return;
-          } else {
-            throw er;
-          }
-        }
-        try {
-          stats = options.statSync(p);
-        } catch (er3) {
-          if (er3.code === "ENOENT") {
-            return;
-          } else {
-            throw er;
-          }
-        }
-        if (stats.isDirectory()) {
-          rmdirSync(p, options, er);
-        } else {
-          options.unlinkSync(p);
-        }
-      }
-      function rmdir(p, options, originalEr, cb) {
-        assert(p);
-        assert(options);
-        assert(typeof cb === "function");
-        options.rmdir(p, (er) => {
-          if (er && (er.code === "ENOTEMPTY" || er.code === "EEXIST" || er.code === "EPERM")) {
-            rmkids(p, options, cb);
-          } else if (er && er.code === "ENOTDIR") {
-            cb(originalEr);
-          } else {
-            cb(er);
-          }
-        });
-      }
-      function rmkids(p, options, cb) {
-        assert(p);
-        assert(options);
-        assert(typeof cb === "function");
-        options.readdir(p, (er, files) => {
-          if (er)
-            return cb(er);
-          let n = files.length;
-          let errState;
-          if (n === 0)
-            return options.rmdir(p, cb);
-          files.forEach((f) => {
-            rimraf(path2.join(p, f), options, (er2) => {
-              if (errState) {
-                return;
-              }
-              if (er2)
-                return cb(errState = er2);
-              if (--n === 0) {
-                options.rmdir(p, cb);
-              }
-            });
-          });
-        });
-      }
-      function rimrafSync(p, options) {
-        let st;
-        options = options || {};
-        defaults(options);
-        assert(p, "rimraf: missing path");
-        assert.strictEqual(typeof p, "string", "rimraf: path should be a string");
-        assert(options, "rimraf: missing options");
-        assert.strictEqual(typeof options, "object", "rimraf: options should be object");
-        try {
-          st = options.lstatSync(p);
-        } catch (er) {
-          if (er.code === "ENOENT") {
-            return;
-          }
-          if (er.code === "EPERM" && isWindows) {
-            fixWinEPERMSync(p, options, er);
-          }
-        }
-        try {
-          if (st && st.isDirectory()) {
-            rmdirSync(p, options, null);
-          } else {
-            options.unlinkSync(p);
-          }
-        } catch (er) {
-          if (er.code === "ENOENT") {
-            return;
-          } else if (er.code === "EPERM") {
-            return isWindows ? fixWinEPERMSync(p, options, er) : rmdirSync(p, options, er);
-          } else if (er.code !== "EISDIR") {
-            throw er;
-          }
-          rmdirSync(p, options, er);
-        }
-      }
-      function rmdirSync(p, options, originalEr) {
-        assert(p);
-        assert(options);
-        try {
-          options.rmdirSync(p);
-        } catch (er) {
-          if (er.code === "ENOTDIR") {
-            throw originalEr;
-          } else if (er.code === "ENOTEMPTY" || er.code === "EEXIST" || er.code === "EPERM") {
-            rmkidsSync(p, options);
-          } else if (er.code !== "ENOENT") {
-            throw er;
-          }
-        }
-      }
-      function rmkidsSync(p, options) {
-        assert(p);
-        assert(options);
-        options.readdirSync(p).forEach((f) => rimrafSync(path2.join(p, f), options));
-        if (isWindows) {
-          const startTime = Date.now();
-          do {
-            try {
-              const ret = options.rmdirSync(p, options);
-              return ret;
-            } catch {
-            }
-          } while (Date.now() - startTime < 500);
-        } else {
-          const ret = options.rmdirSync(p, options);
-          return ret;
-        }
-      }
-      module.exports = rimraf;
-      rimraf.sync = rimrafSync;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/index.js
-  var require_remove = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/remove/index.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      var u = require_universalify().fromCallback;
-      var rimraf = require_rimraf();
-      function remove(path2, callback) {
-        if (fs2.rm)
-          return fs2.rm(path2, {recursive: true, force: true}, callback);
-        rimraf(path2, callback);
-      }
-      function removeSync(path2) {
-        if (fs2.rmSync)
-          return fs2.rmSync(path2, {recursive: true, force: true});
-        rimraf.sync(path2);
-      }
-      module.exports = {
-        remove: u(remove),
-        removeSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/empty/index.js
-  var require_empty = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/empty/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromPromise;
-      var fs2 = require_fs();
-      var path2 = __require("path");
-      var mkdir = require_mkdirs();
-      var remove = require_remove();
-      var emptyDir = u(async function emptyDir2(dir) {
-        let items;
-        try {
-          items = await fs2.readdir(dir);
-        } catch {
-          return mkdir.mkdirs(dir);
-        }
-        return Promise.all(items.map((item) => remove.remove(path2.join(dir, item))));
-      });
-      function emptyDirSync(dir) {
-        let items;
-        try {
-          items = fs2.readdirSync(dir);
-        } catch {
-          return mkdir.mkdirsSync(dir);
-        }
-        items.forEach((item) => {
-          item = path2.join(dir, item);
-          remove.removeSync(item);
-        });
-      }
-      module.exports = {
-        emptyDirSync,
-        emptydirSync: emptyDirSync,
-        emptyDir,
-        emptydir: emptyDir
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/file.js
-  var require_file = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/file.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      var path2 = __require("path");
-      var fs2 = require_graceful_fs();
-      var mkdir = require_mkdirs();
-      function createFile(file, callback) {
-        function makeFile() {
-          fs2.writeFile(file, "", (err) => {
-            if (err)
-              return callback(err);
-            callback();
-          });
-        }
-        fs2.stat(file, (err, stats) => {
-          if (!err && stats.isFile())
-            return callback();
-          const dir = path2.dirname(file);
-          fs2.stat(dir, (err2, stats2) => {
-            if (err2) {
-              if (err2.code === "ENOENT") {
-                return mkdir.mkdirs(dir, (err3) => {
-                  if (err3)
-                    return callback(err3);
-                  makeFile();
-                });
-              }
-              return callback(err2);
-            }
-            if (stats2.isDirectory())
-              makeFile();
-            else {
-              fs2.readdir(dir, (err3) => {
-                if (err3)
-                  return callback(err3);
-              });
-            }
-          });
-        });
-      }
-      function createFileSync(file) {
-        let stats;
-        try {
-          stats = fs2.statSync(file);
-        } catch {
-        }
-        if (stats && stats.isFile())
-          return;
-        const dir = path2.dirname(file);
-        try {
-          if (!fs2.statSync(dir).isDirectory()) {
-            fs2.readdirSync(dir);
-          }
-        } catch (err) {
-          if (err && err.code === "ENOENT")
-            mkdir.mkdirsSync(dir);
-          else
-            throw err;
-        }
-        fs2.writeFileSync(file, "");
-      }
-      module.exports = {
-        createFile: u(createFile),
-        createFileSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/link.js
-  var require_link = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/link.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      var path2 = __require("path");
-      var fs2 = require_graceful_fs();
-      var mkdir = require_mkdirs();
-      var pathExists = require_path_exists().pathExists;
-      var {areIdentical} = require_stat();
-      function createLink(srcpath, dstpath, callback) {
-        function makeLink(srcpath2, dstpath2) {
-          fs2.link(srcpath2, dstpath2, (err) => {
-            if (err)
-              return callback(err);
-            callback(null);
-          });
-        }
-        fs2.lstat(dstpath, (_, dstStat) => {
-          fs2.lstat(srcpath, (err, srcStat) => {
-            if (err) {
-              err.message = err.message.replace("lstat", "ensureLink");
-              return callback(err);
-            }
-            if (dstStat && areIdentical(srcStat, dstStat))
-              return callback(null);
-            const dir = path2.dirname(dstpath);
-            pathExists(dir, (err2, dirExists) => {
-              if (err2)
-                return callback(err2);
-              if (dirExists)
-                return makeLink(srcpath, dstpath);
-              mkdir.mkdirs(dir, (err3) => {
-                if (err3)
-                  return callback(err3);
-                makeLink(srcpath, dstpath);
-              });
-            });
-          });
-        });
-      }
-      function createLinkSync(srcpath, dstpath) {
-        let dstStat;
-        try {
-          dstStat = fs2.lstatSync(dstpath);
-        } catch {
-        }
-        try {
-          const srcStat = fs2.lstatSync(srcpath);
-          if (dstStat && areIdentical(srcStat, dstStat))
-            return;
-        } catch (err) {
-          err.message = err.message.replace("lstat", "ensureLink");
-          throw err;
-        }
-        const dir = path2.dirname(dstpath);
-        const dirExists = fs2.existsSync(dir);
-        if (dirExists)
-          return fs2.linkSync(srcpath, dstpath);
-        mkdir.mkdirsSync(dir);
-        return fs2.linkSync(srcpath, dstpath);
-      }
-      module.exports = {
-        createLink: u(createLink),
-        createLinkSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-paths.js
-  var require_symlink_paths = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-paths.js"(exports, module) {
-      "use strict";
-      var path2 = __require("path");
-      var fs2 = require_graceful_fs();
-      var pathExists = require_path_exists().pathExists;
-      function symlinkPaths(srcpath, dstpath, callback) {
-        if (path2.isAbsolute(srcpath)) {
-          return fs2.lstat(srcpath, (err) => {
-            if (err) {
-              err.message = err.message.replace("lstat", "ensureSymlink");
-              return callback(err);
-            }
-            return callback(null, {
-              toCwd: srcpath,
-              toDst: srcpath
-            });
-          });
-        } else {
-          const dstdir = path2.dirname(dstpath);
-          const relativeToDst = path2.join(dstdir, srcpath);
-          return pathExists(relativeToDst, (err, exists) => {
-            if (err)
-              return callback(err);
-            if (exists) {
-              return callback(null, {
-                toCwd: relativeToDst,
-                toDst: srcpath
-              });
-            } else {
-              return fs2.lstat(srcpath, (err2) => {
-                if (err2) {
-                  err2.message = err2.message.replace("lstat", "ensureSymlink");
-                  return callback(err2);
-                }
-                return callback(null, {
-                  toCwd: srcpath,
-                  toDst: path2.relative(dstdir, srcpath)
-                });
-              });
-            }
-          });
-        }
-      }
-      function symlinkPathsSync(srcpath, dstpath) {
-        let exists;
-        if (path2.isAbsolute(srcpath)) {
-          exists = fs2.existsSync(srcpath);
-          if (!exists)
-            throw new Error("absolute srcpath does not exist");
-          return {
-            toCwd: srcpath,
-            toDst: srcpath
-          };
-        } else {
-          const dstdir = path2.dirname(dstpath);
-          const relativeToDst = path2.join(dstdir, srcpath);
-          exists = fs2.existsSync(relativeToDst);
-          if (exists) {
-            return {
-              toCwd: relativeToDst,
-              toDst: srcpath
-            };
-          } else {
-            exists = fs2.existsSync(srcpath);
-            if (!exists)
-              throw new Error("relative srcpath does not exist");
-            return {
-              toCwd: srcpath,
-              toDst: path2.relative(dstdir, srcpath)
-            };
-          }
-        }
-      }
-      module.exports = {
-        symlinkPaths,
-        symlinkPathsSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-type.js
-  var require_symlink_type = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink-type.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      function symlinkType(srcpath, type, callback) {
-        callback = typeof type === "function" ? type : callback;
-        type = typeof type === "function" ? false : type;
-        if (type)
-          return callback(null, type);
-        fs2.lstat(srcpath, (err, stats) => {
-          if (err)
-            return callback(null, "file");
-          type = stats && stats.isDirectory() ? "dir" : "file";
-          callback(null, type);
-        });
-      }
-      function symlinkTypeSync(srcpath, type) {
-        let stats;
-        if (type)
-          return type;
-        try {
-          stats = fs2.lstatSync(srcpath);
-        } catch {
-          return "file";
-        }
-        return stats && stats.isDirectory() ? "dir" : "file";
-      }
-      module.exports = {
-        symlinkType,
-        symlinkTypeSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink.js
-  var require_symlink = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/symlink.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      var path2 = __require("path");
-      var fs2 = require_fs();
-      var _mkdirs = require_mkdirs();
-      var mkdirs = _mkdirs.mkdirs;
-      var mkdirsSync = _mkdirs.mkdirsSync;
-      var _symlinkPaths = require_symlink_paths();
-      var symlinkPaths = _symlinkPaths.symlinkPaths;
-      var symlinkPathsSync = _symlinkPaths.symlinkPathsSync;
-      var _symlinkType = require_symlink_type();
-      var symlinkType = _symlinkType.symlinkType;
-      var symlinkTypeSync = _symlinkType.symlinkTypeSync;
-      var pathExists = require_path_exists().pathExists;
-      var {areIdentical} = require_stat();
-      function createSymlink(srcpath, dstpath, type, callback) {
-        callback = typeof type === "function" ? type : callback;
-        type = typeof type === "function" ? false : type;
-        fs2.lstat(dstpath, (err, stats) => {
-          if (!err && stats.isSymbolicLink()) {
-            Promise.all([
-              fs2.stat(srcpath),
-              fs2.stat(dstpath)
-            ]).then(([srcStat, dstStat]) => {
-              if (areIdentical(srcStat, dstStat))
-                return callback(null);
-              _createSymlink(srcpath, dstpath, type, callback);
-            });
-          } else
-            _createSymlink(srcpath, dstpath, type, callback);
-        });
-      }
-      function _createSymlink(srcpath, dstpath, type, callback) {
-        symlinkPaths(srcpath, dstpath, (err, relative) => {
-          if (err)
-            return callback(err);
-          srcpath = relative.toDst;
-          symlinkType(relative.toCwd, type, (err2, type2) => {
-            if (err2)
-              return callback(err2);
-            const dir = path2.dirname(dstpath);
-            pathExists(dir, (err3, dirExists) => {
-              if (err3)
-                return callback(err3);
-              if (dirExists)
-                return fs2.symlink(srcpath, dstpath, type2, callback);
-              mkdirs(dir, (err4) => {
-                if (err4)
-                  return callback(err4);
-                fs2.symlink(srcpath, dstpath, type2, callback);
-              });
-            });
-          });
-        });
-      }
-      function createSymlinkSync(srcpath, dstpath, type) {
-        let stats;
-        try {
-          stats = fs2.lstatSync(dstpath);
-        } catch {
-        }
-        if (stats && stats.isSymbolicLink()) {
-          const srcStat = fs2.statSync(srcpath);
-          const dstStat = fs2.statSync(dstpath);
-          if (areIdentical(srcStat, dstStat))
-            return;
-        }
-        const relative = symlinkPathsSync(srcpath, dstpath);
-        srcpath = relative.toDst;
-        type = symlinkTypeSync(relative.toCwd, type);
-        const dir = path2.dirname(dstpath);
-        const exists = fs2.existsSync(dir);
-        if (exists)
-          return fs2.symlinkSync(srcpath, dstpath, type);
-        mkdirsSync(dir);
-        return fs2.symlinkSync(srcpath, dstpath, type);
-      }
-      module.exports = {
-        createSymlink: u(createSymlink),
-        createSymlinkSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/index.js
-  var require_ensure = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/ensure/index.js"(exports, module) {
-      "use strict";
-      var {createFile, createFileSync} = require_file();
-      var {createLink, createLinkSync} = require_link();
-      var {createSymlink, createSymlinkSync} = require_symlink();
-      module.exports = {
-        createFile,
-        createFileSync,
-        ensureFile: createFile,
-        ensureFileSync: createFileSync,
-        createLink,
-        createLinkSync,
-        ensureLink: createLink,
-        ensureLinkSync: createLinkSync,
-        createSymlink,
-        createSymlinkSync,
-        ensureSymlink: createSymlink,
-        ensureSymlinkSync: createSymlinkSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/utils.js
-  var require_utils2 = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/utils.js"(exports, module) {
-      function stringify(obj, {EOL = "\n", finalEOL = true, replacer = null, spaces} = {}) {
-        const EOF = finalEOL ? EOL : "";
-        const str = JSON.stringify(obj, replacer, spaces);
-        return str.replace(/\n/g, EOL) + EOF;
-      }
-      function stripBom(content) {
-        if (Buffer.isBuffer(content))
-          content = content.toString("utf8");
-        return content.replace(/^\uFEFF/, "");
-      }
-      module.exports = {stringify, stripBom};
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/index.js
-  var require_jsonfile = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/jsonfile-npm-6.1.0-20a4796cee-7af3b8e1ac.zip/node_modules/jsonfile/index.js"(exports, module) {
-      var _fs;
-      try {
-        _fs = require_graceful_fs();
-      } catch (_) {
-        _fs = __require("fs");
-      }
-      var universalify = require_universalify();
-      var {stringify, stripBom} = require_utils2();
-      async function _readFile(file, options = {}) {
-        if (typeof options === "string") {
-          options = {encoding: options};
-        }
-        const fs2 = options.fs || _fs;
-        const shouldThrow = "throws" in options ? options.throws : true;
-        let data = await universalify.fromCallback(fs2.readFile)(file, options);
-        data = stripBom(data);
-        let obj;
-        try {
-          obj = JSON.parse(data, options ? options.reviver : null);
-        } catch (err) {
-          if (shouldThrow) {
-            err.message = `${file}: ${err.message}`;
-            throw err;
-          } else {
-            return null;
-          }
-        }
-        return obj;
-      }
-      var readFile = universalify.fromPromise(_readFile);
-      function readFileSync(file, options = {}) {
-        if (typeof options === "string") {
-          options = {encoding: options};
-        }
-        const fs2 = options.fs || _fs;
-        const shouldThrow = "throws" in options ? options.throws : true;
-        try {
-          let content = fs2.readFileSync(file, options);
-          content = stripBom(content);
-          return JSON.parse(content, options.reviver);
-        } catch (err) {
-          if (shouldThrow) {
-            err.message = `${file}: ${err.message}`;
-            throw err;
-          } else {
-            return null;
-          }
-        }
-      }
-      async function _writeFile(file, obj, options = {}) {
-        const fs2 = options.fs || _fs;
-        const str = stringify(obj, options);
-        await universalify.fromCallback(fs2.writeFile)(file, str, options);
-      }
-      var writeFile = universalify.fromPromise(_writeFile);
-      function writeFileSync(file, obj, options = {}) {
-        const fs2 = options.fs || _fs;
-        const str = stringify(obj, options);
-        return fs2.writeFileSync(file, str, options);
-      }
-      var jsonfile = {
-        readFile,
-        readFileSync,
-        writeFile,
-        writeFileSync
-      };
-      module.exports = jsonfile;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/jsonfile.js
-  var require_jsonfile2 = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/jsonfile.js"(exports, module) {
-      "use strict";
-      var jsonFile = require_jsonfile();
-      module.exports = {
-        readJson: jsonFile.readFile,
-        readJsonSync: jsonFile.readFileSync,
-        writeJson: jsonFile.writeFile,
-        writeJsonSync: jsonFile.writeFileSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/output-file/index.js
-  var require_output_file = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/output-file/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      var fs2 = require_graceful_fs();
-      var path2 = __require("path");
-      var mkdir = require_mkdirs();
-      var pathExists = require_path_exists().pathExists;
-      function outputFile(file, data, encoding, callback) {
-        if (typeof encoding === "function") {
-          callback = encoding;
-          encoding = "utf8";
-        }
-        const dir = path2.dirname(file);
-        pathExists(dir, (err, itDoes) => {
-          if (err)
-            return callback(err);
-          if (itDoes)
-            return fs2.writeFile(file, data, encoding, callback);
-          mkdir.mkdirs(dir, (err2) => {
-            if (err2)
-              return callback(err2);
-            fs2.writeFile(file, data, encoding, callback);
-          });
-        });
-      }
-      function outputFileSync(file, ...args) {
-        const dir = path2.dirname(file);
-        if (fs2.existsSync(dir)) {
-          return fs2.writeFileSync(file, ...args);
-        }
-        mkdir.mkdirsSync(dir);
-        fs2.writeFileSync(file, ...args);
-      }
-      module.exports = {
-        outputFile: u(outputFile),
-        outputFileSync
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json.js
-  var require_output_json = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json.js"(exports, module) {
-      "use strict";
-      var {stringify} = require_utils2();
-      var {outputFile} = require_output_file();
-      async function outputJson(file, data, options = {}) {
-        const str = stringify(data, options);
-        await outputFile(file, str, options);
-      }
-      module.exports = outputJson;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json-sync.js
-  var require_output_json_sync = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/output-json-sync.js"(exports, module) {
-      "use strict";
-      var {stringify} = require_utils2();
-      var {outputFileSync} = require_output_file();
-      function outputJsonSync(file, data, options) {
-        const str = stringify(data, options);
-        outputFileSync(file, str, options);
-      }
-      module.exports = outputJsonSync;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/index.js
-  var require_json = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/json/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromPromise;
-      var jsonFile = require_jsonfile2();
-      jsonFile.outputJson = u(require_output_json());
-      jsonFile.outputJsonSync = require_output_json_sync();
-      jsonFile.outputJSON = jsonFile.outputJson;
-      jsonFile.outputJSONSync = jsonFile.outputJsonSync;
-      jsonFile.writeJSON = jsonFile.writeJson;
-      jsonFile.writeJSONSync = jsonFile.writeJsonSync;
-      jsonFile.readJSON = jsonFile.readJson;
-      jsonFile.readJSONSync = jsonFile.readJsonSync;
-      module.exports = jsonFile;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move.js
-  var require_move = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      var path2 = __require("path");
-      var copy = require_copy2().copy;
-      var remove = require_remove().remove;
-      var mkdirp = require_mkdirs().mkdirp;
-      var pathExists = require_path_exists().pathExists;
-      var stat = require_stat();
-      function move(src, dest, opts, cb) {
-        if (typeof opts === "function") {
-          cb = opts;
-          opts = {};
-        }
-        const overwrite = opts.overwrite || opts.clobber || false;
-        stat.checkPaths(src, dest, "move", opts, (err, stats) => {
-          if (err)
-            return cb(err);
-          const {srcStat, isChangingCase = false} = stats;
-          stat.checkParentPaths(src, srcStat, dest, "move", (err2) => {
-            if (err2)
-              return cb(err2);
-            if (isParentRoot(dest))
-              return doRename(src, dest, overwrite, isChangingCase, cb);
-            mkdirp(path2.dirname(dest), (err3) => {
-              if (err3)
-                return cb(err3);
-              return doRename(src, dest, overwrite, isChangingCase, cb);
-            });
-          });
-        });
-      }
-      function isParentRoot(dest) {
-        const parent = path2.dirname(dest);
-        const parsedPath = path2.parse(parent);
-        return parsedPath.root === parent;
-      }
-      function doRename(src, dest, overwrite, isChangingCase, cb) {
-        if (isChangingCase)
-          return rename(src, dest, overwrite, cb);
-        if (overwrite) {
-          return remove(dest, (err) => {
-            if (err)
-              return cb(err);
-            return rename(src, dest, overwrite, cb);
-          });
-        }
-        pathExists(dest, (err, destExists) => {
-          if (err)
-            return cb(err);
-          if (destExists)
-            return cb(new Error("dest already exists."));
-          return rename(src, dest, overwrite, cb);
-        });
-      }
-      function rename(src, dest, overwrite, cb) {
-        fs2.rename(src, dest, (err) => {
-          if (!err)
-            return cb();
-          if (err.code !== "EXDEV")
-            return cb(err);
-          return moveAcrossDevice(src, dest, overwrite, cb);
-        });
-      }
-      function moveAcrossDevice(src, dest, overwrite, cb) {
-        const opts = {
-          overwrite,
-          errorOnExist: true
-        };
-        copy(src, dest, opts, (err) => {
-          if (err)
-            return cb(err);
-          return remove(src, cb);
-        });
-      }
-      module.exports = move;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move-sync.js
-  var require_move_sync = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/move-sync.js"(exports, module) {
-      "use strict";
-      var fs2 = require_graceful_fs();
-      var path2 = __require("path");
-      var copySync = require_copy2().copySync;
-      var removeSync = require_remove().removeSync;
-      var mkdirpSync = require_mkdirs().mkdirpSync;
-      var stat = require_stat();
-      function moveSync(src, dest, opts) {
-        opts = opts || {};
-        const overwrite = opts.overwrite || opts.clobber || false;
-        const {srcStat, isChangingCase = false} = stat.checkPathsSync(src, dest, "move", opts);
-        stat.checkParentPathsSync(src, srcStat, dest, "move");
-        if (!isParentRoot(dest))
-          mkdirpSync(path2.dirname(dest));
-        return doRename(src, dest, overwrite, isChangingCase);
-      }
-      function isParentRoot(dest) {
-        const parent = path2.dirname(dest);
-        const parsedPath = path2.parse(parent);
-        return parsedPath.root === parent;
-      }
-      function doRename(src, dest, overwrite, isChangingCase) {
-        if (isChangingCase)
-          return rename(src, dest, overwrite);
-        if (overwrite) {
-          removeSync(dest);
-          return rename(src, dest, overwrite);
-        }
-        if (fs2.existsSync(dest))
-          throw new Error("dest already exists.");
-        return rename(src, dest, overwrite);
-      }
-      function rename(src, dest, overwrite) {
-        try {
-          fs2.renameSync(src, dest);
-        } catch (err) {
-          if (err.code !== "EXDEV")
-            throw err;
-          return moveAcrossDevice(src, dest, overwrite);
-        }
-      }
-      function moveAcrossDevice(src, dest, overwrite) {
-        const opts = {
-          overwrite,
-          errorOnExist: true
-        };
-        copySync(src, dest, opts);
-        return removeSync(src);
-      }
-      module.exports = moveSync;
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/index.js
-  var require_move2 = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/move/index.js"(exports, module) {
-      "use strict";
-      var u = require_universalify().fromCallback;
-      module.exports = {
-        move: u(require_move()),
-        moveSync: require_move_sync()
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/index.js
-  var require_lib = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/fs-extra-npm-10.0.1-7c8ee14050-c1faaa5eb9.zip/node_modules/fs-extra/lib/index.js"(exports, module) {
-      "use strict";
-      module.exports = __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, require_fs()), require_copy2()), require_empty()), require_ensure()), require_json()), require_mkdirs()), require_move2()), require_output_file()), require_path_exists()), require_remove());
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js
+  // ../../.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js
   var require_original_fs = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js"(exports, module) {
+    "../../.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js"(exports, module) {
       "use strict";
       var _default = __require("fs");
       module.exports = _default;
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fileSystem.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fileSystem.js
   var require_fileSystem = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fileSystem.js"(exports) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fileSystem.js"(exports) {
       exports.require = function() {
         if (typeof process === "object" && process.versions && process.versions["electron"]) {
           try {
@@ -2629,9 +65,9 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/constants.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/constants.js
   var require_constants = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/constants.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/constants.js"(exports, module) {
       module.exports = {
         LOCHDR: 30,
         LOCSIG: 67324752,
@@ -2748,13 +184,48 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/utils.js
-  var require_utils3 = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/utils.js"(exports, module) {
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/errors.js
+  var require_errors = __commonJS({
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/errors.js"(exports, module) {
+      module.exports = {
+        INVALID_LOC: "Invalid LOC header (bad signature)",
+        INVALID_CEN: "Invalid CEN header (bad signature)",
+        INVALID_END: "Invalid END header (bad signature)",
+        NO_DATA: "Nothing to decompress",
+        BAD_CRC: "CRC32 checksum failed",
+        FILE_IN_THE_WAY: "There is a file in the way: %s",
+        UNKNOWN_METHOD: "Invalid/unsupported compression method",
+        AVAIL_DATA: "inflate::Available inflate data did not terminate",
+        INVALID_DISTANCE: "inflate::Invalid literal/length or distance code in fixed or dynamic block",
+        TO_MANY_CODES: "inflate::Dynamic block code description: too many length or distance codes",
+        INVALID_REPEAT_LEN: "inflate::Dynamic block code description: repeat more than specified lengths",
+        INVALID_REPEAT_FIRST: "inflate::Dynamic block code description: repeat lengths with no first length",
+        INCOMPLETE_CODES: "inflate::Dynamic block code description: code lengths codes incomplete",
+        INVALID_DYN_DISTANCE: "inflate::Dynamic block code description: invalid distance code lengths",
+        INVALID_CODES_LEN: "inflate::Dynamic block code description: invalid literal/length code lengths",
+        INVALID_STORE_BLOCK: "inflate::Stored block length did not match one's complement",
+        INVALID_BLOCK_TYPE: "inflate::Invalid block type (type == 3)",
+        CANT_EXTRACT_FILE: "Could not extract the file",
+        CANT_OVERRIDE: "Target file already exists",
+        NO_ZIP: "No zip file was loaded",
+        NO_ENTRY: "Entry doesn't exist",
+        DIRECTORY_CONTENT_ERROR: "A directory cannot have content",
+        FILE_NOT_FOUND: "File not found: %s",
+        NOT_IMPLEMENTED: "Not implemented",
+        INVALID_FILENAME: "Invalid filename",
+        INVALID_FORMAT: "Invalid or unsupported zip format. No END header found"
+      };
+    }
+  });
+
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/utils.js
+  var require_utils = __commonJS({
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/utils.js"(exports, module) {
       var fsystem = require_fileSystem().require();
       var pth = __require("path");
       var Constants = require_constants();
-      var isWin = typeof process === "object" && process.platform === "win32";
+      var Errors = require_errors();
+      var isWin = typeof process === "object" && "win32" === process.platform;
       var is_Obj = (obj) => obj && typeof obj === "object";
       var crcTable = new Uint32Array(256).map((t, c) => {
         for (let k = 0; k < 8; k++) {
@@ -2796,26 +267,26 @@ var plugin = (() => {
         }
         mkdirSync(folder);
       };
-      Utils.prototype.writeFileTo = function(path2, content, overwrite, attr) {
+      Utils.prototype.writeFileTo = function(path3, content, overwrite, attr) {
         const self = this;
-        if (self.fs.existsSync(path2)) {
+        if (self.fs.existsSync(path3)) {
           if (!overwrite)
             return false;
-          var stat = self.fs.statSync(path2);
+          var stat = self.fs.statSync(path3);
           if (stat.isDirectory()) {
             return false;
           }
         }
-        var folder = pth.dirname(path2);
+        var folder = pth.dirname(path3);
         if (!self.fs.existsSync(folder)) {
           self.makeDir(folder);
         }
         var fd;
         try {
-          fd = self.fs.openSync(path2, "w", 438);
+          fd = self.fs.openSync(path3, "w", 438);
         } catch (e) {
-          self.fs.chmodSync(path2, 438);
-          fd = self.fs.openSync(path2, "w", 438);
+          self.fs.chmodSync(path3, 438);
+          fd = self.fs.openSync(path3, "w", 438);
         }
         if (fd) {
           try {
@@ -2824,33 +295,33 @@ var plugin = (() => {
             self.fs.closeSync(fd);
           }
         }
-        self.fs.chmodSync(path2, attr || 438);
+        self.fs.chmodSync(path3, attr || 438);
         return true;
       };
-      Utils.prototype.writeFileToAsync = function(path2, content, overwrite, attr, callback) {
+      Utils.prototype.writeFileToAsync = function(path3, content, overwrite, attr, callback) {
         if (typeof attr === "function") {
           callback = attr;
           attr = void 0;
         }
         const self = this;
-        self.fs.exists(path2, function(exist) {
+        self.fs.exists(path3, function(exist) {
           if (exist && !overwrite)
             return callback(false);
-          self.fs.stat(path2, function(err, stat) {
+          self.fs.stat(path3, function(err, stat) {
             if (exist && stat.isDirectory()) {
               return callback(false);
             }
-            var folder = pth.dirname(path2);
+            var folder = pth.dirname(path3);
             self.fs.exists(folder, function(exists) {
               if (!exists)
                 self.makeDir(folder);
-              self.fs.open(path2, "w", 438, function(err2, fd) {
+              self.fs.open(path3, "w", 438, function(err2, fd) {
                 if (err2) {
-                  self.fs.chmod(path2, 438, function() {
-                    self.fs.open(path2, "w", 438, function(err3, fd2) {
+                  self.fs.chmod(path3, 438, function() {
+                    self.fs.open(path3, "w", 438, function(err3, fd2) {
                       self.fs.write(fd2, content, 0, content.length, 0, function() {
                         self.fs.close(fd2, function() {
-                          self.fs.chmod(path2, attr || 438, function() {
+                          self.fs.chmod(path3, attr || 438, function() {
                             callback(true);
                           });
                         });
@@ -2860,13 +331,13 @@ var plugin = (() => {
                 } else if (fd) {
                   self.fs.write(fd, content, 0, content.length, 0, function() {
                     self.fs.close(fd, function() {
-                      self.fs.chmod(path2, attr || 438, function() {
+                      self.fs.chmod(path3, attr || 438, function() {
                         callback(true);
                       });
                     });
                   });
                 } else {
-                  self.fs.chmod(path2, attr || 438, function() {
+                  self.fs.chmod(path3, attr || 438, function() {
                     callback(true);
                   });
                 }
@@ -2875,7 +346,7 @@ var plugin = (() => {
           });
         });
       };
-      Utils.prototype.findFiles = function(path2) {
+      Utils.prototype.findFiles = function(path3) {
         const self = this;
         function findSync(dir, pattern, recursive) {
           if (typeof pattern === "boolean") {
@@ -2884,16 +355,16 @@ var plugin = (() => {
           }
           let files = [];
           self.fs.readdirSync(dir).forEach(function(file) {
-            var path3 = pth.join(dir, file);
-            if (self.fs.statSync(path3).isDirectory() && recursive)
-              files = files.concat(findSync(path3, pattern, recursive));
-            if (!pattern || pattern.test(path3)) {
-              files.push(pth.normalize(path3) + (self.fs.statSync(path3).isDirectory() ? self.sep : ""));
+            var path4 = pth.join(dir, file);
+            if (self.fs.statSync(path4).isDirectory() && recursive)
+              files = files.concat(findSync(path4, pattern, recursive));
+            if (!pattern || pattern.test(path4)) {
+              files.push(pth.normalize(path4) + (self.fs.statSync(path4).isDirectory() ? self.sep : ""));
             }
           });
           return files;
         }
-        return findSync(path2, void 0, true);
+        return findSync(path3, void 0, true);
       };
       Utils.prototype.getAttributes = function() {
       };
@@ -2924,19 +395,19 @@ var plugin = (() => {
             return "UNSUPPORTED (" + method + ")";
         }
       };
-      Utils.canonical = function(path2) {
-        if (!path2)
+      Utils.canonical = function(path3) {
+        if (!path3)
           return "";
-        var safeSuffix = pth.posix.normalize("/" + path2.split("\\").join("/"));
+        var safeSuffix = pth.posix.normalize("/" + path3.split("\\").join("/"));
         return pth.join(".", safeSuffix);
       };
       Utils.sanitize = function(prefix, name) {
         prefix = pth.resolve(pth.normalize(prefix));
         var parts = name.split("/");
         for (var i = 0, l = parts.length; i < l; i++) {
-          var path2 = pth.normalize(pth.join(prefix, parts.slice(i, l).join(pth.sep)));
-          if (path2.indexOf(prefix) === 0) {
-            return path2;
+          var path3 = pth.normalize(pth.join(prefix, parts.slice(i, l).join(pth.sep)));
+          if (path3.indexOf(prefix) === 0) {
+            return path3;
           }
         }
         return pth.normalize(pth.join(prefix, pth.basename(name)));
@@ -2960,48 +431,14 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/errors.js
-  var require_errors = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/errors.js"(exports, module) {
-      module.exports = {
-        INVALID_LOC: "Invalid LOC header (bad signature)",
-        INVALID_CEN: "Invalid CEN header (bad signature)",
-        INVALID_END: "Invalid END header (bad signature)",
-        NO_DATA: "Nothing to decompress",
-        BAD_CRC: "CRC32 checksum failed",
-        FILE_IN_THE_WAY: "There is a file in the way: %s",
-        UNKNOWN_METHOD: "Invalid/unsupported compression method",
-        AVAIL_DATA: "inflate::Available inflate data did not terminate",
-        INVALID_DISTANCE: "inflate::Invalid literal/length or distance code in fixed or dynamic block",
-        TO_MANY_CODES: "inflate::Dynamic block code description: too many length or distance codes",
-        INVALID_REPEAT_LEN: "inflate::Dynamic block code description: repeat more than specified lengths",
-        INVALID_REPEAT_FIRST: "inflate::Dynamic block code description: repeat lengths with no first length",
-        INCOMPLETE_CODES: "inflate::Dynamic block code description: code lengths codes incomplete",
-        INVALID_DYN_DISTANCE: "inflate::Dynamic block code description: invalid distance code lengths",
-        INVALID_CODES_LEN: "inflate::Dynamic block code description: invalid literal/length code lengths",
-        INVALID_STORE_BLOCK: "inflate::Stored block length did not match one's complement",
-        INVALID_BLOCK_TYPE: "inflate::Invalid block type (type == 3)",
-        CANT_EXTRACT_FILE: "Could not extract the file",
-        CANT_OVERRIDE: "Target file already exists",
-        NO_ZIP: "No zip file was loaded",
-        NO_ENTRY: "Entry doesn't exist",
-        DIRECTORY_CONTENT_ERROR: "A directory cannot have content",
-        FILE_NOT_FOUND: "File not found: %s",
-        NOT_IMPLEMENTED: "Not implemented",
-        INVALID_FILENAME: "Invalid filename",
-        INVALID_FORMAT: "Invalid or unsupported zip format. No END header found"
-      };
-    }
-  });
-
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fattr.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fattr.js
   var require_fattr = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/fattr.js"(exports, module) {
-      var fs2 = require_fileSystem().require();
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fattr.js"(exports, module) {
+      var fs = require_fileSystem().require();
       var pth = __require("path");
-      fs2.existsSync = fs2.existsSync || pth.existsSync;
-      module.exports = function(path2) {
-        var _path = path2 || "", _obj = newAttr(), _stat = null;
+      fs.existsSync = fs.existsSync || pth.existsSync;
+      module.exports = function(path3) {
+        var _path = path3 || "", _obj = newAttr(), _stat = null;
         function newAttr() {
           return {
             directory: false,
@@ -3012,8 +449,8 @@ var plugin = (() => {
             atime: 0
           };
         }
-        if (_path && fs2.existsSync(_path)) {
-          _stat = fs2.statSync(_path);
+        if (_path && fs.existsSync(_path)) {
+          _stat = fs.statSync(_path);
           _obj.directory = _stat.isDirectory();
           _obj.mtime = _stat.mtime;
           _obj.atime = _stat.atime;
@@ -3065,19 +502,19 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/index.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/index.js
   var require_util = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/util/index.js"(exports, module) {
-      module.exports = require_utils3();
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/index.js"(exports, module) {
+      module.exports = require_utils();
       module.exports.Constants = require_constants();
       module.exports.Errors = require_errors();
       module.exports.FileAttr = require_fattr();
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/entryHeader.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/entryHeader.js
   var require_entryHeader = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/entryHeader.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/entryHeader.js"(exports, module) {
       var Utils = require_util();
       var Constants = Utils.Constants;
       module.exports = function() {
@@ -3306,9 +743,9 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/mainHeader.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/mainHeader.js
   var require_mainHeader = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/mainHeader.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/mainHeader.js"(exports, module) {
       var Utils = require_util();
       var Constants = Utils.Constants;
       module.exports = function() {
@@ -3360,7 +797,7 @@ var plugin = (() => {
             } else {
               _volumeEntries = Utils.readBigUInt64LE(data, Constants.ZIP64SUB);
               _totalEntries = Utils.readBigUInt64LE(data, Constants.ZIP64TOT);
-              _size = Utils.readBigUInt64LE(data, Constants.ZIP64SIZ);
+              _size = Utils.readBigUInt64LE(data, Constants.ZIP64SIZE);
               _offset = Utils.readBigUInt64LE(data, Constants.ZIP64OFF);
               _commentLength = 0;
             }
@@ -3400,20 +837,20 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/index.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/index.js
   var require_headers = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/headers/index.js"(exports) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/index.js"(exports) {
       exports.EntryHeader = require_entryHeader();
       exports.MainHeader = require_mainHeader();
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/deflater.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/deflater.js
   var require_deflater = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/deflater.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/deflater.js"(exports, module) {
       module.exports = function(inbuf) {
         var zlib = __require("zlib");
-        var opts = {chunkSize: (parseInt(inbuf.length / 1024) + 1) * 1024};
+        var opts = { chunkSize: (parseInt(inbuf.length / 1024) + 1) * 1024 };
         return {
           deflate: function() {
             return zlib.deflateRawSync(inbuf, opts);
@@ -3441,9 +878,9 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/inflater.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/inflater.js
   var require_inflater = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/inflater.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/inflater.js"(exports, module) {
       module.exports = function(inbuf) {
         var zlib = __require("zlib");
         return {
@@ -3473,14 +910,14 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/zipcrypto.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/zipcrypto.js
   var require_zipcrypto = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/zipcrypto.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/zipcrypto.js"(exports, module) {
       "use strict";
-      var {randomFillSync} = __require("crypto");
+      var { randomFillSync } = __require("crypto");
       var crctable = new Uint32Array(256).map((t, crc) => {
         for (let j = 0; j < 8; j++) {
-          if ((crc & 1) !== 0) {
+          if (0 !== (crc & 1)) {
             crc = crc >>> 1 ^ 3988292384;
           } else {
             crc >>>= 1;
@@ -3493,7 +930,7 @@ var plugin = (() => {
         return crctable[(pCrc32 ^ bval) & 255] ^ pCrc32 >>> 8;
       };
       var genSalt = () => {
-        if (typeof randomFillSync === "function") {
+        if ("function" === typeof randomFillSync) {
           return randomFillSync(Buffer.alloc(12));
         } else {
           return genSalt.node();
@@ -3588,22 +1025,22 @@ var plugin = (() => {
         encrypter(salt, result);
         return encrypter(data, result, 12);
       }
-      module.exports = {decrypt, encrypt, _salter};
+      module.exports = { decrypt, encrypt, _salter };
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/index.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/index.js
   var require_methods = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/methods/index.js"(exports) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/index.js"(exports) {
       exports.Deflater = require_deflater();
       exports.Inflater = require_inflater();
       exports.ZipCrypto = require_zipcrypto();
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipEntry.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipEntry.js
   var require_zipEntry = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipEntry.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipEntry.js"(exports, module) {
       var Utils = require_util();
       var Headers = require_headers();
       var Constants = Utils.Constants;
@@ -3644,7 +1081,7 @@ var plugin = (() => {
             return compressedData;
           }
           if (_entryHeader.encripted) {
-            if (typeof pass !== "string" && !Buffer.isBuffer(pass)) {
+            if ("string" !== typeof pass && !Buffer.isBuffer(pass)) {
               throw new Error("ADM-ZIP: Incompatible password parameter");
             }
             compressedData = Methods.ZipCrypto.decrypt(compressedData, _entryHeader, pass);
@@ -3889,16 +1326,16 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipFile.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipFile.js
   var require_zipFile = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/zipFile.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipFile.js"(exports, module) {
       var ZipEntry = require_zipEntry();
       var Headers = require_headers();
       var Utils = require_util();
       module.exports = function(inBuffer, options) {
         var entryList = [], entryTable = {}, _comment = Buffer.alloc(0), mainHeader = new Headers.MainHeader(), loadedEntries = false;
-        const opts = Object.assign(Object.create(null), options);
-        const {noSort} = opts;
+        const opts = Object.assign(/* @__PURE__ */ Object.create(null), options);
+        const { noSort } = opts;
         if (inBuffer) {
           readMainHeader(opts.readEntries);
         } else {
@@ -4160,9 +1597,9 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/adm-zip.js
+  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/adm-zip.js
   var require_adm_zip = __commonJS({
-    "pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/.yarn/cache/adm-zip-npm-0.5.9-765c0e1a32-4909bc0411.zip/node_modules/adm-zip/adm-zip.js"(exports, module) {
+    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/adm-zip.js"(exports, module) {
       var Utils = require_util();
       var pth = __require("path");
       var ZipEntry = require_zipEntry();
@@ -4177,8 +1614,8 @@ var plugin = (() => {
       };
       module.exports = function(input, options) {
         let inBuffer = null;
-        const opts = Object.assign(Object.create(null), defaultOptions);
-        if (input && typeof input === "object") {
+        const opts = Object.assign(/* @__PURE__ */ Object.create(null), defaultOptions);
+        if (input && "object" === typeof input) {
           if (!(input instanceof Uint8Array)) {
             Object.assign(opts, input);
             input = opts.input ? opts.input : void 0;
@@ -4193,7 +1630,7 @@ var plugin = (() => {
         }
         Object.assign(opts, options);
         const filetools = new Utils(opts);
-        if (input && typeof input === "string") {
+        if (input && "string" === typeof input) {
           if (filetools.fs.existsSync(input)) {
             opts.method = Utils.Constants.FILE;
             opts.filename = input;
@@ -4203,7 +1640,7 @@ var plugin = (() => {
           }
         }
         const _zip = new ZipFile(inBuffer, opts);
-        const {canonical, sanitize} = Utils;
+        const { canonical, sanitize } = Utils;
         function getEntry(entry) {
           if (entry && _zip) {
             var item;
@@ -4218,7 +1655,7 @@ var plugin = (() => {
           return null;
         }
         function fixPath(zipPath) {
-          const {join, normalize, sep} = pth.posix;
+          const { join, normalize, sep } = pth.posix;
           return join(".", normalize(sep + zipPath.split("\\").join(sep) + sep));
         }
         return {
@@ -4304,14 +1741,14 @@ var plugin = (() => {
               throw new Error(Utils.Errors.FILE_NOT_FOUND.replace("%s", localPath));
             }
           },
-          addLocalFolder: function(localPath, zipPath, filter) {
+          addLocalFolder: function(localPath, zipPath, filter, attr) {
             if (filter instanceof RegExp) {
               filter = function(rx) {
                 return function(filename) {
                   return rx.test(filename);
                 };
               }(filter);
-            } else if (typeof filter !== "function") {
+            } else if ("function" !== typeof filter) {
               filter = function() {
                 return true;
               };
@@ -4327,9 +1764,9 @@ var plugin = (() => {
                   if (filter(p)) {
                     var stats = filetools.fs.statSync(filepath);
                     if (stats.isFile()) {
-                      self.addFile(zipPath + p, filetools.fs.readFileSync(filepath), "", stats);
+                      self.addFile(zipPath + p, filetools.fs.readFileSync(filepath), "", attr ? attr : stats);
                     } else {
-                      self.addFile(zipPath + p + "/", Buffer.alloc(0), "", stats);
+                      self.addFile(zipPath + p + "/", Buffer.alloc(0), "", attr ? attr : stats);
                     }
                   }
                 });
@@ -4345,7 +1782,7 @@ var plugin = (() => {
                   return rx.test(filename);
                 };
               }(filter);
-            } else if (typeof filter !== "function") {
+            } else if ("function" !== typeof filter) {
               filter = function() {
                 return true;
               };
@@ -4386,7 +1823,9 @@ var plugin = (() => {
                         }
                       });
                     } else {
-                      next();
+                      process.nextTick(() => {
+                        next();
+                      });
                     }
                   } else {
                     callback(true, void 0);
@@ -4397,14 +1836,19 @@ var plugin = (() => {
             });
           },
           addLocalFolderPromise: function(localPath, props) {
-            return new Promise((resolve, reject) => {
-              const {filter, zipPath} = Object.assign({}, props);
-              this.addLocalFolderAsync(localPath, (done, err) => {
-                if (err)
-                  reject(err);
-                if (done)
-                  resolve(this);
-              }, zipPath, filter);
+            return new Promise((resolve2, reject) => {
+              const { filter, zipPath } = Object.assign({}, props);
+              this.addLocalFolderAsync(
+                localPath,
+                (done, err) => {
+                  if (err)
+                    reject(err);
+                  if (done)
+                    resolve2(this);
+                },
+                zipPath,
+                filter
+              );
             });
           },
           addFile: function(entryName, content, comment, attr) {
@@ -4415,22 +1859,20 @@ var plugin = (() => {
               entry.entryName = entryName;
             }
             entry.comment = comment || "";
-            const isStat = typeof attr === "object" && attr instanceof filetools.fs.Stats;
+            const isStat = "object" === typeof attr && attr instanceof filetools.fs.Stats;
             if (isStat) {
               entry.header.time = attr.mtime;
             }
             var fileattr = entry.isDirectory ? 16 : 0;
-            if (!Utils.isWin) {
-              let unix = entry.isDirectory ? 16384 : 32768;
-              if (isStat) {
-                unix |= 4095 & attr.mode;
-              } else if (typeof attr === "number") {
-                unix |= 4095 & attr;
-              } else {
-                unix |= entry.isDirectory ? 493 : 420;
-              }
-              fileattr = (fileattr | unix << 16) >>> 0;
+            let unix = entry.isDirectory ? 16384 : 32768;
+            if (isStat) {
+              unix |= 4095 & attr.mode;
+            } else if ("number" === typeof attr) {
+              unix |= 4095 & attr;
+            } else {
+              unix |= entry.isDirectory ? 493 : 420;
             }
+            fileattr = (fileattr | unix << 16) >>> 0;
             entry.attr = fileattr;
             entry.setData(content);
             if (!update)
@@ -4531,14 +1973,15 @@ var plugin = (() => {
             });
           },
           extractAllToAsync: function(targetPath, overwrite, keepOriginalPermission, callback) {
-            if (!callback) {
-              callback = function() {
-              };
-            }
             overwrite = get_Bool(overwrite, false);
             if (typeof keepOriginalPermission === "function" && !callback)
               callback = keepOriginalPermission;
             keepOriginalPermission = get_Bool(keepOriginalPermission, false);
+            if (!callback) {
+              callback = function(err) {
+                throw new Error(err);
+              };
+            }
             if (!_zip) {
               callback(new Error(Utils.Errors.NO_ZIP));
               return;
@@ -4547,7 +1990,7 @@ var plugin = (() => {
             const getPath = (entry) => sanitize(targetPath, pth.normalize(canonical(entry.entryName.toString())));
             const getError = (msg, file) => new Error(msg + ': "' + file + '"');
             const dirEntries = [];
-            const fileEntries = new Set();
+            const fileEntries = /* @__PURE__ */ new Set();
             _zip.entries.forEach((e) => {
               if (e.isDirectory) {
                 dirEntries.push(e);
@@ -4623,21 +2066,21 @@ var plugin = (() => {
             }
           },
           writeZipPromise: function(targetFileName, props) {
-            const {overwrite, perm} = Object.assign({overwrite: true}, props);
-            return new Promise((resolve, reject) => {
+            const { overwrite, perm } = Object.assign({ overwrite: true }, props);
+            return new Promise((resolve2, reject) => {
               if (!targetFileName && opts.filename)
                 targetFileName = opts.filename;
               if (!targetFileName)
                 reject("ADM-ZIP: ZIP File Name Missing");
               this.toBufferPromise().then((zipData) => {
-                const ret = (done) => done ? resolve(done) : reject("ADM-ZIP: Wasn't able to write zip file");
+                const ret = (done) => done ? resolve2(done) : reject("ADM-ZIP: Wasn't able to write zip file");
                 filetools.writeFileToAsync(targetFileName, zipData, overwrite, perm, ret);
               }, reject);
             });
           },
           toBufferPromise: function() {
-            return new Promise((resolve, reject) => {
-              _zip.toAsyncBuffer(resolve, reject);
+            return new Promise((resolve2, reject) => {
+              _zip.toAsyncBuffer(resolve2, reject);
             });
           },
           toBuffer: function(onSuccess, onFail, onItemStart, onItemEnd) {
@@ -4653,23 +2096,181 @@ var plugin = (() => {
     }
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/index.ts
+  // sources/index.ts
   var sources_exports = {};
   __export(sources_exports, {
     default: () => sources_default
   });
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/commands/bundle.ts
-  var import_process = __toModule(__require("process"));
-  var import_path = __toModule(__require("path"));
-  var import_os = __toModule(__require("os"));
-  var import_fs_extra = __toModule(require_lib());
-  var import_clipanion = __toModule(__require("clipanion"));
-  var import_adm_zip = __toModule(require_adm_zip());
-  var import_cli = __toModule(__require("@yarnpkg/cli"));
-  var import_core = __toModule(__require("@yarnpkg/core"));
+  // sources/commands/bundle.command.ts
+  var import_process = __toESM(__require("process"));
+  var import_path2 = __toESM(__require("path"));
+  var import_os = __toESM(__require("os"));
+  var import_clipanion = __require("clipanion");
+  var import_core3 = __require("@yarnpkg/core");
+  var import_cli = __require("@yarnpkg/cli");
+
+  // sources/bundle/bundle.ts
+  var import_core2 = __require("@yarnpkg/core");
+
+  // sources/bundle/package-deps.ts
+  var import_core = __require("@yarnpkg/core");
+  var import_promises = __require("fs/promises");
+  var import_node_path = __require("path");
+  var PackageDeps = class {
+    static async install(workspaceRoot, projectRoot, cache, logger) {
+      const { project } = await import_core.Project.find(
+        projectRoot.configuration,
+        projectRoot.cwd
+      );
+      const workspace = project.getWorkspaceByIdent(workspaceRoot.locator);
+      const requiredWorkspaces = /* @__PURE__ */ new Set([workspace]);
+      for (const workspace2 of requiredWorkspaces) {
+        const dependencies = workspace2.manifest.getForScope("dependencies").values();
+        for (const descriptor of dependencies) {
+          const matchingWorkspace = project.tryWorkspaceByDescriptor(descriptor);
+          if (matchingWorkspace === null)
+            continue;
+          requiredWorkspaces.add(matchingWorkspace);
+        }
+      }
+      for (const workspace2 of project.workspaces) {
+        if (requiredWorkspaces.has(workspace2)) {
+          workspace2.manifest.devDependencies.clear();
+        } else {
+          workspace2.manifest.installConfig = workspace2.manifest.installConfig || {};
+          workspace2.manifest.installConfig.selfReferences = false;
+          workspace2.manifest.dependencies.clear();
+          workspace2.manifest.devDependencies.clear();
+          workspace2.manifest.peerDependencies.clear();
+          workspace2.manifest.scripts.clear();
+        }
+      }
+      await project.install({
+        cache,
+        report: logger.getStreamReport(),
+        persistProject: false
+      });
+      const nmSelfPath = (0, import_node_path.resolve)(
+        project.cwd,
+        "node_modules",
+        `@${workspace.locator.scope}`,
+        workspace.locator.name
+      );
+      await (0, import_promises.rm)(nmSelfPath, { recursive: true, force: true });
+    }
+  };
+
+  // sources/bundle/archive.ts
+  var import_adm_zip = __toESM(require_adm_zip());
+  var import_path = __toESM(__require("path"));
+  var Archive = class {
+    static async make(project, workspace, outDir) {
+      return new Promise((resolve2, reject) => {
+        const targetFileName = `${workspace.computeCandidateName()}.zip`;
+        const targetFilePath = import_path.default.resolve(outDir, targetFileName);
+        const zip = new import_adm_zip.default();
+        zip.addLocalFolder(import_path.default.resolve(workspace.cwd));
+        zip.addLocalFolder(
+          import_path.default.resolve(project.cwd, "node_modules"),
+          "node_modules"
+        );
+        zip.writeZip(targetFilePath, (error) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve2(`Archive path: ${targetFilePath}`);
+          }
+        });
+      });
+    }
+  };
+
+  // sources/bundle/bundle.ts
+  var Bundle = class {
+    constructor(logger, cache, project, tmpDir, outDir) {
+      this.logger = logger;
+      this.cache = cache;
+      this.project = project;
+      this.tmpDir = tmpDir;
+      this.outDir = outDir;
+    }
+    async bundlePackages(packages) {
+      this.logger.log(`Bundle workspaces: ${packages.join(`, `)}`);
+      let pkgProgress = 1;
+      for (const pkg of packages) {
+        await this.logger.group(
+          `[${pkgProgress++}/${packages.length}]  ${pkg}`,
+          async () => {
+            await this.bundlePackage(pkg);
+          }
+        );
+      }
+    }
+    async bundlePackage(pkg) {
+      try {
+        const workspace = this.project.getWorkspaceByIdent(
+          import_core2.structUtils.parseIdent(pkg)
+        );
+        await this.installPackageDeps(workspace);
+        await this.makeArchive(workspace);
+      } finally {
+      }
+    }
+    async installPackageDeps(workspace) {
+      return PackageDeps.install(
+        workspace,
+        this.project,
+        this.cache,
+        this.logger
+      );
+    }
+    async makeArchive(workspace) {
+      return Archive.make(this.project, workspace, this.outDir);
+    }
+  };
+
+  // sources/bundle/logger.ts
+  var Logger = class {
+    constructor(report) {
+      this.report = report;
+    }
+    log(message, context) {
+      this.report.reportInfo(null, message);
+      this.report.reportJson({
+        type: "info",
+        message,
+        ...context
+      });
+    }
+    warning(message, context) {
+      this.report.reportWarning(null, message);
+      this.report.reportJson({
+        type: "warning",
+        message,
+        ...context
+      });
+    }
+    error(message, context) {
+      this.report.reportError(null, message);
+      this.report.reportJson({
+        type: "error",
+        message,
+        ...context
+      });
+    }
+    async group(message, cb) {
+      await this.report.startTimerPromise(message, cb);
+      this.report.reportSeparator();
+    }
+    getStreamReport() {
+      return this.report;
+    }
+  };
+
+  // sources/commands/bundle.command.ts
   var DEFAULT_OUT_DIR = import_process.default.cwd();
-  var DEFAULT_TMP_DIR = import_path.default.resolve(import_os.default.tmpdir(), import_process.default.pid.toString());
+  var DEFAULT_TMP_DIR = import_path2.default.resolve(import_os.default.tmpdir(), import_process.default.pid.toString());
   var BundleCommand = class extends import_cli.BaseCommand {
     constructor() {
       super(...arguments);
@@ -4682,206 +2283,52 @@ var plugin = (() => {
       this.verbose = import_clipanion.Option.Boolean(`-v,--verbose`, false, {
         description: `Prefix each output line with the name of the originating workspace`
       });
-      this.targetWorkspacesList = import_clipanion.Option.Rest();
+      this.json = import_clipanion.Option.Boolean(`--json`, false, {
+        description: `flag is set the output will follow a JSON-stream output also known as NDJSON (https://github.com/ndjson/ndjson-spec)`
+      });
+      this.targetPackages = import_clipanion.Option.Rest();
     }
     async execute() {
-      this.configuration = await this.getConfiguration();
-      this.project = await this.getProject();
-      this.cache = await this.getCache();
-      this.modulesDir = import_path.default.resolve(this.project.cwd, "node_modules");
-      const nodeLinker = this.project.configuration.values.get("nodeLinker");
-      if (nodeLinker !== "node-modules") {
-        throw new Error("This plugin will work only if Yarn configuration option `nodeLinker` is set to `node-modules`");
+      const configuration = await import_core3.Configuration.find(
+        this.context.cwd,
+        this.context.plugins
+      );
+      if (configuration.values.get("nodeLinker") !== "node-modules") {
+        throw new Error(
+          "This plugin will work only if Yarn configuration option `nodeLinker` is set to `node-modules`"
+        );
       }
-      const report = await this.makeStreamReport(async (report2) => {
-        let commandCount = 0;
-        const workspacesQueue = await this.getRequiredWorkspaces();
-        for (const workspace of workspacesQueue) {
-          await this.bundle(report2, workspace, ++commandCount);
+      const cache = await import_core3.Cache.find(configuration);
+      const { project } = await import_core3.Project.find(configuration, this.context.cwd);
+      const report = await import_core3.StreamReport.start(
+        {
+          configuration,
+          stdout: this.context.stdout,
+          includeWarnings: this.verbose,
+          json: this.json
+        },
+        async (report2) => {
+          const logger = new Logger(report2);
+          const bundler = new Bundle(
+            logger,
+            cache,
+            project,
+            this.tmpDir,
+            this.outDir
+          );
+          await bundler.bundlePackages(this.targetPackages);
         }
-      });
+      );
       return report.exitCode();
-    }
-    async bundle(report, workspace, commandIndex) {
-      try {
-        const prefix = this.getWorkspaceLogPrefix(workspace, commandIndex);
-        await report.startTimerPromise(`${prefix} Bundling started`, async () => {
-          await this.installWorkspaceDeps(report, workspace);
-          await this.copyPackageDeps(report);
-          await this.copySources(report, workspace);
-          await this.makeArchive(report, workspace);
-        });
-      } catch (error) {
-        report.reportError(import_core.MessageName.EXCEPTION, error);
-      } finally {
-        await this.clear(report);
-      }
-    }
-    async installWorkspaceDeps(report, workspace) {
-      const callback = async () => {
-        const requiredWorkspaces = new Set([workspace]);
-        const depsDescriptors = workspace.manifest.getForScope(`dependencies`).values();
-        for (const descriptor of depsDescriptors) {
-          const matchingWorkspace = this.project.tryWorkspaceByDescriptor(descriptor);
-          if (matchingWorkspace === null)
-            continue;
-          requiredWorkspaces.add(matchingWorkspace);
-        }
-        const origWorkspacesManifests = new Map();
-        for (const workspace2 of this.project.workspaces) {
-          origWorkspacesManifests.set(workspace2.computeCandidateName(), {
-            installConfig: JSON.stringify(workspace2.manifest.installConfig),
-            scripts: new Map(workspace2.manifest.scripts),
-            dependencies: new Map(workspace2.manifest.dependencies),
-            devDependencies: new Map(workspace2.manifest.devDependencies),
-            peerDependencies: new Map(workspace2.manifest.peerDependencies)
-          });
-          workspace2.manifest.devDependencies.clear();
-          workspace2.manifest.peerDependencies.clear();
-          if (!requiredWorkspaces.has(workspace2)) {
-            workspace2.manifest.installConfig = workspace2.manifest.installConfig || {};
-            workspace2.manifest.installConfig.selfReferences = false;
-            workspace2.manifest.dependencies.clear();
-            workspace2.manifest.scripts.clear();
-          }
-        }
-        await this.project.install({
-          cache: this.cache,
-          report,
-          persistProject: false
-        });
-        for (const workspace2 of this.project.workspaces) {
-          const orig = origWorkspacesManifests.get(workspace2.computeCandidateName());
-          workspace2.manifest.installConfig = JSON.parse(orig.installConfig);
-          workspace2.manifest.scripts = new Map(orig.scripts);
-          workspace2.manifest.dependencies = new Map(orig.dependencies);
-          workspace2.manifest.devDependencies = new Map(orig.devDependencies);
-          workspace2.manifest.peerDependencies = new Map(orig.peerDependencies);
-        }
-      };
-      await report.startTimerPromise("Install workspace dependencies", callback);
-    }
-    async copyPackageDeps(report) {
-      const callback = async () => {
-        try {
-          const destDir = import_path.default.resolve(this.tmpDir, "node_modules");
-          await this._copyFolder(this.modulesDir, destDir);
-        } catch (error) {
-          report.reportExceptionOnce(error);
-        }
-      };
-      await report.startTimerPromise("Copy package dependencies", callback);
-    }
-    async copySources(report, workspace) {
-      const callback = async () => {
-        try {
-          await this._copyFolder(workspace.cwd, this.tmpDir);
-          if (this.verbose) {
-            report.reportInfo(null, `Copy from: ${workspace.cwd}`);
-            report.reportInfo(null, `Copy to: ${this.tmpDir}`);
-          }
-          const dependedWorkspaces = workspace.getRecursiveWorkspaceDependencies();
-          for (const dependedWorkspace of dependedWorkspaces) {
-            const destDir = import_path.default.resolve(this.tmpDir, "node_modules", dependedWorkspace.manifest.raw.name);
-            if (this.verbose) {
-              report.reportInfo(null, `Copy deps from: ${dependedWorkspace.cwd}`);
-              report.reportInfo(null, `Copy deps to: ${destDir}`);
-            }
-            await this._copyFolder(dependedWorkspace.cwd, destDir);
-          }
-        } catch (error) {
-          report.reportExceptionOnce(error);
-        }
-      };
-      await report.startTimerPromise("Copy workspace source", callback);
-    }
-    async makeArchive(report, workspace) {
-      const callback = async () => {
-        await new Promise((resolve, reject) => {
-          const zip = new import_adm_zip.default();
-          const targetFileName = `${workspace.computeCandidateName()}.zip`;
-          const targetFilePath = import_path.default.resolve(this.outDir, targetFileName);
-          zip.addLocalFolder(this.tmpDir);
-          zip.writeZip(targetFilePath, (error) => {
-            if (error)
-              return reject(error);
-            if (this.verbose) {
-              report.reportInfo(null, `Archive path: ${targetFilePath}`);
-            }
-            return resolve(void 0);
-          });
-        });
-      };
-      await report.startTimerPromise("Make archive", callback);
-    }
-    async clear(report) {
-      const callback = async () => {
-        const clearTasks = [
-          new Promise((resolve, reject) => {
-            import_fs_extra.default.remove(this.tmpDir, (error) => error ? reject(error) : resolve(void 0));
-          }),
-          new Promise((resolve, reject) => {
-            import_fs_extra.default.remove(this.modulesDir, (error) => error ? reject(error) : resolve(void 0));
-          })
-        ];
-        await Promise.all(clearTasks);
-      };
-      await report.startTimerPromise("Clear temporary folder and node_modules", callback);
-    }
-    async getConfiguration() {
-      return import_core.Configuration.find(this.context.cwd, this.context.plugins);
-    }
-    async getCache() {
-      return import_core.Cache.find(this.configuration);
-    }
-    async getProject() {
-      const {project} = await import_core.Project.find(this.configuration, this.context.cwd);
-      return project;
-    }
-    async getWorkspace() {
-      const {workspace} = await import_core.Project.find(this.configuration, this.context.cwd);
-      return workspace;
-    }
-    async getRequiredWorkspaces() {
-      if (this.targetWorkspacesList.length) {
-        return new Set(this.targetWorkspacesList.map((name) => this.project.getWorkspaceByIdent(import_core.structUtils.parseIdent(name))));
-      }
-      const cwdWorkspace = await this.getWorkspace();
-      if (!cwdWorkspace)
-        throw new import_cli.WorkspaceRequiredError(this.project.cwd, this.context.cwd);
-      return new Set([cwdWorkspace]);
-    }
-    getWorkspaceLogPrefix(workspace, commandIndex) {
-      const ident = import_core.structUtils.convertToIdent(workspace.locator);
-      const name = import_core.structUtils.stringifyIdent(ident);
-      const prefix = `[${name}]:`;
-      const colors = [`#2E86AB`, `#A23B72`, `#F18F01`, `#C73E1D`, `#CCE2A3`];
-      const colorName = colors[commandIndex % colors.length];
-      return import_core.formatUtils.pretty(this.configuration, prefix, colorName);
-    }
-    makeStreamReport(callback) {
-      const streamReportOptions = {
-        configuration: this.configuration,
-        stdout: this.context.stdout
-      };
-      return import_core.StreamReport.start(streamReportOptions, callback);
-    }
-    async _copyFolder(from, to) {
-      return import_fs_extra.default.copy(from, to, {
-        overwrite: false,
-        dereference: true,
-        recursive: true
-      });
     }
   };
   BundleCommand.paths = [[`bundle`]];
-  var bundle_default = BundleCommand;
 
-  // pnp:/Users/avyzhanov/code/lembdev/yarn-plugins/packages/yarn-plugin-bundle/sources/index.ts
+  // sources/index.ts
   var sources_default = {
-    commands: [bundle_default]
+    commands: [BundleCommand]
   };
-  return sources_exports;
+  return __toCommonJS(sources_exports);
 })();
 return plugin;
 }
