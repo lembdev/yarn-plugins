@@ -16,14 +16,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."\
       },\
       {\
-        "name": "test-a",\
-        "reference": "workspace:packages/test-a"\
-      },\
-      {\
-        "name": "test-b",\
-        "reference": "workspace:packages/test-b"\
-      },\
-      {\
         "name": "@lembdev/yarn-plugin-bundle",\
         "reference": "workspace:packages/yarn-plugin-bundle"\
       }\
@@ -32,8 +24,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
       ["@lembdev/yarn-plugin-bundle", ["workspace:packages/yarn-plugin-bundle"]],\
-      ["test-a", ["workspace:packages/test-a"]],\
-      ["test-b", ["workspace:packages/test-b"]],\
       ["yarn-plugins", ["workspace:."]]\
     ],\
     "fallbackPool": [\
@@ -2232,7 +2222,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cross-spawn", "npm:7.0.3"],\
             ["diff", "npm:5.1.0"],\
             ["globby", "npm:11.1.0"],\
-            ["got", "npm:11.8.3"],\
+            ["got", "npm:11.8.6"],\
             ["json-file-plus", "npm:3.3.1"],\
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.4"],\
@@ -5903,13 +5893,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json5", "npm:2.2.3"]\
           ],\
           "linkType": "HARD"\
-        }],\
-        ["npm:2.2.3", {\
-          "packageLocation": "./.yarn/cache/json5-npm-2.2.3-9962c55073-2a7436a933.zip/node_modules/json5/",\
-          "packageDependencies": [\
-            ["json5", "npm:2.2.3"]\
-          ],\
-          "linkType": "HARD"\
         }]\
       ]],\
       ["jsonfile", [\
@@ -7433,25 +7416,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["readable-stream", "npm:3.6.0"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["test-a", [\
-        ["workspace:packages/test-a", {\
-          "packageLocation": "./packages/test-a/",\
-          "packageDependencies": [\
-            ["test-a", "workspace:packages/test-a"],\
-            ["test-b", "workspace:packages/test-b"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
-      ["test-b", [\
-        ["workspace:packages/test-b", {\
-          "packageLocation": "./packages/test-b/",\
-          "packageDependencies": [\
-            ["test-b", "workspace:packages/test-b"]\
-          ],\
-          "linkType": "SOFT"\
         }]\
       ]],\
       ["test-exclude", [\
