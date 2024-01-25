@@ -1508,7 +1508,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/yarn-plugin-bundle/",\
           "packageDependencies": [\
             ["@lembdev/yarn-plugin-bundle", "workspace:packages/yarn-plugin-bundle"],\
-            ["@types/adm-zip", "npm:0.5.0"],\
+            ["@types/adm-zip", "npm:0.5.5"],\
             ["@types/fs-extra", "npm:11.0.1"],\
             ["@types/jest", "npm:29.5.2"],\
             ["@types/node", "npm:20.3.1"],\
@@ -1645,10 +1645,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/adm-zip", [\
-        ["npm:0.5.0", {\
-          "packageLocation": "./.yarn/cache/@types-adm-zip-npm-0.5.0-c475a24319-11dd013584.zip/node_modules/@types/adm-zip/",\
+        ["npm:0.5.5", {\
+          "packageLocation": "./.yarn/cache/@types-adm-zip-npm-0.5.5-71230c091e-808c25b8a1.zip/node_modules/@types/adm-zip/",\
           "packageDependencies": [\
-            ["@types/adm-zip", "npm:0.5.0"],\
+            ["@types/adm-zip", "npm:0.5.5"],\
             ["@types/node", "npm:17.0.21"]\
           ],\
           "linkType": "HARD"\
