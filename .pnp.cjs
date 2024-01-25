@@ -1532,7 +1532,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@lembdev/yarn-plugin-bundle", "workspace:packages/yarn-plugin-bundle"],\
             ["@types/adm-zip", "npm:0.5.5"],\
-            ["@types/fs-extra", "npm:11.0.1"],\
+            ["@types/fs-extra", "npm:11.0.4"],\
             ["@types/jest", "npm:29.5.11"],\
             ["@types/node", "npm:20.3.1"],\
             ["@yarnpkg/builder", "npm:3.3.1"],\
@@ -1540,7 +1540,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/core", "npm:3.6.0"],\
             ["adm-zip", "npm:0.5.10"],\
             ["clipanion", "virtual:fffd0f5f8c0b6d809ba826f133e9ff1e520c935e6a84e95e9f39abdb12e3c0aaf3c1a68e597735409513fc4adee767832a42dc4be5665405a465da143b61b8a7#npm:3.2.1"],\
-            ["fs-extra", "npm:11.1.1"],\
+            ["fs-extra", "npm:11.2.0"],\
             ["jest", "virtual:4cc9c0258ef7c4301d034991183bc6d3866a6ef0593ca21597c3dcc1fe0f4afbe8690af51799a84760e731d1ad34a3f8cfa04840483a02cd1adf1d66316d9679#npm:29.7.0"],\
             ["jest-pnp-resolver", "virtual:fffd0f5f8c0b6d809ba826f133e9ff1e520c935e6a84e95e9f39abdb12e3c0aaf3c1a68e597735409513fc4adee767832a42dc4be5665405a465da143b61b8a7#npm:1.2.3"],\
             ["replace", "npm:1.2.2"],\
@@ -1745,10 +1745,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/fs-extra", [\
-        ["npm:11.0.1", {\
-          "packageLocation": "./.yarn/cache/@types-fs-extra-npm-11.0.1-f11620397b-3e930346e5.zip/node_modules/@types/fs-extra/",\
+        ["npm:11.0.4", {\
+          "packageLocation": "./.yarn/cache/@types-fs-extra-npm-11.0.4-e30a7fec50-242cb84157.zip/node_modules/@types/fs-extra/",\
           "packageDependencies": [\
-            ["@types/fs-extra", "npm:11.0.1"],\
+            ["@types/fs-extra", "npm:11.0.4"],\
             ["@types/jsonfile", "npm:6.1.1"],\
             ["@types/node", "npm:17.0.21"]\
           ],\
@@ -4477,10 +4477,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["fs-extra", [\
-        ["npm:11.1.1", {\
-          "packageLocation": "./.yarn/cache/fs-extra-npm-11.1.1-ca44602180-fb883c6824.zip/node_modules/fs-extra/",\
+        ["npm:11.2.0", {\
+          "packageLocation": "./.yarn/cache/fs-extra-npm-11.2.0-6783080799-b12e42fa40.zip/node_modules/fs-extra/",\
           "packageDependencies": [\
-            ["fs-extra", "npm:11.1.1"],\
+            ["fs-extra", "npm:11.2.0"],\
             ["graceful-fs", "npm:4.2.9"],\
             ["jsonfile", "npm:6.1.0"],\
             ["universalify", "npm:2.0.0"]\
