@@ -1,6 +1,6 @@
 {
   "name": "yarn-plugins",
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@3.7.0",
   "workspaces": [
     "packages/*"
   ],
