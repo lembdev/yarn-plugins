@@ -24,7 +24,7 @@ jobs:
         run: yarn build -c local:install
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: .yarn/plugins/@lembdev/plugin-bundle.js
 
