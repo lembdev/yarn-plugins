@@ -7,7 +7,7 @@ module.exports = {
 
   env: {
     es6: true,
-    jest: true,
+    jest: false,
     node: true,
   },
   rules: {
