@@ -1,6 +1,6 @@
 import { Cache, Project, Workspace } from '@yarnpkg/core';
-import { rm } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { rm } from 'fs/promises';
+import { resolve } from 'path';
 import { Logger } from './logger';
 
 export class PackageDeps {

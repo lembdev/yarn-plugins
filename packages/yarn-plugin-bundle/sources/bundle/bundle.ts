@@ -1,7 +1,6 @@
 import { Cache, Project, structUtils, Workspace } from '@yarnpkg/core';
 import { Logger } from './logger';
 import { PackageDeps } from './package-deps';
-import { readdirSync } from 'node:fs';
 import { Archive } from './archive';
 
 export class Bundle {

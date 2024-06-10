@@ -38,18 +38,18 @@ var plugin = (() => {
   ));
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // ../../.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js
+  // ../../../../../.yarn/berry/cache/original-fs-npm-1.1.0-0dc4e6db15-10c0.zip/node_modules/original-fs/index.js
   var require_original_fs = __commonJS({
-    "../../.yarn/cache/original-fs-npm-1.1.0-0dc4e6db15-596eab68be.zip/node_modules/original-fs/index.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/original-fs-npm-1.1.0-0dc4e6db15-10c0.zip/node_modules/original-fs/index.js"(exports, module) {
       "use strict";
       var _default = __require("fs");
       module.exports = _default;
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fileSystem.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/fileSystem.js
   var require_fileSystem = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fileSystem.js"(exports) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/fileSystem.js"(exports) {
       exports.require = function() {
         if (typeof process === "object" && process.versions && process.versions["electron"]) {
           try {
@@ -65,9 +65,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/constants.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/constants.js
   var require_constants = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/constants.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/constants.js"(exports, module) {
       module.exports = {
         LOCHDR: 30,
         LOCSIG: 67324752,
@@ -184,9 +184,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/errors.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/errors.js
   var require_errors = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/errors.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/errors.js"(exports, module) {
       module.exports = {
         INVALID_LOC: "Invalid LOC header (bad signature)",
         INVALID_CEN: "Invalid CEN header (bad signature)",
@@ -207,6 +207,7 @@ var plugin = (() => {
         INVALID_BLOCK_TYPE: "inflate::Invalid block type (type == 3)",
         CANT_EXTRACT_FILE: "Could not extract the file",
         CANT_OVERRIDE: "Target file already exists",
+        DISK_ENTRY_TOO_LARGE: "Number of disk entries is too large",
         NO_ZIP: "No zip file was loaded",
         NO_ENTRY: "Entry doesn't exist",
         DIRECTORY_CONTENT_ERROR: "A directory cannot have content",
@@ -218,9 +219,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/utils.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/utils.js
   var require_utils = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/utils.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/utils.js"(exports, module) {
       var fsystem = require_fileSystem().require();
       var pth = __require("path");
       var Constants = require_constants();
@@ -431,9 +432,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fattr.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/fattr.js
   var require_fattr = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/fattr.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/fattr.js"(exports, module) {
       var fs = require_fileSystem().require();
       var pth = __require("path");
       fs.existsSync = fs.existsSync || pth.existsSync;
@@ -502,9 +503,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/index.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/index.js
   var require_util = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/util/index.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/util/index.js"(exports, module) {
       module.exports = require_utils();
       module.exports.Constants = require_constants();
       module.exports.Errors = require_errors();
@@ -512,16 +513,16 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/entryHeader.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/headers/entryHeader.js
   var require_entryHeader = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/entryHeader.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/headers/entryHeader.js"(exports, module) {
       var Utils = require_util();
       var Constants = Utils.Constants;
       module.exports = function() {
         var _verMade = 20, _version = 10, _flags = 0, _method = 0, _time = 0, _crc = 0, _compressedSize = 0, _size = 0, _fnameLen = 0, _extraLen = 0, _comLen = 0, _diskStart = 0, _inattr = 0, _attr = 0, _offset = 0;
         _verMade |= Utils.isWin ? 2560 : 768;
         _flags |= Constants.FLG_EFS;
-        var _dataHeader = {};
+        var _localHeader = {};
         function setTime(val) {
           val = new Date(val);
           _time = (val.getFullYear() - 1980 & 127) << 25 | val.getMonth() + 1 << 21 | val.getDate() << 16 | val.getHours() << 11 | val.getMinutes() << 5 | val.getSeconds() >> 1;
@@ -564,6 +565,9 @@ var plugin = (() => {
           },
           set time(val) {
             setTime(val);
+          },
+          get timeHighByte() {
+            return _time >>> 8 & 255;
           },
           get crc() {
             return _crc;
@@ -628,24 +632,24 @@ var plugin = (() => {
           set offset(val) {
             _offset = Math.max(0, val) >>> 0;
           },
-          get encripted() {
+          get encrypted() {
             return (_flags & 1) === 1;
           },
-          get entryHeaderSize() {
+          get centralHeaderSize() {
             return Constants.CENHDR + _fnameLen + _extraLen + _comLen;
           },
           get realDataOffset() {
-            return _offset + Constants.LOCHDR + _dataHeader.fnameLen + _dataHeader.extraLen;
+            return _offset + Constants.LOCHDR + _localHeader.fnameLen + _localHeader.extraLen;
           },
-          get dataHeader() {
-            return _dataHeader;
+          get localHeader() {
+            return _localHeader;
           },
-          loadDataHeaderFromBinary: function(input) {
+          loadLocalHeaderFromBinary: function(input) {
             var data = input.slice(_offset, _offset + Constants.LOCHDR);
             if (data.readUInt32LE(0) !== Constants.LOCSIG) {
               throw new Error(Utils.Errors.INVALID_LOC);
             }
-            _dataHeader = {
+            _localHeader = {
               version: data.readUInt16LE(Constants.LOCVER),
               flags: data.readUInt16LE(Constants.LOCFLG),
               method: data.readUInt16LE(Constants.LOCHOW),
@@ -677,7 +681,7 @@ var plugin = (() => {
             _attr = data.readUInt32LE(Constants.CENATX);
             _offset = data.readUInt32LE(Constants.CENOFF);
           },
-          dataHeaderToBinary: function() {
+          localHeaderToBinary: function() {
             var data = Buffer.alloc(Constants.LOCHDR);
             data.writeUInt32LE(Constants.LOCSIG, 0);
             data.writeUInt16LE(_version, Constants.LOCVER);
@@ -691,7 +695,7 @@ var plugin = (() => {
             data.writeUInt16LE(_extraLen, Constants.LOCEXT);
             return data;
           },
-          entryHeaderToBinary: function() {
+          centralHeaderToBinary: function() {
             var data = Buffer.alloc(Constants.CENHDR + _fnameLen + _extraLen + _comLen);
             data.writeUInt32LE(Constants.CENSIG, 0);
             data.writeUInt16LE(_verMade, Constants.CENVEM);
@@ -732,7 +736,7 @@ var plugin = (() => {
               inAttr: _inattr,
               attr: _attr,
               offset: _offset,
-              entryHeaderSize: bytes(Constants.CENHDR + _fnameLen + _extraLen + _comLen)
+              centralHeaderSize: bytes(Constants.CENHDR + _fnameLen + _extraLen + _comLen)
             };
           },
           toString: function() {
@@ -743,9 +747,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/mainHeader.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/headers/mainHeader.js
   var require_mainHeader = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/mainHeader.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/headers/mainHeader.js"(exports, module) {
       var Utils = require_util();
       var Constants = Utils.Constants;
       module.exports = function() {
@@ -837,17 +841,17 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/index.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/headers/index.js
   var require_headers = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/headers/index.js"(exports) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/headers/index.js"(exports) {
       exports.EntryHeader = require_entryHeader();
       exports.MainHeader = require_mainHeader();
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/deflater.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/deflater.js
   var require_deflater = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/deflater.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/deflater.js"(exports, module) {
       module.exports = function(inbuf) {
         var zlib = __require("zlib");
         var opts = { chunkSize: (parseInt(inbuf.length / 1024) + 1) * 1024 };
@@ -878,17 +882,19 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/inflater.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/inflater.js
   var require_inflater = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/inflater.js"(exports, module) {
-      module.exports = function(inbuf) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/inflater.js"(exports, module) {
+      var version = +(process.versions ? process.versions.node : "").split(".")[0] || 0;
+      module.exports = function(inbuf, expectedLength) {
         var zlib = __require("zlib");
+        const option = version >= 15 && expectedLength > 0 ? { maxOutputLength: expectedLength } : {};
         return {
           inflate: function() {
-            return zlib.inflateRawSync(inbuf);
+            return zlib.inflateRawSync(inbuf, option);
           },
           inflateAsync: function(callback) {
-            var tmp = zlib.createInflateRaw(), parts = [], total = 0;
+            var tmp = zlib.createInflateRaw(option), parts = [], total = 0;
             tmp.on("data", function(data) {
               parts.push(data);
               total += data.length;
@@ -910,9 +916,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/zipcrypto.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/zipcrypto.js
   var require_zipcrypto = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/zipcrypto.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/zipcrypto.js"(exports, module) {
       "use strict";
       var { randomFillSync } = __require("crypto");
       var crctable = new Uint32Array(256).map((t, crc) => {
@@ -995,7 +1001,8 @@ var plugin = (() => {
         }
         const decrypter = make_decrypter(pwd);
         const salt = decrypter(data.slice(0, 12));
-        if (salt[11] !== header.crc >>> 24) {
+        const verifyByte = (header.flags & 8) === 8 ? header.timeHighByte : header.crc >>> 24;
+        if (salt[11] !== verifyByte) {
           throw "ADM-ZIP: Wrong Password";
         }
         return decrypter(data.slice(12));
@@ -1029,34 +1036,34 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/index.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/index.js
   var require_methods = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/methods/index.js"(exports) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/methods/index.js"(exports) {
       exports.Deflater = require_deflater();
       exports.Inflater = require_inflater();
       exports.ZipCrypto = require_zipcrypto();
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipEntry.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/zipEntry.js
   var require_zipEntry = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipEntry.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/zipEntry.js"(exports, module) {
       var Utils = require_util();
       var Headers = require_headers();
       var Constants = Utils.Constants;
       var Methods = require_methods();
       module.exports = function(input) {
-        var _entryHeader = new Headers.EntryHeader(), _entryName = Buffer.alloc(0), _comment = Buffer.alloc(0), _isDirectory = false, uncompressedData = null, _extra = Buffer.alloc(0);
+        var _centralHeader = new Headers.EntryHeader(), _entryName = Buffer.alloc(0), _comment = Buffer.alloc(0), _isDirectory = false, uncompressedData = null, _extra = Buffer.alloc(0);
         function getCompressedDataFromZip() {
-          if (!input || !Buffer.isBuffer(input)) {
+          if (!input || !(input instanceof Uint8Array)) {
             return Buffer.alloc(0);
           }
-          _entryHeader.loadDataHeaderFromBinary(input);
-          return input.slice(_entryHeader.realDataOffset, _entryHeader.realDataOffset + _entryHeader.compressedSize);
+          _centralHeader.loadLocalHeaderFromBinary(input);
+          return input.slice(_centralHeader.realDataOffset, _centralHeader.realDataOffset + _centralHeader.compressedSize);
         }
         function crc32OK(data) {
-          if ((_entryHeader.flags & 8) !== 8) {
-            if (Utils.crc32(data) !== _entryHeader.dataHeader.crc) {
+          if ((_centralHeader.flags & 8) !== 8) {
+            if (Utils.crc32(data) !== _centralHeader.localHeader.crc) {
               return false;
             }
           } else {
@@ -1080,14 +1087,14 @@ var plugin = (() => {
               callback(compressedData);
             return compressedData;
           }
-          if (_entryHeader.encripted) {
+          if (_centralHeader.encrypted) {
             if ("string" !== typeof pass && !Buffer.isBuffer(pass)) {
               throw new Error("ADM-ZIP: Incompatible password parameter");
             }
-            compressedData = Methods.ZipCrypto.decrypt(compressedData, _entryHeader, pass);
+            compressedData = Methods.ZipCrypto.decrypt(compressedData, _centralHeader, pass);
           }
-          var data = Buffer.alloc(_entryHeader.size);
-          switch (_entryHeader.method) {
+          var data = Buffer.alloc(_centralHeader.size);
+          switch (_centralHeader.method) {
             case Utils.Constants.STORED:
               compressedData.copy(data);
               if (!crc32OK(data)) {
@@ -1100,7 +1107,7 @@ var plugin = (() => {
                 return data;
               }
             case Utils.Constants.DEFLATED:
-              var inflater = new Methods.Inflater(compressedData);
+              var inflater = new Methods.Inflater(compressedData, _centralHeader.size);
               if (!async) {
                 const result = inflater.inflate(data);
                 result.copy(data, 0);
@@ -1135,9 +1142,9 @@ var plugin = (() => {
           }
           if (uncompressedData.length && !_isDirectory) {
             var compressedData;
-            switch (_entryHeader.method) {
+            switch (_centralHeader.method) {
               case Utils.Constants.STORED:
-                _entryHeader.compressedSize = _entryHeader.size;
+                _centralHeader.compressedSize = _centralHeader.size;
                 compressedData = Buffer.alloc(uncompressedData.length);
                 uncompressedData.copy(compressedData);
                 if (async && callback)
@@ -1148,12 +1155,12 @@ var plugin = (() => {
                 var deflater = new Methods.Deflater(uncompressedData);
                 if (!async) {
                   var deflated = deflater.deflate();
-                  _entryHeader.compressedSize = deflated.length;
+                  _centralHeader.compressedSize = deflated.length;
                   return deflated;
                 } else {
                   deflater.deflateAsync(function(data) {
                     compressedData = Buffer.alloc(data.length);
-                    _entryHeader.compressedSize = data.length;
+                    _centralHeader.compressedSize = data.length;
                     data.copy(compressedData);
                     callback && callback(compressedData);
                   });
@@ -1189,26 +1196,26 @@ var plugin = (() => {
           var size, compressedSize, offset, diskNumStart;
           if (data.length >= Constants.EF_ZIP64_SCOMP) {
             size = readUInt64LE(data, Constants.EF_ZIP64_SUNCOMP);
-            if (_entryHeader.size === Constants.EF_ZIP64_OR_32) {
-              _entryHeader.size = size;
+            if (_centralHeader.size === Constants.EF_ZIP64_OR_32) {
+              _centralHeader.size = size;
             }
           }
           if (data.length >= Constants.EF_ZIP64_RHO) {
             compressedSize = readUInt64LE(data, Constants.EF_ZIP64_SCOMP);
-            if (_entryHeader.compressedSize === Constants.EF_ZIP64_OR_32) {
-              _entryHeader.compressedSize = compressedSize;
+            if (_centralHeader.compressedSize === Constants.EF_ZIP64_OR_32) {
+              _centralHeader.compressedSize = compressedSize;
             }
           }
           if (data.length >= Constants.EF_ZIP64_DSN) {
             offset = readUInt64LE(data, Constants.EF_ZIP64_RHO);
-            if (_entryHeader.offset === Constants.EF_ZIP64_OR_32) {
-              _entryHeader.offset = offset;
+            if (_centralHeader.offset === Constants.EF_ZIP64_OR_32) {
+              _centralHeader.offset = offset;
             }
           }
           if (data.length >= Constants.EF_ZIP64_DSN + 4) {
             diskNumStart = data.readUInt32LE(Constants.EF_ZIP64_DSN);
-            if (_entryHeader.diskNumStart === Constants.EF_ZIP64_OR_16) {
-              _entryHeader.diskNumStart = diskNumStart;
+            if (_centralHeader.diskNumStart === Constants.EF_ZIP64_OR_16) {
+              _centralHeader.diskNumStart = diskNumStart;
             }
           }
         }
@@ -1223,14 +1230,14 @@ var plugin = (() => {
             _entryName = Utils.toBuffer(val);
             var lastChar = _entryName[_entryName.length - 1];
             _isDirectory = lastChar === 47 || lastChar === 92;
-            _entryHeader.fileNameLength = _entryName.length;
+            _centralHeader.fileNameLength = _entryName.length;
           },
           get extra() {
             return _extra;
           },
           set extra(val) {
             _extra = val;
-            _entryHeader.extraLength = val.length;
+            _centralHeader.extraLength = val.length;
             parseExtra(val);
           },
           get comment() {
@@ -1238,7 +1245,7 @@ var plugin = (() => {
           },
           set comment(val) {
             _comment = Utils.toBuffer(val);
-            _entryHeader.commentLength = _comment.length;
+            _centralHeader.commentLength = _comment.length;
           },
           get name() {
             var n = _entryName.toString();
@@ -1256,53 +1263,65 @@ var plugin = (() => {
           setData: function(value) {
             uncompressedData = Utils.toBuffer(value);
             if (!_isDirectory && uncompressedData.length) {
-              _entryHeader.size = uncompressedData.length;
-              _entryHeader.method = Utils.Constants.DEFLATED;
-              _entryHeader.crc = Utils.crc32(value);
-              _entryHeader.changed = true;
+              _centralHeader.size = uncompressedData.length;
+              _centralHeader.method = Utils.Constants.DEFLATED;
+              _centralHeader.crc = Utils.crc32(value);
+              _centralHeader.changed = true;
             } else {
-              _entryHeader.method = Utils.Constants.STORED;
+              _centralHeader.method = Utils.Constants.STORED;
             }
           },
           getData: function(pass) {
-            if (_entryHeader.changed) {
+            if (_centralHeader.changed) {
               return uncompressedData;
             } else {
               return decompress(false, null, pass);
             }
           },
           getDataAsync: function(callback, pass) {
-            if (_entryHeader.changed) {
+            if (_centralHeader.changed) {
               callback(uncompressedData);
             } else {
               decompress(true, callback, pass);
             }
           },
           set attr(attr) {
-            _entryHeader.attr = attr;
+            _centralHeader.attr = attr;
           },
           get attr() {
-            return _entryHeader.attr;
+            return _centralHeader.attr;
           },
           set header(data) {
-            _entryHeader.loadFromBinary(data);
+            _centralHeader.loadFromBinary(data);
           },
           get header() {
-            return _entryHeader;
+            return _centralHeader;
           },
-          packHeader: function() {
-            var header = _entryHeader.entryHeaderToBinary();
+          packCentralHeader: function() {
+            var header = _centralHeader.centralHeaderToBinary();
             var addpos = Utils.Constants.CENHDR;
             _entryName.copy(header, addpos);
             addpos += _entryName.length;
-            if (_entryHeader.extraLength) {
+            if (_centralHeader.extraLength) {
               _extra.copy(header, addpos);
-              addpos += _entryHeader.extraLength;
+              addpos += _centralHeader.extraLength;
             }
-            if (_entryHeader.commentLength) {
+            if (_centralHeader.commentLength) {
               _comment.copy(header, addpos);
             }
             return header;
+          },
+          packLocalHeader: function() {
+            let addpos = 0;
+            const localHeaderBuf = _centralHeader.localHeaderToBinary();
+            const localHeader = Buffer.alloc(localHeaderBuf.length + _entryName.length + _extra.length);
+            localHeaderBuf.copy(localHeader, addpos);
+            addpos += localHeaderBuf.length;
+            _entryName.copy(localHeader, addpos);
+            addpos += _entryName.length;
+            _extra.copy(localHeader, addpos);
+            addpos += _extra.length;
+            return localHeader;
           },
           toJSON: function() {
             const bytes = function(nr) {
@@ -1313,7 +1332,7 @@ var plugin = (() => {
               name: this.name,
               comment: this.comment,
               isDirectory: this.isDirectory,
-              header: _entryHeader.toJSON(),
+              header: _centralHeader.toJSON(),
               compressedData: bytes(input),
               data: bytes(uncompressedData)
             };
@@ -1326,14 +1345,15 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipFile.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/zipFile.js
   var require_zipFile = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/zipFile.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/zipFile.js"(exports, module) {
       var ZipEntry = require_zipEntry();
       var Headers = require_headers();
       var Utils = require_util();
       module.exports = function(inBuffer, options) {
         var entryList = [], entryTable = {}, _comment = Buffer.alloc(0), mainHeader = new Headers.MainHeader(), loadedEntries = false;
+        var password = null;
         const opts = Object.assign(/* @__PURE__ */ Object.create(null), options);
         const { noSort } = opts;
         if (inBuffer) {
@@ -1349,13 +1369,16 @@ var plugin = (() => {
             const entry = new ZipEntry(inBuffer);
             entry.header = inBuffer.slice(tmp, tmp += Utils.Constants.CENHDR);
             entry.entryName = inBuffer.slice(tmp, tmp += entry.header.fileNameLength);
-            index += entry.header.entryHeaderSize;
+            index += entry.header.centralHeaderSize;
             callback(entry);
           }
         }
         function readEntries() {
           loadedEntries = true;
           entryTable = {};
+          if (mainHeader.diskEntries > (inBuffer.length - mainHeader.offset) / Utils.Constants.CENHDR) {
+            throw new Error(Utils.Errors.DISK_ENTRY_TOO_LARGE);
+          }
           entryList = new Array(mainHeader.diskEntries);
           var index = mainHeader.offset;
           for (var i = 0; i < entryList.length; i++) {
@@ -1367,7 +1390,7 @@ var plugin = (() => {
             }
             if (entry.header.commentLength)
               entry.comment = inBuffer.slice(tmp, tmp + entry.header.commentLength);
-            index += entry.header.entryHeaderSize;
+            index += entry.header.centralHeaderSize;
             entryList[i] = entry;
             entryTable[entry.entryName] = entry;
           }
@@ -1489,7 +1512,7 @@ var plugin = (() => {
             }
             sortEntries();
             const dataBlock = [];
-            const entryHeaders = [];
+            const headerBlocks = [];
             let totalSize = 0;
             let dindex = 0;
             mainHeader.size = 0;
@@ -1497,20 +1520,15 @@ var plugin = (() => {
             for (const entry of entryList) {
               const compressedData = entry.getCompressedData();
               entry.header.offset = dindex;
-              const dataHeader = entry.header.dataHeaderToBinary();
-              const entryNameLen = entry.rawEntryName.length;
-              const postHeader = Buffer.alloc(entryNameLen + entry.extra.length);
-              entry.rawEntryName.copy(postHeader, 0);
-              postHeader.copy(entry.extra, entryNameLen);
-              const dataLength = dataHeader.length + postHeader.length + compressedData.length;
+              const localHeader = entry.packLocalHeader();
+              const dataLength = localHeader.length + compressedData.length;
               dindex += dataLength;
-              dataBlock.push(dataHeader);
-              dataBlock.push(postHeader);
+              dataBlock.push(localHeader);
               dataBlock.push(compressedData);
-              const entryHeader = entry.packHeader();
-              entryHeaders.push(entryHeader);
-              mainHeader.size += entryHeader.length;
-              totalSize += dataLength + entryHeader.length;
+              const centralHeader = entry.packCentralHeader();
+              headerBlocks.push(centralHeader);
+              mainHeader.size += centralHeader.length;
+              totalSize += dataLength + centralHeader.length;
             }
             totalSize += mainHeader.mainHeaderSize;
             mainHeader.offset = dindex;
@@ -1520,7 +1538,7 @@ var plugin = (() => {
               content.copy(outBuffer, dindex);
               dindex += content.length;
             }
-            for (const content of entryHeaders) {
+            for (const content of headerBlocks) {
               content.copy(outBuffer, dindex);
               dindex += content.length;
             }
@@ -1538,14 +1556,14 @@ var plugin = (() => {
               }
               sortEntries();
               const dataBlock = [];
-              const entryHeaders = [];
+              const centralHeaders = [];
               let totalSize = 0;
               let dindex = 0;
               mainHeader.size = 0;
               mainHeader.offset = 0;
               const compress2Buffer = function(entryLists) {
-                if (entryLists.length) {
-                  const entry = entryLists.pop();
+                if (entryLists.length > 0) {
+                  const entry = entryLists.shift();
                   const name = entry.entryName + entry.extra.toString();
                   if (onItemStart)
                     onItemStart(name);
@@ -1553,17 +1571,15 @@ var plugin = (() => {
                     if (onItemEnd)
                       onItemEnd(name);
                     entry.header.offset = dindex;
-                    const dataHeader = entry.header.dataHeaderToBinary();
-                    const postHeader = Buffer.alloc(name.length, name);
-                    const dataLength = dataHeader.length + postHeader.length + compressedData.length;
+                    const localHeader = entry.packLocalHeader();
+                    const dataLength = localHeader.length + compressedData.length;
                     dindex += dataLength;
-                    dataBlock.push(dataHeader);
-                    dataBlock.push(postHeader);
+                    dataBlock.push(localHeader);
                     dataBlock.push(compressedData);
-                    const entryHeader = entry.packHeader();
-                    entryHeaders.push(entryHeader);
-                    mainHeader.size += entryHeader.length;
-                    totalSize += dataLength + entryHeader.length;
+                    const centalHeader = entry.packCentralHeader();
+                    centralHeaders.push(centalHeader);
+                    mainHeader.size += centalHeader.length;
+                    totalSize += dataLength + centalHeader.length;
                     compress2Buffer(entryLists);
                   });
                 } else {
@@ -1575,7 +1591,7 @@ var plugin = (() => {
                     content.copy(outBuffer, dindex);
                     dindex += content.length;
                   });
-                  entryHeaders.forEach(function(content) {
+                  centralHeaders.forEach(function(content) {
                     content.copy(outBuffer, dindex);
                     dindex += content.length;
                   });
@@ -1587,7 +1603,7 @@ var plugin = (() => {
                   onSuccess(outBuffer);
                 }
               };
-              compress2Buffer(entryList);
+              compress2Buffer(Array.from(entryList));
             } catch (e) {
               onFail(e);
             }
@@ -1597,9 +1613,9 @@ var plugin = (() => {
     }
   });
 
-  // ../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/adm-zip.js
+  // ../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/adm-zip.js
   var require_adm_zip = __commonJS({
-    "../../.yarn/cache/adm-zip-npm-0.5.10-17a872f2fd-07ed91cf64.zip/node_modules/adm-zip/adm-zip.js"(exports, module) {
+    "../../../../../.yarn/berry/cache/adm-zip-npm-0.5.14-2df92cc02d-10c0.zip/node_modules/adm-zip/adm-zip.js"(exports, module) {
       var Utils = require_util();
       var pth = __require("path");
       var ZipEntry = require_zipEntry();
@@ -1856,7 +1872,7 @@ var plugin = (() => {
             const update = entry != null;
             if (!update) {
               entry = new ZipEntry();
-              entry.entryName = entryName;
+              entry.entryName = Utils.canonical(entryName);
             }
             entry.comment = comment || "";
             const isStat = "object" === typeof attr && attr instanceof filetools.fs.Stats;
@@ -1877,8 +1893,10 @@ var plugin = (() => {
             entry.setData(content);
             if (!update)
               _zip.setEntry(entry);
+            return entry;
           },
-          getEntries: function() {
+          getEntries: function(password) {
+            _zip.password = password;
             return _zip ? _zip.entries : [];
           },
           getEntry: function(name) {
@@ -1917,7 +1935,7 @@ var plugin = (() => {
               });
               return true;
             }
-            var content = item.getData();
+            var content = item.getData(_zip.password);
             if (!content)
               throw new Error(Utils.Errors.CANT_EXTRACT_FILE);
             if (filetools.fs.existsSync(target) && !overwrite) {
@@ -1973,14 +1991,22 @@ var plugin = (() => {
             });
           },
           extractAllToAsync: function(targetPath, overwrite, keepOriginalPermission, callback) {
+            if (typeof overwrite === "function" && !callback)
+              callback = overwrite;
             overwrite = get_Bool(overwrite, false);
             if (typeof keepOriginalPermission === "function" && !callback)
               callback = keepOriginalPermission;
             keepOriginalPermission = get_Bool(keepOriginalPermission, false);
             if (!callback) {
-              callback = function(err) {
-                throw new Error(err);
-              };
+              return new Promise((resolve2, reject) => {
+                this.extractAllToAsync(targetPath, overwrite, keepOriginalPermission, function(err) {
+                  if (err) {
+                    reject(err);
+                  } else {
+                    resolve2(this);
+                  }
+                });
+              });
             }
             if (!_zip) {
               callback(new Error(Utils.Errors.NO_ZIP));
@@ -1990,12 +2016,12 @@ var plugin = (() => {
             const getPath = (entry) => sanitize(targetPath, pth.normalize(canonical(entry.entryName.toString())));
             const getError = (msg, file) => new Error(msg + ': "' + file + '"');
             const dirEntries = [];
-            const fileEntries = /* @__PURE__ */ new Set();
+            const fileEntries = [];
             _zip.entries.forEach((e) => {
               if (e.isDirectory) {
                 dirEntries.push(e);
               } else {
-                fileEntries.add(e);
+                fileEntries.push(e);
               }
             });
             for (const entry of dirEntries) {
@@ -2010,41 +2036,37 @@ var plugin = (() => {
                 callback(getError("Unable to create folder", dirPath));
               }
             }
-            const done = () => {
-              if (fileEntries.size === 0) {
-                callback();
-              }
-            };
-            for (const entry of fileEntries.values()) {
-              const entryName = pth.normalize(canonical(entry.entryName.toString()));
-              const filePath = sanitize(targetPath, entryName);
-              entry.getDataAsync(function(content, err_1) {
-                if (err_1) {
-                  callback(new Error(err_1));
-                  return;
-                }
-                if (!content) {
-                  callback(new Error(Utils.Errors.CANT_EXTRACT_FILE));
+            fileEntries.reverse().reduce(function(next, entry) {
+              return function(err) {
+                if (err) {
+                  next(err);
                 } else {
-                  const fileAttr = keepOriginalPermission ? entry.header.fileAttr : void 0;
-                  filetools.writeFileToAsync(filePath, content, overwrite, fileAttr, function(succ) {
-                    if (!succ) {
-                      callback(getError("Unable to write file", filePath));
-                      return;
+                  const entryName = pth.normalize(canonical(entry.entryName.toString()));
+                  const filePath = sanitize(targetPath, entryName);
+                  entry.getDataAsync(function(content, err_1) {
+                    if (err_1) {
+                      next(new Error(err_1));
+                    } else if (!content) {
+                      next(new Error(Utils.Errors.CANT_EXTRACT_FILE));
+                    } else {
+                      const fileAttr = keepOriginalPermission ? entry.header.fileAttr : void 0;
+                      filetools.writeFileToAsync(filePath, content, overwrite, fileAttr, function(succ) {
+                        if (!succ) {
+                          next(getError("Unable to write file", filePath));
+                        }
+                        filetools.fs.utimes(filePath, entry.header.time, entry.header.time, function(err_2) {
+                          if (err_2) {
+                            next(getError("Unable to set times", filePath));
+                          } else {
+                            next();
+                          }
+                        });
+                      });
                     }
-                    filetools.fs.utimes(filePath, entry.header.time, entry.header.time, function(err_2) {
-                      if (err_2) {
-                        callback(getError("Unable to set times", filePath));
-                        return;
-                      }
-                      fileEntries.delete(entry);
-                      done();
-                    });
                   });
                 }
-              });
-            }
-            done();
+              };
+            }, callback)();
           },
           writeZip: function(targetFileName, callback) {
             if (arguments.length === 1) {
@@ -2104,7 +2126,7 @@ var plugin = (() => {
 
   // sources/commands/bundle.command.ts
   var import_process = __toESM(__require("process"));
-  var import_path2 = __toESM(__require("path"));
+  var import_path3 = __toESM(__require("path"));
   var import_os = __toESM(__require("os"));
   var import_clipanion = __require("clipanion");
   var import_core3 = __require("@yarnpkg/core");
@@ -2116,7 +2138,7 @@ var plugin = (() => {
   // sources/bundle/package-deps.ts
   var import_core = __require("@yarnpkg/core");
   var import_promises = __require("fs/promises");
-  var import_node_path = __require("path");
+  var import_path = __require("path");
   var PackageDeps = class {
     static async install(workspaceRoot, projectRoot, cache, logger) {
       const { project } = await import_core.Project.find(
@@ -2151,7 +2173,7 @@ var plugin = (() => {
         report: logger.getStreamReport(),
         persistProject: false
       });
-      const nmSelfPath = (0, import_node_path.resolve)(
+      const nmSelfPath = (0, import_path.resolve)(
         project.cwd,
         "node_modules",
         `@${workspace.locator.scope}`,
@@ -2163,16 +2185,16 @@ var plugin = (() => {
 
   // sources/bundle/archive.ts
   var import_adm_zip = __toESM(require_adm_zip());
-  var import_path = __toESM(__require("path"));
+  var import_path2 = __toESM(__require("path"));
   var Archive = class {
     static async make(project, workspace, outDir) {
       return new Promise((resolve2, reject) => {
         const targetFileName = `${workspace.computeCandidateName()}.zip`;
-        const targetFilePath = import_path.default.resolve(outDir, targetFileName);
+        const targetFilePath = import_path2.default.resolve(outDir, targetFileName);
         const zip = new import_adm_zip.default();
-        zip.addLocalFolder(import_path.default.resolve(workspace.cwd));
+        zip.addLocalFolder(import_path2.default.resolve(workspace.cwd));
         zip.addLocalFolder(
-          import_path.default.resolve(project.cwd, "node_modules"),
+          import_path2.default.resolve(project.cwd, "node_modules"),
           "node_modules"
         );
         zip.writeZip(targetFilePath, (error) => {
@@ -2270,7 +2292,7 @@ var plugin = (() => {
 
   // sources/commands/bundle.command.ts
   var DEFAULT_OUT_DIR = import_process.default.cwd();
-  var DEFAULT_TMP_DIR = import_path2.default.resolve(import_os.default.tmpdir(), import_process.default.pid.toString());
+  var DEFAULT_TMP_DIR = import_path3.default.resolve(import_os.default.tmpdir(), import_process.default.pid.toString());
   var BundleCommand = class extends import_cli.BaseCommand {
     constructor() {
       super(...arguments);
