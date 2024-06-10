@@ -1,12 +1,9 @@
 {
-  "$schema": "http://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "experimentalDecorators": true,
     "esModuleInterop": true,
     "module": "commonjs",
-    "target": "ES2019",
-    "lib": ["ES2019"],
-    "types": ["node", "jest"]
+    "target": "ES2021",
+    "lib": ["ES2021"]
   },
   "include": ["sources/**/*.ts"]
 }
