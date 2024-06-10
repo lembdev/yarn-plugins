@@ -101,15 +101,30 @@ class BundleCommand extends BaseCommand {
       archive.pipe(output);
 
       // Append `node_modules` from a root directory
-      archive.directory(
-        join(workspace.project.topLevelWorkspace.cwd, 'node_modules'),
-        'node_modules',
-      );
+      archive.glob('**/*', {
+        cwd: join(workspace.project.topLevelWorkspace.cwd, 'node_modules'),
+        ignore: [
+          '*.md',
+          '*.ts',
+          '*.log',
+          '*.lock',
+          '*LICENSE*',
+          '*CHANGELOG*',
+          '*README*',
+          '*HISTORY*',
+          '*CONTRIBUTING*',
+          '*AUTHORS*',
+          '*NOTICE*',
+          '*PATENTS*',
+        ],
+        follow: true,
+      },{ prefix: 'node_modules' });
 
       // Append all files from workspace except the src directory
       archive.glob('**/*', {
         cwd: workspace.cwd,
         ignore: ['src/**'],
+        follow: true,
       });
 
       // Finalize the archive
