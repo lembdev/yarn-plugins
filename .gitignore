@@ -11,5 +11,5 @@
 #.pnp.*
 
 node_modules/
-builds/
-bundles/
+
+.idea/
