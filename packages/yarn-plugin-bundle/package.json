@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@types/archiver": "6.0.2",
-    "@types/node": "20.14.2",
+    "@types/node": "20.17.0",
     "@yarnpkg/builder": "4.1.1",
     "archiver": "7.0.1",
     "replace": "1.2.2",
